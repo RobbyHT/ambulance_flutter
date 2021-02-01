@@ -44,7 +44,7 @@ _loadTheme() async{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
-        title: Txt(text: 'User'),
+        title: Txt(text: '使用者'),
         actions: [
           Switch(
             value: Preferences.getTheme() == AppTheme.lightTheme,

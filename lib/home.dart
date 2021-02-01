@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+import 'widgets/txt.dart';
+
+class HomeScreen extends StatefulWidget {
+  HomeScreen({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOption = <Widget>[
-    Icon(Icons.star, size: 200.0,),
-    Icon(Icons.mood_bad, size: 200.0,),
-    Icon(Icons.wb_sunny, size: 200.0,),
+    Icon(
+      FontAwesomeIcons.ambulance,
+      size: 100.0,
+    ),
+    Icon(
+      Icons.people,
+      size: 200.0,
+    ),
+    Icon(
+      Icons.home,
+      size: 200.0,
+    ),
+    Icon(
+      Icons.bar_chart,
+      size: 200.0,
+    ),
+    Icon(
+      Icons.settings,
+      size: 200.0,
+    ),
   ];
   void _onItemTap(int index) {
     setState(() => _selectedIndex = index);
@@ -25,19 +44,47 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Scaffold example"),
-          leading: Icon(FontAwesomeIcons.dragon),
+          title: Text("Home"),
+          leading: Icon(FontAwesomeIcons.cat),
         ),
-        bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.star), title: Text('Star')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.mood_bad), title: Text('Sad')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.wb_sunny), title: Text('Sunny')),
-        ],
-        onTap: _onItemTap,
-        currentIndex: _selectedIndex,),
-        body: Center(child: _widgetOption.elementAt(_selectedIndex),));
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  FontAwesomeIcons.ambulance,
+                  color: Colors.black,
+                ),
+                title: Txt(text: 'car')),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.people,
+                  color: Colors.black,
+                ),
+                title: Txt(text: 'people')),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black,
+                ),
+                title: Txt(text: 'home')),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.bar_chart,
+                  color: Colors.black,
+                ),
+                title: Txt(text: 'bar_chart')),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ),
+                title: Txt(text: 'settings')),
+          ],
+          onTap: _onItemTap,
+          currentIndex: _selectedIndex,
+        ),
+        body: Center(
+          child: _widgetOption.elementAt(_selectedIndex),
+        ));
   }
 }
