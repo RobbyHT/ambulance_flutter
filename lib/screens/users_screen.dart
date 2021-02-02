@@ -19,15 +19,14 @@ class _UsersScreenState extends State<UsersScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadTheme();
     _loadUsers();
   }
 
-_loadTheme() async{
-  context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: Preferences.getTheme()));
-}
+  _loadTheme() async{
+    context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: Preferences.getTheme()));
+  }
 
   _loadUsers() async{
     context.bloc<UsersBloc>().add(UsersEvent.fetchUsers);

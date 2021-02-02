@@ -1,9 +1,10 @@
+import 'package:ambulance_flutter/api/login_services.dart';
 import 'package:ambulance_flutter/components/btn.dart';
 import 'package:ambulance_flutter/components/link_btn.dart';
 import 'package:ambulance_flutter/components/tf.dart';
-import 'package:ambulance_flutter/home.dart';
-import 'package:ambulance_flutter/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:ambulance_flutter/home.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,59 +14,74 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _accountController;
   TextEditingController _passwordController;
+  int _error_num;
   @override
   void initState() {
     super.initState();
     _accountController = TextEditingController();
     _passwordController = TextEditingController();
+    _error_num = 0;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('登入'),
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            TF(
-              controller: _accountController,
-              helpText: '',
-              hintText: '員工編號',
-              prefixIcon: Icons.account_circle,
-            ),
-            TF(
-              controller: _passwordController,
-              helpText: '',
-              hintText: '身分證字號',
-              isPassword: true,
-              prefixIcon: Icons.lock,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Btn(
-                    onPress: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) {
-                        return HomeScreen();
-                      }));
-                    },
-                    text: 'Login',
-                    color: Colors.green,
+    return FlutterEasyLoading(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('登入'),
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              TF(
+                controller: _accountController,
+                helpText: '',
+                hintText: '員工編號',
+                prefixIcon: Icons.account_circle,
+              ),
+              TF(
+                controller: _passwordController,
+                helpText: '',
+                hintText: '身分證字號',
+                isPassword: true,
+                prefixIcon: Icons.lock,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Btn(
+                      onPress: () async {
+                        EasyLoading.show(status: '身分驗證中請稍後...');
+                        LoginServices loginService = LoginServices.init();
+                        bool result = await loginService.signIn(
+                            _accountController.text, _passwordController.text);
+                        if (result) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        } else {
+                          EasyLoading.showError('帳號或密碼錯誤，請重新輸入！\r\n嘗試輸入錯誤5次，將鎖定帳號：${_error_num}');
+                        }
+                        EasyLoading.dismiss();
+                      },
+                      text: 'Login',
+                      color: Colors.green,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            LinkBtn(
-              text: 'sing up',
-              color: Colors.blue,
-              onPress: (){
-                //
-              },
-            ),
-          ],
+                ],
+              ),
+              LinkBtn(
+                text: 'sing up',
+                color: Colors.blue,
+                onPress: () {
+                  //
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
