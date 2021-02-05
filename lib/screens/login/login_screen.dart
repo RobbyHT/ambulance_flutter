@@ -14,13 +14,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _accountController;
   TextEditingController _passwordController;
-  int _error_num;
+  int error_num = 0;
   @override
   void initState() {
     super.initState();
     _accountController = TextEditingController();
     _passwordController = TextEditingController();
-    _error_num = 0;
   }
 
   @override
@@ -51,6 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: Btn(
                       onPress: () async {
+                        setState(() {
+                          error_num++;
+                        });
                         EasyLoading.show(status: '身分驗證中請稍後...');
                         LoginServices loginService = LoginServices.init();
                         bool result = await loginService.signIn(
@@ -63,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         } else {
-                          EasyLoading.showError('帳號或密碼錯誤，請重新輸入！\r\n嘗試輸入錯誤5次，將鎖定帳號：${_error_num}');
+                          EasyLoading.showError('帳號或密碼錯誤，請重新輸入！\r\n嘗試輸入錯誤5次，將鎖定帳號：${this.error_num}次');
                         }
                         EasyLoading.dismiss();
                       },

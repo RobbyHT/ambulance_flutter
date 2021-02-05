@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:ambulance_flutter/home.dart';
 import 'package:http/http.dart' as http;
 
 class LoginServices {
@@ -20,7 +19,6 @@ class LoginServices {
     final response =
         await http.get(uri);
 
-    //print(response.body);
     return response.body == 'true';
     
   }
