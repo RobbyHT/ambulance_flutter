@@ -29,10 +29,13 @@
 .packages
 .pub-cache/
 .pub/
+.yaml
+.lock
 /build/
 
 # Web related
 lib/generated_plugin_registrant.dart
+lib/main.dart
 
 # Symbolication related
 app.*.symbols
