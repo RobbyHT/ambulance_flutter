@@ -3,7 +3,7 @@ import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
 import 'package:flutter/material.dart';
 
-class driverScreen extends StatelessWidget {
+class DriverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context)

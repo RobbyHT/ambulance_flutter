@@ -19,7 +19,7 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         // padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: Colors.orange,
           borderRadius: BorderRadius.circular(13),
           boxShadow: [
             BoxShadow(
@@ -41,7 +41,7 @@ class CategoryCard extends StatelessWidget {
                   IconButton(
                       icon: Icon(iconSrc),
                       iconSize: 40.0,
-                      color: Color.fromARGB(255, 255, 00, 00),
+                      color: Color.fromARGB(255, 255, 00, 00), //icon
                       onPressed: () {}),
                   Text(
                     title,
