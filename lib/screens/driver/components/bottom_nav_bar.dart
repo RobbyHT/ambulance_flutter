@@ -16,15 +16,19 @@ class BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           BottomNavItem(
-              title: "Settings", iconsrc: Icons.ac_unit_sharp, press: () {}),
-          IconButton(
+              title: "車趟", iconsrc: Icons.signal_cellular_alt, press: () {}),
+          /* IconButton(
               icon: Icon(Icons.directions_bus),
               iconSize: 40.0,
               color: Colors.red,
-              onPressed: () {}),
+              onPressed: () {}),*/
           BottomNavItem(
-            title: "Settings",
-            iconsrc: Icons.ac_unit_sharp,
+            title: "主頁",
+            iconsrc: Icons.home,
+          ),
+          BottomNavItem(
+            title: "上線",
+            iconsrc: Icons.how_to_reg,
           ),
         ],
       ),

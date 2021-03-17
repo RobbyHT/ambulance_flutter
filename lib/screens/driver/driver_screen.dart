@@ -66,7 +66,23 @@ class DriverScreen extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 250, 235, 215),
+                        boxShadow: [
+                          //BoxShadow(color: Colors.green, spreadRadius: 3),
+                        ],
+                      ),
+                      height: 180,
+                      width: 450,
+                      margin: EdgeInsets.only(bottom: 50)),
+                  Container(
+                      child: Text(
+                        '接單',
+                        textScaleFactor: 2,
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color.fromARGB(255, 250, 235, 215),
                         boxShadow: [
                           //BoxShadow(color: Colors.green, spreadRadius: 3),
                         ],
@@ -74,6 +90,7 @@ class DriverScreen extends StatelessWidget {
                       height: 180,
                       width: 450,
                       margin: EdgeInsets.only(bottom: 30)),
+
                   /* Container(
                     alignment: Alignment.center,
                     color: Colors.amber[100],
@@ -110,7 +127,7 @@ class DriverScreen extends StatelessWidget {
                             color: Colors.red,
                             onPressed: () {}),
                         */
-                        CategoryCard(
+                        /*CategoryCard(
                           title: "個人車趟",
                           iconSrc: Icons.ac_unit_sharp,
                           press: () {
@@ -126,7 +143,7 @@ class DriverScreen extends StatelessWidget {
                           title: "公告管理",
                           iconSrc: Icons.ac_unit_sharp,
                           press: () {},
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
