@@ -59,6 +59,7 @@ class BottomNavItem extends StatelessWidget {
           Icon(
             iconsrc,
             color: isActive ? kActiveIconColor : kTextColor,
+            size: 35.0,
           ),
           Text(
             title,

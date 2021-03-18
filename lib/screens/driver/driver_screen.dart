@@ -21,7 +21,7 @@ class DriverScreen extends StatelessWidget {
               ),
               image: DecorationImage(
                 alignment: Alignment.centerLeft,
-                image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
+                image: AssetImage("assets/images/cloud.png"),
               ),
             ),
           ),
@@ -52,10 +52,9 @@ class DriverScreen extends StatelessWidget {
                   ),
                   Text(
                     "醫指派/司機 ",
-                    style: Theme.of(context)
-                        .textTheme
-                        .display1
-                        .copyWith(fontWeight: FontWeight.w900),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.display1.copyWith(fontWeight: FontWeight.w900),
                   ),
                   SearchBar(),
                   Container(
