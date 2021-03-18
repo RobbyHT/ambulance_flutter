@@ -1,6 +1,7 @@
 import 'package:ambulance_flutter/screens/driver/components/bottom_nav_bar.dart';
 import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
+import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
 import 'package:flutter/material.dart';
 
 class DriverScreen extends StatelessWidget {
@@ -9,7 +10,8 @@ class DriverScreen extends StatelessWidget {
     var size = MediaQuery.of(context)
         .size; //this gonna give us total height and with of our device
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(),
+      //bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: Home(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -51,7 +53,7 @@ class DriverScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "醫指派/司機 ",
+                    "醫指派/司機",
                     style: Theme.of(
                       context,
                     ).textTheme.display1.copyWith(fontWeight: FontWeight.w900),
