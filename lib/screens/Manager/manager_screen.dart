@@ -51,11 +51,11 @@ class ManagerScreen extends StatelessWidget {
                   //功能框設定---------------------------
                   Expanded(
                     child: GridView.count(
-                      padding: EdgeInsets.symmetric(vertical: 30),
+                      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 0),
                       crossAxisCount: 2,
-                      childAspectRatio: 3 / 4, //長寬比
+                      childAspectRatio: 3 / 5, //長寬比
                       crossAxisSpacing: 20,
-                      // mainAxisSpacing: 20,
+                      // mainAxisSpacing: -10,
                       children: <Widget>[
                         CategoryCard(
                           title:"員工管理",

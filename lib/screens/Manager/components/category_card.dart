@@ -16,7 +16,7 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
+      margin: EdgeInsets.symmetric(vertical: 50),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(13), //按鈕圓角
@@ -40,12 +40,13 @@ class CategoryCard extends StatelessWidget {
                 // icon: Icon(Icons.people),
                 // tooltip: 'people',
                 onPressed: press,
-                iconSize: 70,
-                padding: EdgeInsets.only(left: 20,top:40,right: 20,bottom: 10),
+                iconSize: 60,
+                padding: EdgeInsets.only(left: 20,top:30,right: 20,bottom:0),
               ),
               Text(
                 title,
                 style: Theme.of(context).textTheme.title,
+                // style: TextStyle(height: 5, fontSize: 10)
               ),
             ],
           ),
