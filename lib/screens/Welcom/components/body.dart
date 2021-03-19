@@ -1,7 +1,8 @@
+import 'package:ambulance_flutter/components/Welcom_components/already_have_an_account_acheck.dart';
+import 'package:ambulance_flutter/screens/Welcom/Login2/login_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/components/background.dart';
-import 'package:ambulance_flutter/screens/singUp/signup_screen.dart';
+import 'package:ambulance_flutter/screens/Welcom/singUp/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ambulance_flutter/Screens/Login2/login_screen.dart';
 
 
 class Body extends StatelessWidget {
@@ -27,7 +28,7 @@ class Body extends StatelessWidget {
             bottom: 50,
             left: 50,
             child: Image.asset(
-              "assets/images/back-17.png",
+              "assets/images/ambulance.png",
               width: size.width * 0.7,
             ),
           ),          
@@ -46,13 +47,13 @@ class Body extends StatelessWidget {
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
             child: Text('LOGIIN'),
-            textColor: Colors.teal[300],
+            textColor: Color.fromRGBO(133,163,146,1),
                         
             onPressed: () {Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return Login2Screen();
                     },
                   ),
                 );},
@@ -73,7 +74,7 @@ class Body extends StatelessWidget {
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
             child: Text('Sing up'),
-            textColor: Colors.teal[300],
+            textColor: Color.fromRGBO(133,163,146,1),
             
             onPressed: () {
               Navigator.push(
@@ -87,7 +88,22 @@ class Body extends StatelessWidget {
                 },
             ),
   )
-),      
+),    
+            SizedBox(height: size.height * 0.03),
+            TextButton(
+                onPressed: () {},
+                child: Text('管理者登入'),
+                style: TextButton.styleFrom(
+                  primary: Color.fromRGBO(133,163,146,1) ,
+                  textStyle: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
+                ) ,
+              
+      //     TextButton(
+      //     onPressed: () {
+      // // Respond to button press
+      //     },
+      //       child: Text("TEXT BUTTON"),
+      //     )
          
                              
             // RoundedButton(
