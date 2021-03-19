@@ -2,6 +2,7 @@ import 'package:ambulance_flutter/screens/driver/components/bottom_nav_bar.dart'
 import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
 import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
+import 'package:ambulance_flutter/screens/driver/driver_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 class DriverScreen extends StatelessWidget {
@@ -10,8 +11,16 @@ class DriverScreen extends StatelessWidget {
     var size = MediaQuery.of(context)
         .size; //this gonna give us total height and with of our device
     return Scaffold(
+      //主頁按鈕
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        backgroundColor: Colors.redAccent,
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //bottomNavigationBar: BottomNavBar(),
-      bottomNavigationBar: Home(),
+      bottomNavigationBar: HomeBottomBar(),
+      //bottomNavigationBar: Home(),
       body: Stack(
         children: <Widget>[
           Container(
