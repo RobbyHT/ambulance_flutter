@@ -1,9 +1,9 @@
-import 'package:ambulance_flutter/screens/Manager/components/BottonNavbar.dart';
-import 'package:ambulance_flutter/screens/Manager/components/announce.dart';
-import 'package:ambulance_flutter/screens/Manager/components/car.dart';
+import 'package:ambulance_flutter/screens/Manager/components/BottomNavbar.dart';
 import 'package:ambulance_flutter/screens/Manager/components/category_card.dart';
-import 'package:ambulance_flutter/screens/Manager/components/emp.dart';
-import 'package:ambulance_flutter/screens/Manager/components/stock.dart';
+import 'package:ambulance_flutter/screens/Manager/page/announce.dart';
+import 'package:ambulance_flutter/screens/Manager/page/car.dart';
+import 'package:ambulance_flutter/screens/Manager/page/emp.dart';
+import 'package:ambulance_flutter/screens/Manager/page/stock.dart';
 import 'package:flutter/material.dart';
 
 class ManagerScreen extends StatelessWidget {
@@ -11,43 +11,61 @@ class ManagerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      //下方功能列設定---------------------------------
-      bottomNavigationBar: BottomNavbar(),
-      //---------------------------------
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.home),
+        backgroundColor: Color.fromRGBO(7, 13, 89, 1),
+        onPressed: () {
+          // Navigator.push(context, MaterialPageRoute(builder:(context) {
+          //   return StockPage();
+        },
+      ),
+      //漂浮按鈕設定
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked, 
+      //下方功能列設定----------------------
+      bottomNavigationBar: HomeBottomBar(),
+      //-----------------------------------
       body: Stack(
         children: <Widget>[
           Container(
             height: size.height * .45, //全部設備高度佔45%
-            // decoration: BoxDecoration(color: Color()),
-            color: Color.fromRGBO(170, 205, 190, 0.7),
+            color: Color.fromRGBO(31, 60, 136, 1),
+            // decoration: BoxDecoration(
+            // image: DecorationImage(
+            //     alignment: Alignment.centerLeft,
+            //     image: AssetImage("assets/images/cloud.png"),
+            //   ),
+            // ),
           ),
           Padding(
             padding: const EdgeInsets.all(10),
             child: SafeArea(
               child: Column(
                 children: <Widget>[
+                  //右上方選項按鈕----------------------
                   Align(
                     alignment: Alignment.topRight,
                     child: Container(
-                      width: 52,
+                      alignment: Alignment.center,
                       height: 52,
+                      width: 52,
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(170, 205, 190, 1),
+                        color: Color.fromRGBO(7, 13,89, 1),
                         shape: BoxShape.circle,
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.settings),
-                        color: Colors.white,
-                        tooltip: 'settings',
-                        onPressed: null,
-                      ),
+                          icon: Icon(Icons.reorder),
+                          iconSize: 30.0,
+                          color: Colors.white,
+                          onPressed: () {}),
                     ),
                   ),
+                  //title-------------------------------
                   Text("管理者介面",
                       style: Theme.of(context)
                           .textTheme
                           .display1
-                          .copyWith(fontWeight: FontWeight.w900)),
+                          .copyWith(fontWeight: FontWeight.w900,color: Color.fromRGBO(206, 221,239, 1))),
+                          
                   //功能框設定---------------------------
                   Expanded(
                     child: GridView.count(
