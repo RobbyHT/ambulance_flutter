@@ -1,7 +1,7 @@
 import 'package:ambulance_flutter/screens/driver/components/bottom_nav_bar.dart';
 import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
-import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
+//import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
 import 'package:ambulance_flutter/screens/driver/driver_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class DriverScreen extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Container(
-            //// Here the height of the container is 45% of our total height
+            //// 背景顏色高度
             height: size.height * .45,
             decoration: BoxDecoration(
               color: Color(
@@ -48,24 +48,14 @@ class DriverScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       height: 52,
                       width: 52,
-                      decoration: BoxDecoration(
-                        color: Color(
-                          (0xFFF2BEA1),
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                      child: IconButton(
-                          icon: Icon(Icons.settings),
-                          iconSize: 30.0,
-                          color: Colors.white,
-                          onPressed: () {}),
                     ),
                   ),
                   Text(
                     "醫指派/司機",
                     style: Theme.of(
                       context,
-                    ).textTheme.display1.copyWith(fontWeight: FontWeight.w900),
+                    ).textTheme.display1.copyWith(
+                        fontWeight: FontWeight.w900, color: Colors.black87),
                   ),
                   SearchBar(),
                   Container(
@@ -99,7 +89,7 @@ class DriverScreen extends StatelessWidget {
                       ),
                       height: 180,
                       width: 450,
-                      margin: EdgeInsets.only(bottom: 30)),
+                      margin: EdgeInsets.only(bottom: 0)),
 
                   /* Container(
                     alignment: Alignment.center,
