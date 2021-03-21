@@ -1,4 +1,4 @@
-import 'package:ambulance_flutter/screens/driver/constants.dart';
+import 'package:ambulance_flutter/screens/driver/components/constants.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {

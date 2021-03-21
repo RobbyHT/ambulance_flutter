@@ -1,5 +1,5 @@
-import 'package:ambulance_flutter/screens/driver/pages/settings.dart';
-import 'package:ambulance_flutter/screens/driver/pages/trip_statis.dart';
+import 'package:ambulance_flutter/screens/driver/settings.dart';
+import 'package:ambulance_flutter/screens/driver/trip_statis.dart';
 import 'package:flutter/material.dart';
 
 class HomeBottomBar extends StatefulWidget {
@@ -15,10 +15,8 @@ class HomeBottomBarState extends State<HomeBottomBar> {
   ];
 
 //活動頁(tab)
-
-  Widget currentScreen = Statising();
-
   final PageStorageBucket bucket = PageStorageBucket();
+  Widget currentScreen = Statising();
 
   @override
   Widget build(BuildContext context) {

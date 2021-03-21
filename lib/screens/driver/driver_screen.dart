@@ -1,16 +1,23 @@
-import 'package:ambulance_flutter/screens/driver/components/bottom_nav_bar.dart';
+import 'package:ambulance_flutter/components/bottom_nav_bar.dart';
 import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
+import 'package:ambulance_flutter/screens/driver/components/driver_bottom.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
 //import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
-import 'package:ambulance_flutter/screens/driver/driver_bottom_bar.dart';
+import 'package:ambulance_flutter/screens/driver/components/driver_bottom_bar.dart';
+import 'package:ambulance_flutter/screens/driver/trip_statis.dart';
 import 'package:flutter/material.dart';
 
 class DriverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context)
-        .size; //this gonna give us total height and with of our device
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text('醫指派/司機'),
+        toolbarHeight: 80.0,
+        backgroundColor: Colors.red[400],
+      ),
       //主頁按鈕
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.home),
@@ -18,14 +25,15 @@ class DriverScreen extends StatelessWidget {
         onPressed: () {},
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      //bottomNavigationBar: BottomNavBar(),
       bottomNavigationBar: HomeBottomBar(),
+      //bottomNavigationBar: BottomNavigationController(),
       //bottomNavigationBar: Home(),
       body: Stack(
         children: <Widget>[
-          Container(
+          /*Container(
             //// 背景顏色高度
-            height: size.height * .45,
+
+            height: size.height * .40,
             decoration: BoxDecoration(
               color: Color(
                 (0xFFF5CEB8),
@@ -35,7 +43,7 @@ class DriverScreen extends StatelessWidget {
                 image: AssetImage("assets/images/cloud.png"),
               ),
             ),
-          ),
+          ),*/
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -46,19 +54,37 @@ class DriverScreen extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 52,
+                      height: 0,
                       width: 52,
                     ),
                   ),
-                  Text(
+                  /*Text(
                     "醫指派/司機",
                     style: Theme.of(
                       context,
                     ).textTheme.display1.copyWith(
                         fontWeight: FontWeight.w900, color: Colors.black87),
-                  ),
+                  ),*/
                   SearchBar(),
                   Container(
+                    // margin: EdgeInsets.only(left: 40, top: 40),
+                    //设置 child 居中
+                    alignment: Alignment(0, 0),
+                    height: 180,
+                    width: 450,
+                    //边框设置
+                    decoration: new BoxDecoration(
+                      //背景
+                      color: Colors.white,
+                      //设置四周圆角 角度
+                      borderRadius: BorderRadius.all(Radius.circular(9.0)),
+                      //设置四周边框
+                      border: new Border.all(width: 1, color: Colors.red),
+                    ),
+                    child: Text("公告"),
+                    margin: EdgeInsets.only(bottom: 40),
+                  ),
+                  /*Container(
                       child: Text(
                         '公告',
                         textScaleFactor: 2,
@@ -89,8 +115,24 @@ class DriverScreen extends StatelessWidget {
                       ),
                       height: 180,
                       width: 450,
-                      margin: EdgeInsets.only(bottom: 0)),
-
+                      margin: EdgeInsets.only(bottom: 0)),*/
+                  Container(
+                    // margin: EdgeInsets.only(left: 40, top: 40),
+                    //设置 child 居中
+                    alignment: Alignment(0, 0),
+                    height: 180,
+                    width: 450,
+                    //边框设置
+                    decoration: new BoxDecoration(
+                      //背景
+                      color: Colors.white,
+                      //设置四周圆角 角度
+                      borderRadius: BorderRadius.all(Radius.circular(9.0)),
+                      //设置四周边框
+                      border: new Border.all(width: 1, color: Colors.red),
+                    ),
+                    child: Text("接單"),
+                  ),
                   /* Container(
                     alignment: Alignment.center,
                     color: Colors.amber[100],
