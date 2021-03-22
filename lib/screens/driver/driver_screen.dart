@@ -1,33 +1,16 @@
-import 'package:ambulance_flutter/components/bottom_nav_bar.dart';
-import 'package:ambulance_flutter/screens/driver/components/category_card.dart';
-import 'package:ambulance_flutter/screens/driver/components/driver_bottom.dart';
 import 'package:ambulance_flutter/screens/driver/components/search_bar.dart';
-//import 'package:ambulance_flutter/screens/driver/driver_Home.dart';
-import 'package:ambulance_flutter/screens/driver/components/driver_bottom_bar.dart';
-import 'package:ambulance_flutter/screens/driver/trip_statis.dart';
 import 'package:flutter/material.dart';
 
+//主畫面
 class DriverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('醫指派/司機'),
         toolbarHeight: 80.0,
         backgroundColor: Colors.red[400],
       ),
-      //主頁按鈕
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.home),
-        backgroundColor: Colors.redAccent,
-        onPressed: () {},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: HomeBottomBar(),
-      //bottomNavigationBar: BottomNavigationController(),
-      //bottomNavigationBar: Home(),
       body: Stack(
         children: <Widget>[
           /*Container(
