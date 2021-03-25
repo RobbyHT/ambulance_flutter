@@ -9,7 +9,7 @@ class DriverScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('醫指派/司機'),
         toolbarHeight: 80.0,
-        backgroundColor: Colors.red[400],
+        backgroundColor: Color.fromARGB(255, 139, 126, 102),
       ),
       body: Stack(
         children: <Widget>[
@@ -62,7 +62,10 @@ class DriverScreen extends StatelessWidget {
                       //设置四周圆角 角度
                       borderRadius: BorderRadius.all(Radius.circular(9.0)),
                       //设置四周边框
-                      border: new Border.all(width: 1, color: Colors.red),
+                      border: new Border.all(
+                        width: 1,
+                        color: Color.fromARGB(255, 139, 126, 102),
+                      ),
                     ),
                     child: Text("公告"),
                     margin: EdgeInsets.only(bottom: 40),
@@ -112,7 +115,10 @@ class DriverScreen extends StatelessWidget {
                       //设置四周圆角 角度
                       borderRadius: BorderRadius.all(Radius.circular(9.0)),
                       //设置四周边框
-                      border: new Border.all(width: 1, color: Colors.red),
+                      border: new Border.all(
+                        width: 1,
+                        color: Color.fromARGB(255, 139, 126, 102),
+                      ),
                     ),
                     child: Text("接單"),
                   ),

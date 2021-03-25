@@ -32,6 +32,7 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
       //漂浮按鈕屬性
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.home),
+        backgroundColor: Color.fromARGB(255, 205, 186, 150),
         onPressed: () => _onItemTap(0), //主頁面跳到0的畫面
       ),
       //按鈕置中
@@ -56,13 +57,17 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.dashboard,
-                          color: currentTab == 1 ? Colors.blue : Colors.grey,
+                          Icons.signal_cellular_alt,
+                          color: currentTab == 1
+                              ? Color.fromARGB(255, 139, 126, 102)
+                              : Colors.grey,
                         ),
                         Text(
                           '個人車趟',
                           style: TextStyle(
-                            color: currentTab == 1 ? Colors.blue : Colors.grey,
+                            color: currentTab == 1
+                                ? Color.fromARGB(255, 139, 126, 102)
+                                : Colors.grey,
                           ),
                         ),
                       ],
@@ -81,13 +86,17 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.dashboard,
-                          color: currentTab == 2 ? Colors.blue : Colors.grey,
+                          Icons.settings,
+                          color: currentTab == 2
+                              ? Color.fromARGB(255, 139, 126, 102)
+                              : Colors.grey,
                         ),
                         Text(
                           '設定',
                           style: TextStyle(
-                            color: currentTab == 2 ? Colors.blue : Colors.grey,
+                            color: currentTab == 2
+                                ? Color.fromARGB(255, 139, 126, 102)
+                                : Colors.grey,
                           ),
                         ),
                       ],
