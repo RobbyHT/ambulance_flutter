@@ -5,7 +5,7 @@ import 'package:ambulance_flutter/screens/Manager/page/emp.dart';
 import 'package:ambulance_flutter/screens/Manager/page/stock.dart';
 import 'package:flutter/material.dart';
 
-class ManaMain extends StatelessWidget {
+class AllManagement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -41,11 +41,12 @@ class ManaMain extends StatelessWidget {
                         icon: Icon(Icons.reorder),
                         iconSize: 30.0,
                         color: Colors.white,
-                        onPressed: () {}),
+                        onPressed: () {}
+                    ),
                   ),
                 ),
                 //title-------------------------------
-                Text("管理者介面",
+                Text("其他管理",
                     style: Theme.of(context).textTheme.display1.copyWith(
                         fontWeight: FontWeight.w900,
                         color: Color.fromRGBO(206, 221, 239, 1))),

@@ -41,6 +41,7 @@ class CategoryCard extends StatelessWidget {
                 // tooltip: 'people',
                 onPressed: press,
                 iconSize: 60,
+                color: Color.fromRGBO(29, 45, 80, 1),
                 padding: EdgeInsets.only(left: 20,top:30,right: 20,bottom:0),
               ),
               Text(

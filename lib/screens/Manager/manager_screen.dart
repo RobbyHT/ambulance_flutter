@@ -1,15 +1,10 @@
-import 'package:ambulance_flutter/screens/Manager/components/category_card.dart';
-import 'package:ambulance_flutter/screens/Manager/manaMain.dart';
-import 'package:ambulance_flutter/screens/Manager/page/announce.dart';
-import 'package:ambulance_flutter/screens/Manager/page/car.dart';
-import 'package:ambulance_flutter/screens/Manager/page/emp.dart';
-import 'package:ambulance_flutter/screens/Manager/page/stock.dart';
-import 'package:ambulance_flutter/screens/Manager/page2/Dispatch.dart';
-import 'package:ambulance_flutter/screens/Manager/page2/Reservation.dart';
-import 'package:ambulance_flutter/screens/Manager/page2/Setting.dart';
-import 'package:ambulance_flutter/screens/Manager/page2/Statising.dart';
+import 'package:ambulance_flutter/screens/Manager/AllManagement.dart';
+import 'package:ambulance_flutter/screens/Manager/page/Dispatch.dart';
+import 'package:ambulance_flutter/screens/Manager/page/Reservation.dart';
+import 'package:ambulance_flutter/screens/Manager/page/Setting.dart';
+import 'package:ambulance_flutter/screens/Manager/page/Statising.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ManagerScreen extends StatefulWidget {
   @override
@@ -20,10 +15,10 @@ class _ManagerScreenState extends State<ManagerScreen> {
   int currentTab = 0;
   final List<Widget> screen = [
     Reservation(),
-    Dispatching(),
+    AllManagement(),
     Statising(),
     Setting(),
-    ManaMain(),
+    Dispatching(),
   ];
   void _onItemTap(int index) {
     setState(() => currentTab = index);
@@ -85,13 +80,14 @@ class _ManagerScreenState extends State<ManagerScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          FontAwesomeIcons.ambulance,
+                          Icons.assignment,
+                          // FontAwesomeIcons.ambulance,
                           color: currentTab == 1
                               ? Color.fromRGBO(7, 13, 89, 1)
                               : Colors.grey,
                         ),
                         Text(
-                          '派車',
+                          '管理',
                           style: TextStyle(
                             color: currentTab == 1
                                 ? Color.fromRGBO(7, 13, 89, 1)
