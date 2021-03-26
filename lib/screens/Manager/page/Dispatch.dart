@@ -12,6 +12,12 @@ class _DispatchingState extends State<Dispatching> {
       appBar: AppBar(
         title: Text("Dispatching"),
       ),
+      body:Center(
+        child: Column(
+          children: <Widget>[
+          ],
+        ),
+      ),
     );
   }
 }

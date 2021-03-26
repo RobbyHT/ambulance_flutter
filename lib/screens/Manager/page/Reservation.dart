@@ -12,6 +12,12 @@ class _ReservationState extends State<Reservation> {
       appBar: AppBar(
         title: Text("reservation"),
       ),
+      body:Center(
+        child: Column(
+          children: <Widget>[
+          ],
+        ),
+      ),
     );
   }
 }
