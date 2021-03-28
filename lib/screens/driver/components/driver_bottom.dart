@@ -1,3 +1,4 @@
+import 'package:ambulance_flutter/main.dart';
 import 'package:ambulance_flutter/screens/driver/driver_screen.dart';
 import 'package:ambulance_flutter/screens/driver/settings.dart';
 import 'package:ambulance_flutter/screens/driver/trip_statis.dart';
@@ -15,7 +16,7 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
   final List<Widget> screens = [
     DriverScreen(), //0
     Statising(), //1
-    Setting(), //2
+    Dispatch(), //2
   ];
 
   void _onItemTap(int index) {
@@ -32,7 +33,7 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
       //漂浮按鈕屬性
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.home),
-        backgroundColor: Color.fromARGB(255, 205, 186, 150),
+        backgroundColor: Color.fromARGB(255, 250, 190, 150),
         onPressed: () => _onItemTap(0), //主頁面跳到0的畫面
       ),
       //按鈕置中
@@ -57,16 +58,16 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.signal_cellular_alt,
+                          Icons.insert_chart_outlined,
                           color: currentTab == 1
-                              ? Color.fromARGB(255, 139, 126, 102)
+                              ? Color.fromARGB(250, 255, 130, 71)
                               : Colors.grey,
                         ),
                         Text(
                           '個人車趟',
                           style: TextStyle(
                             color: currentTab == 1
-                                ? Color.fromARGB(255, 139, 126, 102)
+                                ? Color.fromARGB(250, 255, 130, 71)
                                 : Colors.grey,
                           ),
                         ),
@@ -86,16 +87,16 @@ class _HomeBottomBar1State extends State<HomeBottomBar1> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.settings,
+                          Icons.wysiwyg,
                           color: currentTab == 2
-                              ? Color.fromARGB(255, 139, 126, 102)
+                              ? Color.fromARGB(250, 255, 130, 71)
                               : Colors.grey,
                         ),
                         Text(
-                          '設定',
+                          '派單',
                           style: TextStyle(
                             color: currentTab == 2
-                                ? Color.fromARGB(255, 139, 126, 102)
+                                ? Color.fromARGB(250, 255, 130, 71)
                                 : Colors.grey,
                           ),
                         ),
