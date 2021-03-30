@@ -28,7 +28,7 @@ class Background extends StatelessWidget {
             bottom: 0,
             left: 0,
             child: Image.asset(
-              "assets/images/underLineAcross.png",
+              "assets/images/underLineAcross.png",              
               width: size.width * 1,
             ),
           ),

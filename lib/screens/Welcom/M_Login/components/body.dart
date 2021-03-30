@@ -1,9 +1,9 @@
-import 'package:ambulance_flutter/components/Welcom_components/already_have_an_account_acheck.dart';
-import 'package:ambulance_flutter/components/Welcom_components/rounded_input_field.dart';
-import 'package:ambulance_flutter/components/Welcom_components/rounded_password_field.dart';
-import 'package:ambulance_flutter/screens/Welcom/Login2/components/background.dart';
-import 'package:ambulance_flutter/screens/Welcom/singUp/signup_screen.dart';
-import 'package:ambulance_flutter/screens/Welcom/welcome_screen.dart';
+import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/already_have_an_account_acheck.dart';
+import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_input_field.dart';
+import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_password_field.dart';
+import 'package:ambulance_flutter/screens/Welcom/M_Login/components/background.dart';
+import 'package:ambulance_flutter/screens/Welcom/M_signUp/M_signup_screen.dart';
+import 'package:ambulance_flutter/screens/Welcom/mangementWelcome/mangementWelcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -21,15 +21,15 @@ class Body extends StatelessWidget {
           children: <Widget>[
             Text(
               "登入",
-              style: TextStyle(fontWeight: FontWeight.bold,color:Color.fromRGBO(234,114,122,1),fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(249,224,241,100),fontSize: 20),
             ),
             SizedBox(height: size.height * 0.03),
             Positioned(
             bottom: 80,
             left: 50,
             child: Image.asset(
-              "assets/images/phone.png",
-              width: size.width * 0.5,
+              "assets/images/DarkBluePhone.png",
+              width: size.width * 0.6,
             ),
           ),    
             SizedBox(height: size.height * 0.03),
@@ -50,17 +50,17 @@ class Body extends StatelessWidget {
                 shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
             ),
-            borderSide: BorderSide(color: Color.fromRGBO(234,114,122,1), width: 3 ),
+            borderSide: BorderSide(color: Color.fromRGBO(249,224,241,100), width: 3 ),
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
             child: Text('登入'),
-            textColor: Color.fromRGBO(150,150,150,1),                         
+            textColor: Color.fromRGBO(249,224,241,100),                        
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return WelcomeScreen();
+                      return MangementWelcomeScreen();
                                 },
                               ),
                             );
@@ -75,7 +75,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return MSignUpScreen();
                     },
                   ),
                 );
