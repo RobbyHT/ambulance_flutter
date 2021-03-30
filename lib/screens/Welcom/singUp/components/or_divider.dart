@@ -15,7 +15,7 @@ class OrDivider extends StatelessWidget {
             child: Text(
               "OR",
               style: TextStyle(
-                color: Colors.deepOrange[200],
+                color: Color.fromRGBO(234,114,122,1),
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -29,7 +29,7 @@ class OrDivider extends StatelessWidget {
   Expanded buildDivider() {
     return Expanded(
       child: Divider(
-        color: Colors.deepOrange[200],
+        color: Color.fromRGBO(234,114,122,1),
         height: 1.5,
       ),
     );

@@ -19,8 +19,8 @@ class Body extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: size.height * 0.08),
             Text(
-              "SIGN UP",
-              style: TextStyle(fontWeight: FontWeight.bold,color: Colors.deepOrangeAccent[100],fontSize: 20),
+              "註冊",
+              style: TextStyle(fontWeight: FontWeight.bold,color:Color.fromRGBO(234,114,122,1),fontSize: 20),
                         ),
             SizedBox(height: size.height * 0.03),
             Positioned(
@@ -37,7 +37,7 @@ class Body extends StatelessWidget {
             // ),
             SizedBox(height: size.height * 0.01),
             RoundedInputField(
-              hintText: "Your Email",
+              hintText: "帳號",
               onChanged: (value) {},
             ),
             // SizedBox(height: size.height * 0.005),
@@ -54,11 +54,11 @@ class Body extends StatelessWidget {
                 shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
             ),
-            borderSide: BorderSide(color: Colors.red[200], width: 3 ),
+            borderSide: BorderSide(color: Color.fromRGBO(234,114,122,1), width: 3 ),
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
-            child: Text('sign up'),
-            textColor: Color.fromRGBO(133,163,146,1),                        
+            child: Text('註冊'),
+            textColor: Color.fromRGBO(150,150,150,1),                       
             onPressed: () {
               Navigator.push(
                   context,
