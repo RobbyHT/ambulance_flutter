@@ -17,14 +17,14 @@ class RoundedPasswordField extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: Colors.grey[300],
         decoration: InputDecoration(
-          hintText: "Password",
+          hintText: "密碼",
           icon: Icon(
             Icons.lock,
-            color: Colors.deepOrange[200],
+            color: Color.fromRGBO(234,114,122,1),
           ),
           suffixIcon: Icon(
             Icons.visibility,
-            color: Colors.deepOrange[200],
+            color: Color.fromRGBO(234,114,122,1),
           ),
           border: InputBorder.none,
         ),
