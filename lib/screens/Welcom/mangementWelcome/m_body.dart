@@ -1,7 +1,6 @@
-import 'package:ambulance_flutter/components/Welcom_components/already_have_an_account_acheck.dart';
 import 'package:ambulance_flutter/screens/Welcom/M_Login/m_login_screen.dart';
+import 'package:ambulance_flutter/screens/Welcom/M_signUp/M_signup_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/mangementWelcome/background.dart';
-import 'package:ambulance_flutter/screens/Welcom/singUp/signup_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +46,7 @@ class m_Body extends StatelessWidget {
             borderSide: BorderSide(color: Color.fromRGBO(249,224,241,1), width: 3 ),
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
-            child: Text('LOGIIN'),
+            child: Text('登入'),
             textColor: Color.fromRGBO(249,224,241,1),
                         
             onPressed: () {Navigator.push(
@@ -74,7 +73,7 @@ class m_Body extends StatelessWidget {
             borderSide: BorderSide(color: Color.fromRGBO(249,224,241,1), width: 3 ),
             disabledBorderColor: Colors.black,
             highlightedBorderColor: Colors.red,
-            child: Text('Sing up'),
+            child: Text('註冊'),
             textColor: Color.fromRGBO(249,224,241,1),
             
             onPressed: () {
@@ -82,7 +81,7 @@ class m_Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return MSignUpScreen();
                     },
                   ),
                 );
