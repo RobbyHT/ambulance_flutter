@@ -10,7 +10,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'bloc/users/users_bloc.dart';
 import 'screens/dispatch/map2_screen.dart';
 import 'screens/manager/manager_main_screen.dart';
-import 'screens/manager/manager_test_screen.dart';
 import 'setttings/preferencess.dart';
 
 void main() async {
@@ -18,10 +17,9 @@ void main() async {
   await Preferences.init();
   runApp(
     MaterialApp(
-      initialRoute: '/manager_test',
+      initialRoute: '/manager_home',
       routes: {
         '/manager_home': (context) => ManagerMainScreen(),
-        '/manager_test': (context) => ManagerTestScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/map2': (context) => Map2View(),
       },
