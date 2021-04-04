@@ -1,5 +1,5 @@
 import 'package:ambulance_flutter/models/models.dart';
-import 'package:ambulance_flutter/widgets/txt.dart';
+import 'package:ambulance_flutter/components/txt.dart';
 import 'package:flutter/material.dart';
 
 class ListRow extends StatelessWidget {
