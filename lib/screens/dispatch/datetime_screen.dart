@@ -1,15 +1,15 @@
 import 'package:ambulance_flutter/components/btn.dart';
+import 'package:ambulance_flutter/screens/dispatch/map_screen.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
-class DispatchScreen extends StatefulWidget {
+class DatetimeScreen extends StatefulWidget {
   @override
-  _DispatchScreenState createState() => _DispatchScreenState();
+  _DatetimeScreenState createState() => _DatetimeScreenState();
 }
 
-class _DispatchScreenState extends State<DispatchScreen> {
-
+class _DatetimeScreenState extends State<DatetimeScreen> {
   double _height;
   double _width;
 
@@ -168,8 +168,16 @@ class _DispatchScreenState extends State<DispatchScreen> {
                 Btn(
                   text: '下一步',
                   color: Colors.blue[500],
-                  onPress: (){
-                    //
+                  onPress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MapView(
+                          d_date: _dateController.text.toString(),
+                          d_time: _timeController.text.toString(),
+                        ),
+                      ),
+                    );
                   },
                 ),
               ],

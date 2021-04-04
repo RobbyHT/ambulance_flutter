@@ -3,10 +3,10 @@ import 'package:ambulance_flutter/bloc/users/users_bloc.dart';
 import 'package:ambulance_flutter/models/models.dart';
 import 'package:ambulance_flutter/setttings/app_themes.dart';
 import 'package:ambulance_flutter/setttings/preferencess.dart';
-import 'package:ambulance_flutter/widgets/error.dart';
-import 'package:ambulance_flutter/widgets/list_row.dart';
-import 'package:ambulance_flutter/widgets/loading.dart';
-import 'package:ambulance_flutter/widgets/txt.dart';
+import 'package:ambulance_flutter/components/error.dart';
+import 'package:ambulance_flutter/components/list_row.dart';
+import 'package:ambulance_flutter/components/loading.dart';
+import 'package:ambulance_flutter/components/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,6 @@ class UsersScreen extends StatefulWidget {
 }
 
 class _UsersScreenState extends State<UsersScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -24,15 +23,15 @@ class _UsersScreenState extends State<UsersScreen> {
     _loadUsers();
   }
 
-  _loadTheme() async{
+  _loadTheme() async {
     context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: Preferences.getTheme()));
   }
 
-  _loadUsers() async{
+  _loadUsers() async {
     context.bloc<UsersBloc>().add(UsersEvent.fetchUsers);
   }
 
-  _setTheme(bool darkTheme){
+  _setTheme(bool darkTheme) {
     AppTheme cutTheme = darkTheme ? AppTheme.lightTheme : AppTheme.darkTheme;
     context.bloc<ThemeBloc>().add(ThemeEvent(appTheme: cutTheme));
     Preferences.saveTheme(cutTheme);
@@ -47,7 +46,7 @@ class _UsersScreenState extends State<UsersScreen> {
         actions: [
           Switch(
             value: Preferences.getTheme() == AppTheme.lightTheme,
-            onChanged: (val){
+            onChanged: (val) {
               _setTheme(val);
             },
           )
@@ -59,11 +58,12 @@ class _UsersScreenState extends State<UsersScreen> {
     );
   }
 
-  _body(){
+  _body() {
     return Column(
       children: [
-        BlocBuilder<UsersBloc, UsersState>(builder: (BuildContext context, UsersState state){
-          if(state is UsersListError){
+        BlocBuilder<UsersBloc, UsersState>(
+            builder: (BuildContext context, UsersState state) {
+          if (state is UsersListError) {
             final error = state.error;
             String message = '${error.message}\nTap to Retry.';
             return ErrorTXT(
@@ -71,7 +71,7 @@ class _UsersScreenState extends State<UsersScreen> {
               onTap: _loadUsers,
             );
           }
-          if(state is UsersLoaded){
+          if (state is UsersLoaded) {
             List<User> users = state.users;
             return _list(users);
           }
@@ -82,15 +82,14 @@ class _UsersScreenState extends State<UsersScreen> {
   }
 }
 
-Widget _list(List<User> users){
+Widget _list(List<User> users) {
   return Expanded(
     child: ListView.builder(
       itemCount: users.length,
-      itemBuilder: (_, index){
+      itemBuilder: (_, index) {
         User user = users[index];
         return ListRow(user: user);
       },
     ),
   );
 }
-
