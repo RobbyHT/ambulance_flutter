@@ -4,6 +4,8 @@ import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/models.dart';
+
 class DatetimeScreen extends StatefulWidget {
   @override
   _DatetimeScreenState createState() => _DatetimeScreenState();
@@ -169,13 +171,13 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
                   text: '下一步',
                   color: Colors.blue[500],
                   onPress: () {
+                    var dispatch = new Dispatch(
+                        d_date: _dateController.text.toString(),
+                        d_time: _timeController.text.toString());
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MapView(
-                          d_date: _dateController.text.toString(),
-                          d_time: _timeController.text.toString(),
-                        ),
+                        builder: (context) => MapView(dispatch: dispatch),
                       ),
                     );
                   },

@@ -19,10 +19,10 @@ class ListRow extends StatelessWidget {
             style: TextStyle(
               fontSize: 20.0,
             ),
-          ),*/
+          ),
           Txt(
             text: user.title,
-          ),
+          ),*/
           Divider(),
         ],
       ),

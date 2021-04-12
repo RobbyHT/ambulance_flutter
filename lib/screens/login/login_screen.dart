@@ -2,8 +2,8 @@ import 'package:ambulance_flutter/api/login_services.dart';
 import 'package:ambulance_flutter/components/btn.dart';
 import 'package:ambulance_flutter/components/link_btn.dart';
 import 'package:ambulance_flutter/components/tf.dart';
+import 'package:ambulance_flutter/screens/manager/manager_main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ambulance_flutter/home.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -58,14 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         bool result = await loginService.signIn(
                             _accountController.text, _passwordController.text);
                         if (result) {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => ManagerMainScreen(),
                             ),
                           );
                         } else {
-                          EasyLoading.showError('帳號或密碼錯誤，請重新輸入！\r\n嘗試輸入錯誤5次，將鎖定帳號：${this.error_num}次');
+                          EasyLoading.showError(
+                              '帳號或密碼錯誤，請重新輸入！\r\n嘗試輸入錯誤5次，將鎖定帳號：${this.error_num}次');
                         }
                         EasyLoading.dismiss();
                       },

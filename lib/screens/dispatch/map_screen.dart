@@ -1,4 +1,5 @@
 import 'package:ambulance_flutter/components/btn.dart';
+import 'package:ambulance_flutter/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:ambulance_flutter/screens/dispatch/secrets.dart'; // Stores the Google Maps API Key
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -13,19 +14,18 @@ import 'form_screen.dart';
 class MapView extends StatefulWidget {
   MapView({
     Key key,
-    this.d_date,
-    this.d_time,
+    this.dispatch,
   }) : super(key: key);
 
-  String d_date;
-  String d_time;
+  Dispatch dispatch;
 
   @override
   _MapViewState createState() => _MapViewState();
 }
 
 class _MapViewState extends State<MapView> {
-  CameraPosition _initialLocation = CameraPosition(target: LatLng(0.0, 0.0));
+  CameraPosition _initialLocation =
+      CameraPosition(target: LatLng(25.0927102, 121.4974544));
   GoogleMapController mapController;
 
   Position _currentPosition;
@@ -105,15 +105,14 @@ class _MapViewState extends State<MapView> {
       setState(() {
         _currentPosition = position;
         print('CURRENT POS: $_currentPosition');
-        print('日期：${widget.d_date} - 時間：${widget.d_time}');
-        mapController.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(
-              target: LatLng(position.latitude, position.longitude),
-              zoom: 18.0,
-            ),
-          ),
-        );
+        // mapController.animateCamera(
+        //   CameraUpdate.newCameraPosition(
+        //     CameraPosition(
+        //       target: LatLng(position.latitude, position.longitude),
+        //       zoom: 18.0,
+        //     ),
+        //   ),
+        // );
       });
       await _getAddress();
     }).catchError((e) {
@@ -124,17 +123,17 @@ class _MapViewState extends State<MapView> {
   // Method for retrieving the address
   _getAddress() async {
     try {
-      List<Placemark> p = await placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
+      // List<Placemark> p = await placemarkFromCoordinates(
+      //     _currentPosition.latitude, _currentPosition.longitude);
 
-      Placemark place = p[0];
+      // Placemark place = p[0];
 
-      setState(() {
-        _currentAddress =
-            "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
-        startAddressController.text = _currentAddress;
-        _startAddress = _currentAddress;
-      });
+      // setState(() {
+      //   _currentAddress =
+      //       "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
+      //   startAddressController.text = _currentAddress;
+      //   _startAddress = _currentAddress;
+      // });
     } catch (e) {
       print(e);
     }
@@ -538,16 +537,16 @@ class _MapViewState extends State<MapView> {
                                 text: '下一步',
                                 color: Colors.blue[500],
                                 onPress: () {
+                                  widget.dispatch.start =
+                                      startAddressController.text.toString();
+                                  widget.dispatch.end =
+                                      destinationAddressController.text
+                                          .toString();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => FormScreen(
-                                        d_date: widget.d_date,
-                                        d_time: widget.d_time,
-                                        start: startAddressController.text
-                                            .toString(),
-                                        end: destinationAddressController.text
-                                            .toString(),
+                                        dispatch: widget.dispatch,
                                       ),
                                     ),
                                   );

@@ -1,15 +1,14 @@
 import 'package:ambulance_flutter/components/btn.dart';
+import 'package:ambulance_flutter/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:radio_grouped_buttons/custom_buttons/custom_radio_buttons_group.dart';
 
-class FormScreen extends StatefulWidget {
-  FormScreen({Key key, this.d_date, this.d_time, this.start, this.end})
-      : super(key: key);
+import 'chooseDriver_screen.dart';
 
-  String d_date;
-  String d_time;
-  String start;
-  String end;
+class FormScreen extends StatefulWidget {
+  FormScreen({Key key, this.dispatch}) : super(key: key);
+
+  Dispatch dispatch;
 
   @override
   _FormScreenState createState() => _FormScreenState();
@@ -24,11 +23,15 @@ class _FormScreenState extends State<FormScreen> {
   TextEditingController controllerWeight = new TextEditingController();
   TextEditingController controllerPhone = new TextEditingController();
   TextEditingController controllerOther = new TextEditingController();
-  int A, B, C;
+  int o2, elevator, special;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('補充資訊'),
+      ),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +52,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      A = index;
+                      o2 = index;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
@@ -79,7 +82,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      B = index;
+                      elevator = index;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
@@ -111,7 +114,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      C = index;
+                      special = index;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
@@ -186,18 +189,35 @@ class _FormScreenState extends State<FormScreen> {
   }
 
   void _onSubmit() {
-    print("氧氣：" + A.toString());
-    print("電梯：" + B.toString());
-    print("特護：" + C.toString());
+    widget.dispatch.o2 = o2;
+    widget.dispatch.elevator = elevator;
+    widget.dispatch.special = special;
+    widget.dispatch.weight = double.parse(controllerWeight.text);
+    widget.dispatch.phone = controllerPhone.text;
+    widget.dispatch.remark = controllerOther.text;
 
-    print("體重：" + controllerWeight.text);
-    print("電話：" + controllerPhone.text);
-    print("備註：" + controllerOther.text);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ChooseDriveScreen(
+          dispatch: widget.dispatch,
+        ),
+      ),
+    );
 
-    print(widget.d_date);
-    print(widget.d_time);
-    print(widget.start);
-    print(widget.end);
+    // print("日期：" + widget.dispatch.d_date);
+    // print("時間：" + widget.dispatch.d_time);
+    // print("起點：" + widget.dispatch.start);
+    // print("終點：" + widget.dispatch.end);
+
+    // print("氧氣：" + widget.dispatch.o2.toString());
+    // print("電梯：" + widget.dispatch.elevator.toString());
+    // print("特護：" + widget.dispatch.special.toString());
+
+    // print("體重：" + widget.dispatch.weight.toString());
+    // print("電話：" + widget.dispatch.phone);
+    // print("備註：" + widget.dispatch.remark);
+
     return;
   }
 }

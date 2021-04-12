@@ -19,6 +19,7 @@ void main() async {
     MaterialApp(
       initialRoute: '/manager_home',
       routes: {
+        '/login': (context) => LoginScreen(),
         '/manager_home': (context) => ManagerMainScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/map2': (context) => Map2View(),
