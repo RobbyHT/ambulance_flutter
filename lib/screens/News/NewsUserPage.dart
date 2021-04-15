@@ -1,3 +1,4 @@
+import 'package:ambulance_flutter/screens/News/UserPage.dart';
 import 'package:flutter/material.dart';
 
 class NewsUserPage extends StatelessWidget {
@@ -13,7 +14,6 @@ class NewsUserPage extends StatelessWidget {
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.center,框框置中
         children: <Widget>[
-          //card(),
           Container(
               height: 500,
               margin: EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 20),
@@ -34,7 +34,8 @@ class NewsUserPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "上一頁",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(
+                      fontSize: 18, color: Color.fromARGB(500, 234, 144, 122)),
                 ),
               ),
               SizedBox(
@@ -48,7 +49,8 @@ class NewsUserPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "00/00", //頁數要變成自動調整
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(
+                      fontSize: 18, color: Color.fromARGB(500, 234, 144, 122)),
                 ),
               ),
               /*SizedBox(
@@ -73,7 +75,8 @@ class NewsUserPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "下一頁",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(
+                      fontSize: 18, color: Color.fromARGB(500, 234, 144, 122)),
                 ),
               ),
             ],
