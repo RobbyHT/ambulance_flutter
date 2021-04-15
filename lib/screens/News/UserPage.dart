@@ -7,7 +7,7 @@ class UserPage extends StatelessWidget {
       appBar: new AppBar(
         elevation: 0,
         title: Text('公告', style: TextStyle(fontSize: 25)),
-        backgroundColor: Colors.deepOrange[400],
+        backgroundColor: Color.fromARGB(180, 255, 127, 36),
         centerTitle: true,
       ),
       body: Column(
@@ -24,14 +24,14 @@ class UserPage extends StatelessWidget {
                     "主旨：",
                     style: TextStyle(
                         fontSize: 20,
-                        color: Colors.orange[500],
+                        color: Colors.orange[400],
                         fontWeight: FontWeight.bold),
                   ),
                   Container(
                       height: 50,
                       margin: EdgeInsets.only(top: 10, left: 20, right: 20),
                       decoration: BoxDecoration(
-                          color: Colors.orange[200],
+                          color: Color.fromARGB(200, 251, 198, 135),
                           borderRadius: BorderRadius.all(Radius.circular(15)))),
                 ]),
           ),
@@ -45,14 +45,14 @@ class UserPage extends StatelessWidget {
                   "內容：",
                   style: TextStyle(
                       fontSize: 20,
-                      color: Colors.orange[500],
+                      color: Colors.orange[400],
                       fontWeight: FontWeight.bold),
                 ),
                 Container(
                     height: 330,
                     margin: EdgeInsets.only(top: 15, left: 20, right: 20),
                     decoration: BoxDecoration(
-                        color: Colors.orange[200],
+                        color: Color.fromARGB(200, 251, 198, 135),
                         borderRadius: BorderRadius.all(Radius.circular(15)))),
               ],
             ),
