@@ -16,7 +16,7 @@ class ManagerPageState extends State<NewsManagerPage> {
       appBar: new AppBar(
         elevation: 0,
         title: Text('公告', style: TextStyle(fontSize: 25)),
-        backgroundColor: Colors.deepOrange[400],
+        backgroundColor: Color.fromARGB(200, 31, 60, 136),
         centerTitle: true,
       ),
       body: Column(
@@ -24,9 +24,9 @@ class ManagerPageState extends State<NewsManagerPage> {
         children: <Widget>[
           Container(
             height: 500,
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: EdgeInsets.only(left: 20, right: 20, bottom: 15),
             decoration: BoxDecoration(
-              color: Colors.orange[200],
+              color: Color.fromARGB(150, 88, 147, 212),
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
           ),
@@ -37,25 +37,25 @@ class ManagerPageState extends State<NewsManagerPage> {
                 height: 15,
               ),
               OutlineButton(
-                color: Colors.red,
-                highlightColor: Colors.red[200],
-                splashColor: Colors.redAccent,
+                color: Colors.blue,
+                highlightColor: Colors.blue[300],
+                splashColor: Colors.blueAccent,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "上一頁",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(fontSize: 18, color: Colors.blue[400]),
                 ),
               ),
               OutlineButton(
-                color: Colors.red,
-                highlightColor: Colors.red[200],
-                splashColor: Colors.redAccent,
+                color: Colors.blue,
+                highlightColor: Colors.blue[300],
+                splashColor: Colors.blueAccent,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "新增",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(fontSize: 18, color: Colors.blue[400]),
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -65,14 +65,14 @@ class ManagerPageState extends State<NewsManagerPage> {
                 },
               ),
               OutlineButton(
-                color: Colors.red,
-                highlightColor: Colors.red[200],
-                splashColor: Colors.redAccent,
+                color: Colors.blue,
+                highlightColor: Colors.blue[300],
+                splashColor: Colors.blueAccent,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "編輯",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(fontSize: 18, color: Colors.blue[400]),
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -85,14 +85,14 @@ class ManagerPageState extends State<NewsManagerPage> {
                 height: 15,
               ),
               OutlineButton(
-                color: Colors.red,
-                highlightColor: Colors.red[200],
-                splashColor: Colors.redAccent,
+                color: Colors.blue,
+                highlightColor: Colors.blue[300],
+                splashColor: Colors.blueAccent,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15)),
                 child: Text(
                   "下一頁",
-                  style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+                  style: TextStyle(fontSize: 18, color: Colors.blue[400]),
                 ),
               ),
             ],
