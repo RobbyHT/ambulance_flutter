@@ -12,7 +12,7 @@ class ManagerPageState extends State<NewsManagerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.blueGrey[30],
       appBar: new AppBar(
         elevation: 0,
         title: Text('公告', style: TextStyle(fontSize: 25)),
