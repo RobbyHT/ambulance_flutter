@@ -23,9 +23,9 @@ class _managerUpdatePageState extends State<managerUpdatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[50],
+      backgroundColor: Colors.blueGrey[30],
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange[400],
+        backgroundColor: Color.fromARGB(200, 31, 60, 136),
         elevation: 0,
         title: Text(
           '新公告',
@@ -58,13 +58,13 @@ class _managerUpdatePageState extends State<managerUpdatePage> {
                   "主旨：",
                   style: TextStyle(
                       fontSize: 20,
-                      color: Colors.orange[400],
+                      color: Color.fromARGB(200, 88, 147, 212),
                       fontWeight: FontWeight.bold),
                 ),
                 Container(
                   height: 50,
                   color: Colors.grey.withOpacity(0.2),
-                  margin: EdgeInsets.only(left: 30, right: 30),
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 5),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "Title...",
@@ -85,12 +85,12 @@ class _managerUpdatePageState extends State<managerUpdatePage> {
                   "內容：",
                   style: TextStyle(
                       fontSize: 20,
-                      color: Colors.orange[400],
+                      color: Color.fromARGB(200, 88, 147, 212),
                       fontWeight: FontWeight.bold),
                 ),
                 Container(
                   height: 330,
-                  margin: EdgeInsets.only(left: 30, right: 30),
+                  margin: EdgeInsets.only(left: 30, right: 30, top: 5),
                   decoration: BoxDecoration(
                     color: Colors.grey.withOpacity(0.2),
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -113,13 +113,13 @@ class _managerUpdatePageState extends State<managerUpdatePage> {
           OutlineButton.icon(
             icon: Icon(
               Icons.send,
-              color: Colors.deepOrange[400],
+              color: Colors.blue[400],
             ),
             disabledBorderColor: Colors.black26,
             disabledTextColor: Colors.black26,
             label: Text(
               "更新公告",
-              style: TextStyle(fontSize: 18, color: Colors.deepOrange[400]),
+              style: TextStyle(fontSize: 18, color: Colors.blue[400]),
             ),
           ),
           /*Container(
