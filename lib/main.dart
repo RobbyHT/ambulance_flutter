@@ -1,6 +1,8 @@
 import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/bloc/theme/theme_bloc.dart';
 import 'package:ambulance_flutter/home.dart';
+import 'package:ambulance_flutter/screens/Welcom/Login2/login_screen.dart';
+import 'package:ambulance_flutter/screens/Welcom/welcome_screen.dart';
 import 'package:ambulance_flutter/screens/dispatch/dispatch_screen.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/screens/users_screen.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart'; 
 import 'bloc/users/users_bloc.dart';
+import 'constants.dart';
 import 'setttings/preferencess.dart';
 
 void main() async{
@@ -25,7 +28,7 @@ void main() async{
         const Locale('en', 'US'),
       ],
       locale: Locale('zh'),
-      home: Dispatch(),
+      home: WelcomeScreen(),
     ),
   );
 }
