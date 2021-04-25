@@ -16,22 +16,22 @@ class Background extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Positioned(
-            top: -20,
-            left: -30,
-            child: Image.asset(
-              "assets/images/LightBlueLine_across.png",
-              width: size.width * 0.5,
-            ),
-          ),
-          Positioned(
-            bottom: -15,
-            right: 0,
-            child: Image.asset(
-              "assets/images/LightBlueLine_underAcross.png",
-              width: size.width * 1,
-            ),
-          ),
+          // Positioned(
+          //   top: -20,
+          //   left: -30,
+          //   child: Image.asset(
+          //     "assets/images/LightBlueLine_across.png",
+          //     width: size.width * 0.5,
+          //   ),
+          // ),
+          // Positioned(
+          //   bottom: -15,
+          //   right: 0,
+          //   child: Image.asset(
+          //     "assets/images/LightBlueLine_underAcross.png",
+          //     width: size.width * 1,
+          //   ),
+          // ),
           child,
         ],
       ),
