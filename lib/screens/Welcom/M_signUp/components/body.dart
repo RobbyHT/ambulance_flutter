@@ -19,10 +19,10 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.08),
-            Text(
-              "註冊",
-              style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(249,244,241,1),fontSize: 20),
-                        ),
+            // Text(
+            //   "註冊",
+            //   style: TextStyle(fontWeight: FontWeight.bold,color: Color.fromRGBO(249,244,241,1),fontSize: 20),
+            //             ),
             SizedBox(height: size.height * 0.03),
             Positioned(
             bottom: 80,
