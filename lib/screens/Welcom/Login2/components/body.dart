@@ -19,17 +19,17 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "登入",
-              style: TextStyle(fontWeight: FontWeight.bold,color:Color.fromRGBO(234,114,122,1),fontSize: 20),
-            ),
-            SizedBox(height: size.height * 0.03),
+            // Text(
+            //   "登入",
+            //   style: TextStyle(fontWeight: FontWeight.bold,color:Color.fromRGBO(234,114,122,1),fontSize: 20),
+            // ),
+            // SizedBox(height: size.height * 0.03),
             Positioned(
-            bottom: 80,
+            bottom: 0,
             left: 50,
             child: Image.asset(
-              "assets/images/phone.png",
-              width: size.width * 0.5,
+              "assets/images/ambulance.png",
+              width: size.width * 0.65,
             ),
           ),    
             SizedBox(height: size.height * 0.03),
