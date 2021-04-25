@@ -15,27 +15,38 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "醫指派",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(234,114,122,1),
-                  fontSize: 20),
+            SizedBox(height: size.height * 0.02),
+            Positioned(
+              top: 10,
+              bottom: 0,
+              left: 0,
+              child: Image.asset(
+                "assets/images/logo.png",
+                width: size.width * 0.4,
+              ),
             ),
-            SizedBox(height: size.height * 0.1),
+            // Text(
+            //   "醫指派",
+            //   style: TextStyle(
+            //       fontWeight: FontWeight.bold,
+            //       color: Color.fromRGBO(234,114,122,1),
+            //       fontSize: 20),
+            // ),
+            SizedBox(height: size.height * 0.009),
             // SvgPicture.asset(
             //   "assets/images/back-17.png",
             //   height: size.height *0.3,
             // ),
             Positioned(
-              bottom: 50,
+              bottom: 0,
               left: 50,
               child: Image.asset(
-                "assets/images/ambulance.png",
-                width: size.width * 0.7,
+                "assets/images/road.png",
+                width: size.width * 1.2,
+                height:size.height*0.28 ,
               ),
             ),
-            SizedBox(height: size.height * 0.08),
+            SizedBox(height: size.height * 0.05),
 
             Container(
                 width: 150.0,
