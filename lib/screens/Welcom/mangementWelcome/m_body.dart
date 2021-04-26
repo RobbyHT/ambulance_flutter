@@ -1,3 +1,5 @@
+import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_input_field.dart';
+import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_password_field.dart';
 import 'package:ambulance_flutter/screens/Welcom/M_Login/m_login_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/M_signUp/M_signup_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/mangementWelcome/background.dart';
@@ -44,7 +46,15 @@ class m_Body extends StatelessWidget {
             ),
           ),          
             SizedBox(height: size.height * 0.05),
-           
+            RoundedInputField(
+              hintText: "帳號",
+              onChanged: (value) {},
+            ),
+            // SizedBox(height: size.height * 0.005),
+            RoundedPasswordField(
+              onChanged: (value) {},
+            ),
+           SizedBox(height: size.height * 0.009),
           Container(
             width: 150.0,
             height: 50.0,
@@ -72,35 +82,35 @@ class m_Body extends StatelessWidget {
   )
 ) ,
            SizedBox(height: size.height * 0.02),
-           Container(
-            width: 150.0,
-            height: 50.0,
-            margin: EdgeInsets.symmetric(vertical: 3.0),
-            child: SizedBox.expand(
-              child: OutlineButton(
-                shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            ),
-            borderSide: BorderSide(color: Color.fromRGBO(249,224,241,1), width: 3 ),
-            disabledBorderColor: Colors.black,
-            highlightedBorderColor: Colors.red,
-            child: Text('註冊'),
-            textColor: Color.fromRGBO(249,224,241,1),
+//            Container(
+//             width: 150.0,
+//             height: 50.0,
+//             margin: EdgeInsets.symmetric(vertical: 3.0),
+//             child: SizedBox.expand(
+//               child: OutlineButton(
+//                 shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(20.0),
+//             ),
+//             borderSide: BorderSide(color: Color.fromRGBO(249,224,241,1), width: 3 ),
+//             disabledBorderColor: Colors.black,
+//             highlightedBorderColor: Colors.red,
+//             child: Text('註冊'),
+//             textColor: Color.fromRGBO(249,224,241,1),
             
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MSignUpScreen();
-                    },
-                  ),
-                );
-                },
-            ),
-  )
-),    
-            SizedBox(height: size.height * 0.03),
+//             onPressed: () {
+//               Navigator.push(
+//                   context,
+//                   MaterialPageRoute(
+//                     builder: (context) {
+//                       return MSignUpScreen();
+//                     },
+//                   ),
+//                 );
+//                 },
+//             ),
+//   )
+// ),    
+            // SizedBox(height: size.height * 0.03),
             TextButton(
               child: Text('使用者登入'),
               style: TextButton.styleFrom(
