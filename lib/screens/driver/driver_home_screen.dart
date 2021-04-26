@@ -3,27 +3,36 @@ import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class ManagerHomeScreen extends StatefulWidget {
+//主畫面
+class DriverHomeScreen extends StatefulWidget {
   @override
-  _ManagerHomeScreenState createState() => _ManagerHomeScreenState();
+  _DriverHomeScreenState createState() => _DriverHomeScreenState();
 }
 
-class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
+class _DriverHomeScreenState extends State<DriverHomeScreen> {
   List _selectedEvents;
   int _counter = 0;
   Map<DateTime, List<Dispatch>> _events;
   CalendarController _calendarController;
+  //AnimationController _animationController;
 
   @override
   void initState() {
     final _selectedDay = DateTime.now();
     _selectedEvents = [];
     _calendarController = CalendarController();
+    /*_animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+
+    _animationController.forward();*/
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getTask().then((val) => setState(() {
             _events = val;
           }));
+      //print( ' ${_events.toString()} ');
     });
     super.initState();
   }
@@ -51,6 +60,11 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                 ? Colors.brown[300]
                 : Color.fromARGB(255, 202, 225, 255),
         borderRadius: BorderRadius.circular(12.0),
+        /*color: _calendarController.isSelected(date)
+            ? Colors.brown[500]
+            : _calendarController.isToday(date)
+                ? Colors.brown[300]
+                : Colors.blue[400],*/
       ),
       width: 16.0,
       height: 16.0,
@@ -90,11 +104,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            '司機',
-            style: TextStyle(fontSize: 24, color: Colors.white),
-          ),
-          backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
+        title: Text(
+          '司機',
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
+        toolbarHeight: 60.0,
+        backgroundColor: Color.fromARGB(180, 255, 127, 36),
+      ),
       body: Stack(
         children: <Widget>[
           SafeArea(
@@ -119,6 +135,23 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                     formatAnimation: FormatAnimation.slide,
                     startingDayOfWeek: StartingDayOfWeek.sunday,
                     builders: CalendarBuilders(
+                      /*selectedDayBuilder: (context, date, _) {
+                        return FadeTransition(
+                          opacity: Tween(begin: 0.0, end: 1.0)
+                              .animate(_animationController),
+                          child: Container(
+                            margin: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.only(top: 5.0, left: 6.0),
+                            color: Colors.deepOrange[300],
+                            width: 100,
+                            height: 100,
+                            child: Text(
+                              '${date.day}',
+                              style: TextStyle().copyWith(fontSize: 16.0),
+                            ),
+                          ),
+                        );
+                      },*/
                       markersBuilder: (context, date, events, holidays) {
                         final children = <Widget>[];
                         if (events.isNotEmpty) {
@@ -140,6 +173,32 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                   ),
                   const SizedBox(height: 8.0),
                   Expanded(child: _buildEventList()),
+                  /*Expanded(
+                    child: ValueListenableBuilder<List<Dispatch>>(
+                      valueListenable: _selectedEvents,
+                      builder: (context, value, _) {
+                        return ListView.builder(
+                          itemCount: value.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 4.0,
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: ListTile(
+                                onTap: () => print('${value[index]}'),
+                                title: Text('${value[index]}'),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),*/
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 20),

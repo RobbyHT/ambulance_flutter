@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 
 abstract class DispatchRepo {
-  Future<List<User>> getDispatchList();
+  Future<List<Dispatch>> getDispatchList();
   //Future<String> insDispatch();
 }
 
@@ -17,11 +17,11 @@ class DispatchServices implements DispatchRepo {
       '127.0.0.1:8000'; //不要接其他目錄127.0.0.1:8000/api -> 這樣就會出錯
   static const String _DISPATCHS = '/api/dispatch'; //若有其他目錄請寫在這裡
   @override
-  Future<List<User>> getDispatchList() async {
+  Future<List<Dispatch>> getDispatchList() async {
     Uri uri = new Uri.http(_baseUrl, _DISPATCHS);
     Response response = await http.get(uri);
-    List<User> users = userFromJson(response.body);
-    return users;
+    List<Dispatch> dispatchs = dispatchFromJson(response.body);
+    return dispatchs;
   }
 
   Future<Response> insDispatch(Dispatch dispatch) async {
@@ -30,8 +30,8 @@ class DispatchServices implements DispatchRepo {
     headersMap["content-type"] = "application/x-www-form-urlencoded";
 
     Response response = await http.post(uri, headers: headersMap, body: {
-      "d_date": dispatch.d_date,
-      "d_time": dispatch.d_time,
+      "d_date": dispatch.dDate,
+      "d_time": dispatch.dTime,
       "start": dispatch.start,
       "end": dispatch.end,
       "o2": dispatch.o2.toString(),
@@ -40,7 +40,7 @@ class DispatchServices implements DispatchRepo {
       "weight": dispatch.weight.toString(),
       "phone": dispatch.phone,
       "remark": dispatch.remark,
-      "user_id": dispatch.user_id.toString(),
+      "user_id": dispatch.userId.toString(),
       "state": dispatch.state.toString(),
     });
 

@@ -192,7 +192,7 @@ class _FormScreenState extends State<FormScreen> {
     widget.dispatch.o2 = o2;
     widget.dispatch.elevator = elevator;
     widget.dispatch.special = special;
-    widget.dispatch.weight = double.parse(controllerWeight.text);
+    widget.dispatch.weight = controllerWeight.text;
     widget.dispatch.phone = controllerPhone.text;
     widget.dispatch.remark = controllerOther.text;
 

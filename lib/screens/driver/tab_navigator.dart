@@ -1,7 +1,5 @@
-import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:flutter/material.dart';
-import 'manager_control_screen.dart';
-import 'manager_home_screen.dart';
+import 'driver_home_screen.dart';
 
 class TabNavigator extends StatelessWidget {
   TabNavigator({this.navigatorKey, this.tabItem});
@@ -12,13 +10,13 @@ class TabNavigator extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget child;
     if (tabItem == "主頁")
-      child = ManagerHomeScreen();
-    else if (tabItem == "派車")
-      child = DatetimeScreen();
-    else if (tabItem == "管理")
-      child = ManagerControlScreen();
+      child = DriverHomeScreen();
+    else if (tabItem == "統計")
+      child = DriverHomeScreen();
+    else if (tabItem == "設定")
+      child = DriverHomeScreen();
     else
-      child = ManagerHomeScreen();
+      child = DriverHomeScreen();
 
     return Navigator(
       key: navigatorKey,

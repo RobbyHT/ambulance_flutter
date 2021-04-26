@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'bloc/users/users_bloc.dart';
 import 'screens/dispatch/map2_screen.dart';
+import 'screens/driver/driver_main_screen.dart';
 import 'screens/manager/manager_main_screen.dart';
 import 'setttings/preferencess.dart';
 
@@ -21,6 +22,7 @@ void main() async {
       routes: {
         '/login': (context) => LoginScreen(),
         '/manager_home': (context) => ManagerMainScreen(),
+        '/driver_home': (context) => DriverMainScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/map2': (context) => Map2View(),
       },

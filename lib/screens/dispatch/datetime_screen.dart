@@ -79,9 +79,9 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
     dateTime = DateFormat.yMd().format(DateTime.now());
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text('派車登錄'),
-      ),
+          centerTitle: true,
+          title: Text('派車登錄'),
+          backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
       body: Container(
         width: _width,
         height: _height,
@@ -172,8 +172,8 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
                   color: Colors.blue[500],
                   onPress: () {
                     var dispatch = new Dispatch(
-                        d_date: _dateController.text.toString(),
-                        d_time: _timeController.text.toString());
+                        dDate: _dateController.text.toString(),
+                        dTime: _timeController.text.toString());
                     Navigator.push(
                       context,
                       MaterialPageRoute(

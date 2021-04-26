@@ -2,7 +2,6 @@ import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/models/user.dart';
 import 'package:ambulance_flutter/screens/manager/manager_home_screen.dart';
-import 'package:ambulance_flutter/screens/manager/manager_main_screen.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -35,7 +34,7 @@ class ChooseDriveScreen extends StatelessWidget {
                     onTap: () {
                       // 可以新增進資料庫了
                       //DispatchServices().insDispatch(dispatch);
-                      dispatch.user_id = user.id;
+                      dispatch.userId = user.id;
                       dispatch.state = 1;
                       DispatchServices().insDispatch(dispatch);
                       Navigator.push(
