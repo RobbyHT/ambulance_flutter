@@ -26,7 +26,7 @@ class RoundedInputField extends StatelessWidget {
           hintText: hintText,
           border: InputBorder.none,
         ),
-      ),
+      )
     );
   }
 }
