@@ -1,7 +1,5 @@
 import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_input_field.dart';
 import 'package:ambulance_flutter/components/Welcom_components/M_welcome_compents/rounded_password_field.dart';
-import 'package:ambulance_flutter/screens/Welcom/M_Login/m_login_screen.dart';
-import 'package:ambulance_flutter/screens/Welcom/M_signUp/M_signup_screen.dart';
 import 'package:ambulance_flutter/screens/Welcom/mangementWelcome/background.dart';
 import 'package:ambulance_flutter/screens/Welcom/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +72,7 @@ class m_Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return M_LoginScreen();
+                      return WelcomeScreen();
                     },
                   ),
                 );},
