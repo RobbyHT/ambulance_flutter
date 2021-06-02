@@ -3,6 +3,7 @@ import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/models/user.dart';
 import 'package:ambulance_flutter/screens/manager/manager_home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 //import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../models/models.dart';
@@ -21,63 +22,66 @@ class ChooseDriveScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('選擇司機'),
       ),
-      body: FutureBuilder<List<User>>(
-          future: UserServices().getUserList(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              this.user = snapshot.data;
-              return ListView.builder(
-                itemCount: this.user.length,
-                itemBuilder: (_, index) {
-                  User user = this.user[index];
-                  return GestureDetector(
-                    onTap: () {
-                      // 可以新增進資料庫了
-                      //DispatchServices().insDispatch(dispatch);
-                      dispatch.userId = user.id;
-                      dispatch.state = 1;
-                      DispatchServices().insDispatch(dispatch);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ManagerHomeScreen()),
-                      );
-                    },
-                    child: Container(
-                      margin:
-                          EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10.0),
-                      decoration: BoxDecoration(
-                          color: Color(0xFFFFEFEE),
-                          borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(20.0),
-                              bottomRight: Radius.circular(20.0))),
-                      child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CircleAvatar(
-                            radius: 35.0,
-                          ),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Text(
-                            user.name,
-                            style: TextStyle(fontSize: 18),
-                          ),
-                        ],
+      body: FlutterEasyLoading(
+        child: FutureBuilder<List<User>>(
+            future: UserServices().getDriverList(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                this.user = snapshot.data;
+                return ListView.builder(
+                  itemCount: this.user.length,
+                  itemBuilder: (_, index) {
+                    User user = this.user[index];
+                    return GestureDetector(
+                      onTap: () {
+                        // 可以新增進資料庫了
+                        //DispatchServices().insDispatch(dispatch);
+                        dispatch.driverId = user.id;
+                        dispatch.userId = 1; //TODO 製作登入之使用者
+                        dispatch.state = 1;
+                        DispatchServices().insDispatch(dispatch);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ManagerHomeScreen()),
+                        );
+                      },
+                      child: Container(
+                        margin:
+                            EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 10.0),
+                        decoration: BoxDecoration(
+                            color: Color(0xFFFFEFEE),
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20.0),
+                                bottomRight: Radius.circular(20.0))),
+                        child: Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CircleAvatar(
+                              radius: 35.0,
+                            ),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Text(
+                              user.name,
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          }),
+                    );
+                  },
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            }),
+      ),
       /*body: Stack(
         children: [
           Column(

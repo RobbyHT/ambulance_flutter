@@ -6,7 +6,7 @@ import 'package:ambulance_flutter/models/models.dart';
 
 Future<Map<DateTime, List<Dispatch>>> getTask() async {
   Map<DateTime, List<Dispatch>> mapFetch = {};
-  List<Dispatch> dispatch = await DispatchServices().getDispatchList();
+  List<Dispatch> dispatch = await DispatchServices().getAllDispatch();
   for (int i = 0; i < dispatch.length; i++) {
     var dispatchTime = DateTime(
         DateTime.parse(dispatch[i].dDate).year,
@@ -24,4 +24,9 @@ Future<Map<DateTime, List<Dispatch>>> getTask() async {
   }
 
   return mapFetch;
+}
+
+Future<List<Dispatch>> checkTask() async {
+  List<Dispatch> dispatch = await DispatchServices().checkDispatchTask();
+  return dispatch;
 }

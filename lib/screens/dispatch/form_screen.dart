@@ -23,7 +23,7 @@ class _FormScreenState extends State<FormScreen> {
   TextEditingController controllerWeight = new TextEditingController();
   TextEditingController controllerPhone = new TextEditingController();
   TextEditingController controllerOther = new TextEditingController();
-  int o2, elevator, special;
+  bool o2 = false, elevator = false, special = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      o2 = index;
+                      o2 = index == 0 ? true : false;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
@@ -82,7 +82,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      elevator = index;
+                      elevator = index == 0 ? true : false;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
@@ -114,7 +114,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonLables: buttonList,
                     buttonValues: buttonList,
                     radioButtonValue: (value, index) {
-                      special = index;
+                      special = index == 0 ? true : false;
                       print("Button value " + value.toString());
                       print("Integer value " + index.toString());
                     },
