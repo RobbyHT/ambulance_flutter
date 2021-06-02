@@ -10,7 +10,11 @@ class Dispatch {
   Dispatch({
     this.id,
     this.start,
+    this.startLat,
+    this.startLng,
     this.end,
+    this.endLat,
+    this.endLng,
     this.dDate,
     this.dTime,
     this.o2,
@@ -19,25 +23,31 @@ class Dispatch {
     this.weight,
     this.phone,
     this.remark,
-    this.userId,
+    this.driverId,
     this.state,
+    this.userId,
     this.createdAt,
     this.updatedAt,
   });
 
   int id;
   String start;
+  double startLat;
+  double startLng;
   String end;
+  double endLat;
+  double endLng;
   String dDate;
   String dTime;
-  int o2;
-  int elevator;
-  int special;
+  bool o2;
+  bool elevator;
+  bool special;
   String weight;
   String phone;
   String remark;
-  int userId;
+  int driverId;
   int state;
+  int userId;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -50,7 +60,11 @@ class Dispatch {
   factory Dispatch.fromJson(Map<String, dynamic> json) => Dispatch(
         id: json["id"],
         start: json["start"],
+        startLat: double.parse(json["start_lat"]),
+        startLng: double.parse(json["start_lng"]),
         end: json["end"],
+        endLat: double.parse(json["end_lat"]),
+        endLng: double.parse(json["end_lng"]),
         dDate: json["d_date"],
         dTime: json["d_time"],
         o2: json["o2"],
@@ -66,9 +80,12 @@ class Dispatch {
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "start": start,
+        "start_lat": startLat,
+        "start_lng": startLng,
         "end": end,
+        "end_lat": endLat,
+        "end_lng": endLng,
         "d_date": dDate,
         "d_time": dTime,
         "o2": o2,
@@ -77,9 +94,8 @@ class Dispatch {
         "weight": weight,
         "phone": phone,
         "remark": remark,
-        "user_id": userId,
+        "driver_id": driverId,
         "state": state,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "user_id": userId,
       };
 }

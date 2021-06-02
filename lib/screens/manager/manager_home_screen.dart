@@ -1,4 +1,6 @@
+import 'package:ambulance_flutter/db/user_lite.dart';
 import 'package:ambulance_flutter/models/dispatch.dart';
+import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -25,6 +27,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
             _events = val;
           }));
     });
+
     super.initState();
   }
 
@@ -79,6 +82,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                 child: ListTile(
                   title: Text(event.start + " -> " + event.end),
                   subtitle: Text(event.dTime),
+                  trailing: event.state == 1
+                      ? Text('預約')
+                      : event.state == 2
+                          ? Text('跑車中')
+                          : event.state == 3
+                              ? Text('完成')
+                              : Text('取消'),
                   onTap: () => print('$event tapped!'),
                 ),
               ))
@@ -90,10 +100,40 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          centerTitle: true,
           title: Text(
-            '司機',
+            '管理者',
             style: TextStyle(fontSize: 24, color: Colors.white),
           ),
+          actions: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                alignment: Alignment.center,
+                height: 52,
+                width: 52,
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(7, 13, 89, 1),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                    icon: Icon(Icons.logout),
+                    iconSize: 25.0,
+                    color: Colors.white,
+                    onPressed: () {
+                      //-----------
+                      DBHelper.delete('userList');
+                      Navigator.of(context, rootNavigator: true)
+                          .pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    }),
+              ),
+            ),
+          ],
+          toolbarHeight: 60.0,
           backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
       body: Stack(
         children: <Widget>[
