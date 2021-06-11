@@ -1,9 +1,12 @@
 import 'package:ambulance_flutter/api/login_services.dart';
 import 'package:ambulance_flutter/db/user_lite.dart';
+import 'package:ambulance_flutter/models/user.dart';
 import 'package:ambulance_flutter/screens/driver/driver_main_screen.dart';
+import 'package:ambulance_flutter/screens/emt/emt_main_screen.dart';
 import 'package:ambulance_flutter/screens/login/components/background.dart';
 import 'package:ambulance_flutter/screens/manager/manager_main_screen.dart';
 import 'package:flutter/material.dart';
+import '../auth.dart';
 import 'components/rounded_input_field.dart';
 import 'components/rounded_password_field.dart';
 import 'singup_screen.dart';
@@ -16,9 +19,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _accountController =
-      TextEditingController(text: 'admin001');
+      TextEditingController(text: 'driver003');
   TextEditingController _passwordController =
-      TextEditingController(text: 'A123456789');
+      TextEditingController(text: 'A131464575');
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +77,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text('登入'),
                       textColor: Color.fromRGBO(150, 150, 150, 1),
                       onPressed: () async {
+                        await DBHelper.delete('userList');
                         EasyLoading.show(status: '身分驗證中請稍後...');
                         LoginServices loginService = LoginServices.init();
                         String result = await loginService.signIn(
                             _accountController.text, _passwordController.text);
-                        DBHelper.getData('userList')
-                            .then((value) => {print(value[0]['name'])});
+
+                        await DBHelper.getData('userList').then((value) => {
+                              Auth.user = User.fromJson(value[0]),
+                              print(value[0]['name'])
+                            });
                         if (result == "admin") {
                           Navigator.pushReplacement(
                             context,
@@ -98,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => DriverMainScreen(),
+                              builder: (context) => EmtMainScreen(),
                             ),
                           );
                         } else {
