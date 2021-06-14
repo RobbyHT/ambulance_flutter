@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ambulance_flutter/api/dispatch_services.dart';
+import 'package:ambulance_flutter/components/state_text.dart';
 import 'package:ambulance_flutter/db/user_lite.dart';
 import 'package:ambulance_flutter/models/dispatch.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
@@ -30,25 +31,25 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
 
   @override
   void initState() {
+    super.initState();
     final _selectedDay = DateTime.now();
     _selectedEvents = [];
     _calendarController = CalendarController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      getTask().then((val) => setState(() {
+      getTask('driver').then((val) => setState(() {
             _events = val;
           }));
       //print( ' ${_events.toString()} ');
     });
 
     timer = Timer.periodic(Duration(seconds: 10), (Timer t) => loadTask());
-    //timer = Timer.periodic(Duration(seconds: 5), (Timer t) => {s++, print(s)});
-
-    super.initState();
   }
 
   void loadTask() {
-    getTask().then((val) => setState(() {
+    if (!mounted) return;
+
+    getTask('driver').then((val) => setState(() {
           _events = val;
         }));
     checkTask().then((value) => {
@@ -57,10 +58,11 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
         });
   }
 
-  void _onDaySelected(DateTime day, List<Dispatch> events) {
+  void _onDaySelected(DateTime day, List events) {
     print('CALLBACK: _onDaySelected');
+    List<Dispatch> att = events.map((e) => e as Dispatch).toList();
     setState(() {
-      _selectedEvents = events;
+      _selectedEvents = att;
     });
   }
 
@@ -69,7 +71,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
-  Widget _buildEventsMarker(DateTime date, List events) {
+  Widget _buildEventsMarker(DateTime date, List<Dispatch> events) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
@@ -114,12 +116,29 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                   title: Text(event.start + " -> " + event.end),
                   subtitle: Text(event.dTime),
                   trailing: event.state == 1
-                      ? Text('預約')
+                      ? StateText(
+                          text: "預約",
+                          color: Colors.blue,
+                        )
                       : event.state == 2
-                          ? Text('跑車中')
+                          ? StateText(
+                              text: "跑車中",
+                              color: Colors.red,
+                            )
                           : event.state == 3
-                              ? Text('完成')
-                              : Text('取消'),
+                              ? StateText(
+                                  text: "待填寫",
+                                  color: Colors.orange,
+                                )
+                              : event.state == 4
+                                  ? StateText(
+                                      text: "完成",
+                                      color: Colors.green,
+                                    )
+                                  : StateText(
+                                      text: "取消",
+                                      color: Colors.grey,
+                                    ),
                   onTap: () => event.state != 3 ? _showMyDialog(event) : null,
                 ),
               ))
@@ -134,95 +153,98 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
       btnText = "完成";
       state = 3;
     }
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (BuildContext context) {
-        return Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-          child: Stack(
-            overflow: Overflow.visible,
-            alignment: Alignment.topCenter,
-            children: [
-              Container(
-                height: 280,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 60, 10, 10),
-                  child: Column(
-                    children: [
-                      Text(
-                        '派車通知',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "起點：" + dispatch.start + "\n終點：" + dispatch.end,
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      RaisedButton(
-                        color: Color.fromARGB(255, 255, 127, 36),
-                        child: Text(
-                          btnText,
-                          style: TextStyle(color: Colors.white),
+    print(isOpen);
+    if (isOpen) {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: true, // user must tap button!
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            child: Stack(
+              overflow: Overflow.visible,
+              alignment: Alignment.topCenter,
+              children: [
+                Container(
+                  height: 280,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 60, 10, 10),
+                    child: Column(
+                      children: [
+                        Text(
+                          '派車通知',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
                         ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(50.0)),
-                        onPressed: () => {
-                          isOpen = false,
-                          if (dispatch.state == 1)
-                            {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ChooseEMTScreen(
-                                    dispatch: dispatch,
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "起點：" + dispatch.start + "\n終點：" + dispatch.end,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        RaisedButton(
+                          color: Color.fromARGB(255, 255, 127, 36),
+                          child: Text(
+                            btnText,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(50.0)),
+                          onPressed: () => {
+                            isOpen = false,
+                            if (dispatch.state == 1)
+                              {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ChooseEMTScreen(
+                                      dispatch: dispatch,
+                                    ),
                                   ),
-                                ),
-                              )
-                            }
-                          else
-                            {
-                              DispatchServices()
-                                  .updDispatch(dispatch.id, state),
-                              //Navigator.of(context).pop()
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DriverMainScreen(),
-                                ),
-                              )
-                            }
-                        },
-                      )
-                    ],
+                                )
+                              }
+                            else
+                              {
+                                DispatchServices()
+                                    .updDispatch(dispatch.id, state),
+                                //Navigator.of(context).pop()
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DriverMainScreen(),
+                                  ),
+                                )
+                              }
+                          },
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Positioned(
-                top: -50,
-                child: CircleAvatar(
-                  backgroundColor: Color.fromARGB(255, 255, 127, 36),
-                  radius: 50,
-                  child: Icon(
-                    Icons.assistant_photo,
-                    // FontAwesomeIcons.ambulance,
-                    color: Colors.white,
-                    size: 50,
+                Positioned(
+                  top: -50,
+                  child: CircleAvatar(
+                    backgroundColor: Color.fromARGB(255, 255, 127, 36),
+                    radius: 50,
+                    child: Icon(
+                      Icons.assistant_photo,
+                      // FontAwesomeIcons.ambulance,
+                      color: Colors.white,
+                      size: 50,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+              ],
+            ),
+          );
+        },
+      );
+    }
   }
 
   @override

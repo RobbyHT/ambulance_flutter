@@ -1,6 +1,7 @@
 import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/models/user.dart';
+import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:ambulance_flutter/screens/manager/manager_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -21,6 +22,7 @@ class ChooseDriveScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('選擇司機'),
+        backgroundColor: Color.fromRGBO(31, 60, 136, 1),
       ),
       body: FlutterEasyLoading(
         child: FutureBuilder<List<User>>(
@@ -40,11 +42,15 @@ class ChooseDriveScreen extends StatelessWidget {
                         dispatch.userId = 1; //TODO 製作登入之使用者
                         dispatch.state = 1;
                         DispatchServices().insDispatch(dispatch);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ManagerHomeScreen()),
-                        );
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => DatetimeScreen()),
+                            (route) => route.isFirst);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => ManagerHomeScreen()),
+                        // );
                       },
                       child: Container(
                         margin:

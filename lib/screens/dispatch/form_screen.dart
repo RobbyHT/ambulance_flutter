@@ -31,6 +31,7 @@ class _FormScreenState extends State<FormScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('補充資訊'),
+        backgroundColor: Color.fromRGBO(31, 60, 136, 1),
       ),
       body: Container(
         child: Column(
@@ -61,7 +62,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonSpace: 5,
                     initialSelection: 1,
                     buttonColor: Colors.white,
-                    selectedColor: Colors.cyan,
+                    selectedColor: Color.fromRGBO(31, 60, 136, 1),
                     //buttonWidth: 150,
                   ),
                 ),
@@ -91,7 +92,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonSpace: 5,
                     initialSelection: 1,
                     buttonColor: Colors.white,
-                    selectedColor: Colors.cyan,
+                    selectedColor: Color.fromRGBO(31, 60, 136, 1),
                     //buttonWidth: 150,
                   ),
                 ),
@@ -123,7 +124,7 @@ class _FormScreenState extends State<FormScreen> {
                     buttonSpace: 5,
                     initialSelection: 1,
                     buttonColor: Colors.white,
-                    selectedColor: Colors.cyan,
+                    selectedColor: Color.fromRGBO(31, 60, 136, 1),
                     //buttonWidth: 150,
                   ),
                 ),
@@ -179,7 +180,7 @@ class _FormScreenState extends State<FormScreen> {
             new Padding(padding: new EdgeInsets.only(top: 20.0)),
             Btn(
               text: '下一步',
-              color: Colors.blue[500],
+              color: Color.fromRGBO(31, 60, 136, 1),
               onPress: () => _onSubmit(),
             ),
           ],

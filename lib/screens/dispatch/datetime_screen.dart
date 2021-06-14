@@ -169,7 +169,7 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
               children: <Widget>[
                 Btn(
                   text: '下一步',
-                  color: Colors.blue[500],
+                  color: Color.fromRGBO(7, 13, 89, 1),
                   onPress: () {
                     var dispatch = new Dispatch(
                         dDate: _dateController.text.toString(),

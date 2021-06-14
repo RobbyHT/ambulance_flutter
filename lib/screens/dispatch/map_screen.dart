@@ -53,7 +53,7 @@ class _MapViewState extends State<MapView> {
   String _duration;
   int _totalPay;
 
-  String textLabel = "Start";
+  String textLabel = "";
   List<PlaceSearch> searchResults = [];
   PlaceServices placeServices;
   List<Marker> marker = List<Marker>();
@@ -125,6 +125,7 @@ class _MapViewState extends State<MapView> {
         .then((Position position) async {
       setState(() {
         _currentPosition = position;
+        _startPosition = position;
         print('CURRENT POS: $_currentPosition');
         mapController.animateCamera(
           CameraUpdate.newCameraPosition(
@@ -626,37 +627,41 @@ class _MapViewState extends State<MapView> {
                               ),
                             ),
                           ),
-                          Column(
-                            children: <Widget>[
-                              Btn(
-                                text: '下一步',
-                                color: Colors.blue[500],
-                                onPress: () {
-                                  widget.dispatch.start =
-                                      startAddressController.text.toString();
-                                  widget.dispatch.end =
-                                      destinationAddressController.text
-                                          .toString();
-                                  widget.dispatch.startLat =
-                                      _startPosition.latitude;
-                                  widget.dispatch.startLng =
-                                      _startPosition.longitude;
-                                  widget.dispatch.endLat =
-                                      _destinationPosition.latitude;
-                                  widget.dispatch.endLng =
-                                      _destinationPosition.longitude;
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => FormScreen(
-                                        dispatch: widget.dispatch,
-                                      ),
+                          (_startPosition != null &&
+                                  _destinationPosition != null)
+                              ? Column(
+                                  children: <Widget>[
+                                    Btn(
+                                      text: '下一步',
+                                      color: Color.fromRGBO(7, 13, 89, 1),
+                                      onPress: () {
+                                        widget.dispatch.start =
+                                            startAddressController.text
+                                                .toString();
+                                        widget.dispatch.end =
+                                            destinationAddressController.text
+                                                .toString();
+                                        widget.dispatch.startLat =
+                                            _startPosition.latitude;
+                                        widget.dispatch.startLng =
+                                            _startPosition.longitude;
+                                        widget.dispatch.endLat =
+                                            _destinationPosition.latitude;
+                                        widget.dispatch.endLng =
+                                            _destinationPosition.longitude;
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => FormScreen(
+                                              dispatch: widget.dispatch,
+                                            ),
+                                          ),
+                                        );
+                                      },
                                     ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
+                                  ],
+                                )
+                              : Column(),
                         ],
                       ),
                     ),
@@ -665,46 +670,48 @@ class _MapViewState extends State<MapView> {
               ),
             ),
             //----------------------------------------------
-            SafeArea(
-              child: Padding(
-                padding: EdgeInsets.only(
-                    top: this.textLabel == "Start" ? 105.0 : 165.0,
-                    left: 45.0,
-                    right: 45.0),
-                child: Stack(
-                  children: <Widget>[
-                    if (this.searchResults != null &&
-                        this.searchResults.length != 0)
-                      Container(
-                        height: 100,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(.6),
-                          backgroundBlendMode: BlendMode.darken,
-                        ),
-                      ),
-                    if (this.searchResults != null)
-                      Container(
-                        height: 100,
-                        child: ListView.builder(
-                          itemCount: this.searchResults.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(
-                                this.searchResults[index].description,
-                                style: TextStyle(color: Colors.white),
+            this.textLabel != ""
+                ? SafeArea(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: this.textLabel == "Start" ? 105.0 : 165.0,
+                          left: 45.0,
+                          right: 45.0),
+                      child: Stack(
+                        children: <Widget>[
+                          if (this.searchResults != null &&
+                              this.searchResults.length != 0)
+                            Container(
+                              height: 100,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(.6),
+                                backgroundBlendMode: BlendMode.darken,
                               ),
-                              onTap: () => setSelectedLocation(
-                                  this.searchResults[index].placeId,
-                                  this.searchResults[index].name),
-                            );
-                          },
-                        ),
+                            ),
+                          if (this.searchResults != null)
+                            Container(
+                              height: 100,
+                              child: ListView.builder(
+                                itemCount: this.searchResults.length,
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                    title: Text(
+                                      this.searchResults[index].description,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onTap: () => setSelectedLocation(
+                                        this.searchResults[index].placeId,
+                                        this.searchResults[index].name),
+                                  );
+                                },
+                              ),
+                            ),
+                        ],
                       ),
-                  ],
-                ),
-              ),
-            ),
+                    ),
+                  )
+                : Text(""),
             // Show current location button
             SafeArea(
               child: Align(

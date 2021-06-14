@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/api/place_services.dart';
 import 'package:ambulance_flutter/components/btn.dart';
+import 'package:ambulance_flutter/main.dart';
 import 'package:ambulance_flutter/models/models.dart';
 import 'package:ambulance_flutter/models/place.dart';
 import 'package:ambulance_flutter/models/place_search.dart';
+import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ambulance_flutter/key/secrets.dart'; // Stores the Google Maps API Key
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -14,6 +17,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dart:math' show cos, sqrt, asin;
+
+import 'driver_home_screen.dart';
 
 class DriverRunningScreen extends StatefulWidget {
   DriverRunningScreen({Key key, this.dispatch}) : super(key: key);
@@ -31,30 +36,15 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
 
   Position _currentPosition;
 
-  String _currentAddress;
-
-  Position _startPosition;
-  Position _destinationPosition;
-
-  final startAddressController = TextEditingController();
-  final destinationAddressController = TextEditingController();
-
   final startAddressFocusNode = FocusNode();
   final desrinationAddressFocusNode = FocusNode();
 
-  String _startAddress = '';
-  String _destinationAddress = '';
   String _placeDistance;
-  String _distance;
-  String _duration;
-  int _totalPay;
 
   String textLabel = "Start";
   List<PlaceSearch> searchResults = [];
   PlaceServices placeServices;
   List<Marker> marker = List<Marker>();
-  StreamController<Place> selectedLocation = StreamController<Place>();
-  StreamController<LatLngBounds> bounds = StreamController<LatLngBounds>();
 
   Set<Marker> markers = {};
 
@@ -81,29 +71,9 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
           ),
         );
       });
-      await _getAddress();
     }).catchError((e) {
       print(e);
     });
-  }
-
-  // Method for retrieving the address
-  _getAddress() async {
-    try {
-      List<Placemark> p = await placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
-
-      Placemark place = p[0];
-
-      setState(() {
-        //_currentAddress = "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
-        _currentAddress = place.name;
-        startAddressController.text = _currentAddress;
-        _startAddress = _currentAddress;
-      });
-    } catch (e) {
-      print(e);
-    }
   }
 
   // Method for calculating the distance between two places
@@ -112,11 +82,11 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
       final GoogleMapController mapController = await _controller.future;
 
       Position _startPosition = Position(
-          longitude: widget.dispatch.startLat,
-          latitude: widget.dispatch.startLng);
+          latitude: widget.dispatch.startLat,
+          longitude: widget.dispatch.startLng);
 
       Position _destinationPosition = Position(
-          longitude: widget.dispatch.endLat, latitude: widget.dispatch.endLng);
+          latitude: widget.dispatch.endLat, longitude: widget.dispatch.endLng);
 
       if (_startPosition != null && _destinationPosition != null) {
         Position startCoordinates = _startPosition;
@@ -131,7 +101,6 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
           ),
           infoWindow: InfoWindow(
             title: 'Start',
-            snippet: _startAddress,
           ),
           icon: BitmapDescriptor.defaultMarker,
         );
@@ -146,7 +115,6 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
           ),
           infoWindow: InfoWindow(
             title: 'Destination',
-            snippet: _destinationAddress,
           ),
           icon: BitmapDescriptor.defaultMarker,
         );
@@ -183,6 +151,9 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
         _southwestCoordinates = Position(latitude: miny, longitude: minx);
         _northeastCoordinates = Position(latitude: maxy, longitude: maxx);
 
+        print(_northeastCoordinates);
+        print(_southwestCoordinates);
+
         // Accommodate the two locations within the
         // camera view of the map
         mapController.animateCamera(
@@ -217,7 +188,6 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
         }
 
         setState(() {
-          _totalPay = totalDistance.toInt() * 50;
           _placeDistance = totalDistance.toStringAsFixed(2);
           print('DISTANCE: $_placeDistance km');
         });
@@ -256,9 +226,6 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
         polylineCoordinates.add(LatLng(point.latitude, point.longitude));
       });
     }
-
-    _distance = result.distance;
-    _duration = result.duration;
 
     PolylineId id = PolylineId('poly');
     Polyline polyline = Polyline(
@@ -394,23 +361,6 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      ClipOval(
-                        child: Material(
-                          color: Colors.orange[100], // button color
-                          child: InkWell(
-                            splashColor: Colors.orange, // inkwell color
-                            child: SizedBox(
-                              width: 56,
-                              height: 56,
-                              child: Icon(Icons.ac_unit),
-                            ),
-                            onTap: () async {
-                              await _calculateDistance();
-                            },
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -502,7 +452,8 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title: Text(widget.dispatch.weight + " kg"),
+                          title:
+                              Text(widget.dispatch.weight.toString() + " kg"),
                           subtitle: Text("患者體重"),
                         ),
                         ListTile(
@@ -513,7 +464,7 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title: Text(widget.dispatch.phone),
+                          title: Text(widget.dispatch.phone ?? "未提供"),
                           subtitle: Text("聯絡方式"),
                         ),
                         ListTile(
@@ -524,7 +475,7 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title: Text(widget.dispatch.o2 == 1 ? "是" : "否"),
+                          title: Text(widget.dispatch.o2 ? "是" : "否"),
                           subtitle: Text("氧氣"),
                         ),
                         ListTile(
@@ -535,8 +486,7 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title:
-                              Text(widget.dispatch.elevator == 1 ? "是" : "否"),
+                          title: Text(widget.dispatch.elevator ? "是" : "否"),
                           subtitle: Text("電梯"),
                         ),
                         ListTile(
@@ -548,7 +498,7 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title: Text(widget.dispatch.special == 1 ? "是" : "否"),
+                          title: Text(widget.dispatch.special ? "是" : "否"),
                           subtitle: Text("特別護理師"),
                         ),
                         ListTile(
@@ -559,7 +509,7 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                               color: Colors.blue,
                             ),
                           ),
-                          title: Text(widget.dispatch.remark),
+                          title: Text(widget.dispatch.remark ?? "無"),
                           subtitle: Text("備註"),
                         ),
                         Padding(padding: EdgeInsets.only(top: 20)),
@@ -567,7 +517,20 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                           text: '完成',
                           color: Colors.blue[500],
                           onPress: () {
-                            //todo
+                            DispatchServices()
+                                .updDispatch(widget.dispatch.id, 3);
+                            // Navigator.of(context).pushAndRemoveUntil(
+                            //     MaterialPageRoute(
+                            //       builder: (context) => DriverHomeScreen(),
+                            //     ),
+                            //     (Route<dynamic> route) => false);
+                            // Navigator.of(context)
+                            //     .popUntil((route) => route.isFirst);
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => DriverHomeScreen(),
+                                ),
+                                (route) => route.isFirst);
                           },
                         ),
                       ],

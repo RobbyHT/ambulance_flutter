@@ -106,7 +106,7 @@ class _ChooseEMTScreenState extends State<ChooseEMTScreen> {
               dispatchEMT.state = 1;
               DispatchServices().updDispatch(widget.dispatch.id, 2);
               DispatchServices().insDispatchEMT(dispatchEMT);
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => DriverRunningScreen(

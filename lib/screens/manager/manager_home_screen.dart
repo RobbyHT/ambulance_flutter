@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:ambulance_flutter/db/user_lite.dart';
 import 'package:ambulance_flutter/models/dispatch.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+
+import '../../components/state_text.dart';
 
 class ManagerHomeScreen extends StatefulWidget {
   @override
@@ -15,20 +19,30 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   int _counter = 0;
   Map<DateTime, List<Dispatch>> _events;
   CalendarController _calendarController;
+  Timer timer;
 
   @override
   void initState() {
+    super.initState();
     final _selectedDay = DateTime.now();
     _selectedEvents = [];
     _calendarController = CalendarController();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      getTask().then((val) => setState(() {
+      getTask('manager').then((val) => setState(() {
             _events = val;
           }));
     });
 
-    super.initState();
+    timer = Timer.periodic(Duration(seconds: 10), (Timer t) => loadTask());
+  }
+
+  void loadTask() {
+    if (!mounted) return;
+
+    getTask('manager').then((val) => setState(() {
+          _events = val;
+        }));
   }
 
   void _onDaySelected(DateTime day, List events) {
@@ -83,12 +97,29 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                   title: Text(event.start + " -> " + event.end),
                   subtitle: Text(event.dTime),
                   trailing: event.state == 1
-                      ? Text('預約')
+                      ? StateText(
+                          text: "預約",
+                          color: Colors.blue,
+                        )
                       : event.state == 2
-                          ? Text('跑車中')
+                          ? StateText(
+                              text: "跑車中",
+                              color: Colors.red,
+                            )
                           : event.state == 3
-                              ? Text('完成')
-                              : Text('取消'),
+                              ? StateText(
+                                  text: "待填寫",
+                                  color: Colors.orange,
+                                )
+                              : event.state == 4
+                                  ? StateText(
+                                      text: "完成",
+                                      color: Colors.green,
+                                    )
+                                  : StateText(
+                                      text: "取消",
+                                      color: Colors.grey,
+                                    ),
                   onTap: () => print('$event tapped!'),
                 ),
               ))
