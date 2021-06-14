@@ -23,21 +23,45 @@ class DispatchServices implements DispatchRepo {
   @override
   Future<List<Dispatch>> getAllDispatch() async {
     Uri uri = new Uri.http(_baseUrl, _DISPATCHS);
-    Response response = await http.get(uri);
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
+    List<Dispatch> dispatchs = dispatchFromJson(response.body);
+    return dispatchs;
+  }
+
+  Future<List<Dispatch>> getDriverDispatch(id) async {
+    Uri uri = new Uri.http(_baseUrl, '/api/driverTask/' + id);
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
+    List<Dispatch> dispatchs = dispatchFromJson(response.body);
+    return dispatchs;
+  }
+
+  Future<List<Dispatch>> getEmtDispatch(id) async {
+    Uri uri = new Uri.http(_baseUrl, '/api/emtTask/' + id);
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
     List<Dispatch> dispatchs = dispatchFromJson(response.body);
     return dispatchs;
   }
 
   Future<List<Dispatch>> getOneDispatch(id) async {
     Uri uri = new Uri.http(_baseUrl, _DISPATCHS + '/' + id);
-    Response response = await http.get(uri);
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
     List<Dispatch> dispatchs = dispatchFromJson(response.body);
     return dispatchs;
   }
 
   Future<List<Dispatch>> checkDispatchTask() async {
     Uri uri = new Uri.http(_baseUrl, '/api/checkTask');
-    Response response = await http.get(uri);
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
     List<Dispatch> dispatchs = dispatchFromJson(response.body);
     return dispatchs;
   }

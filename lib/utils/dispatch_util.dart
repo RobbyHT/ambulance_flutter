@@ -3,10 +3,25 @@
 
 import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/models/models.dart';
+import 'package:ambulance_flutter/screens/auth.dart';
 
-Future<Map<DateTime, List<Dispatch>>> getTask() async {
+Future<Map<DateTime, List<Dispatch>>> getTask(type) async {
   Map<DateTime, List<Dispatch>> mapFetch = {};
-  List<Dispatch> dispatch = await DispatchServices().getAllDispatch();
+  List<Dispatch> dispatch;
+
+  switch (type) {
+    case 'driver':
+      dispatch =
+          await DispatchServices().getDriverDispatch(Auth.user.id.toString());
+      break;
+    case 'emt':
+      dispatch =
+          await DispatchServices().getEmtDispatch(Auth.user.id.toString());
+      break;
+    default:
+      dispatch = await DispatchServices().getAllDispatch();
+  }
+
   for (int i = 0; i < dispatch.length; i++) {
     var dispatchTime = DateTime(
         DateTime.parse(dispatch[i].dDate).year,
