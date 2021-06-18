@@ -4,6 +4,7 @@ import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/components/state_text.dart';
 import 'package:ambulance_flutter/db/user_lite.dart';
 import 'package:ambulance_flutter/models/dispatch.dart';
+import 'package:ambulance_flutter/screens/emt/emt_form_screen.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class EmtHomeScreen extends StatefulWidget {
   _EmtHomeScreenState createState() => _EmtHomeScreenState();
 }
 
-bool isOpen = false;
+bool isOpen = true;
 
 class _EmtHomeScreenState extends State<EmtHomeScreen> {
   List<Dispatch> _selectedEvents;
@@ -143,10 +144,8 @@ class _EmtHomeScreenState extends State<EmtHomeScreen> {
 
   Future<void> _showMyDialog(Dispatch dispatch) async {
     var btnText = "GO";
-    var state = 3;
     if (dispatch.state == 3) {
       btnText = "填寫";
-      state = 4;
     }
     if (isOpen) {
       return showDialog<void>(
@@ -191,6 +190,14 @@ class _EmtHomeScreenState extends State<EmtHomeScreen> {
                               borderRadius: new BorderRadius.circular(50.0)),
                           onPressed: () => {
                             isOpen = false,
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EmtFormScreen(
+                                  dispatch: dispatch,
+                                ),
+                              ),
+                            ),
                           },
                         )
                       ],

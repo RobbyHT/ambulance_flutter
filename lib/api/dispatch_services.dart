@@ -98,4 +98,14 @@ class DispatchServices implements DispatchRepo {
         headers: headersMap, body: jsonEncode(dispatchEMT.toJson()));
     return response;
   }
+
+  Future<Response> insConsumablesRecord(int id, List arr) async {
+    Uri uri = new Uri.http(_baseUrl, '/api/consumablesRecord');
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+
+    Response response = await http.post(uri,
+        headers: headersMap, body: jsonEncode({"arr": arr, "dispatchId": id}));
+    return response;
+  }
 }
