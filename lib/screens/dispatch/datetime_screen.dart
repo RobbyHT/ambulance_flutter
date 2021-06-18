@@ -107,7 +107,10 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
                     height: _height / 9,
                     margin: EdgeInsets.only(top: 20),
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(color: Colors.grey[200]),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(80.0),
+                    ),
                     child: TextFormField(
                       style: TextStyle(fontSize: 40),
                       textAlign: TextAlign.center,
@@ -145,7 +148,10 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
                     width: _width / 1.7,
                     height: _height / 9,
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(color: Colors.grey[200]),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(80.0),
+                    ),
                     child: TextFormField(
                       style: TextStyle(fontSize: 40),
                       textAlign: TextAlign.center,

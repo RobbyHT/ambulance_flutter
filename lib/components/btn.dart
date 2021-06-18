@@ -9,21 +9,18 @@ class Btn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      margin: EdgeInsets.all(10),
-      child: FlatButton(
-        onPressed: onPress,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3.0),
+    return ElevatedButton(
+      onPressed: onPress,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Colors.white,
         ),
       ),
+      style: ElevatedButton.styleFrom(
+          primary: color,
+          shape: StadiumBorder(),
+          padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15)),
     );
   }
 }

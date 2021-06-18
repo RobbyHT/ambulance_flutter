@@ -18,7 +18,7 @@ class DriverHomeScreen extends StatefulWidget {
   _DriverHomeScreenState createState() => _DriverHomeScreenState();
 }
 
-bool isOpen = false;
+bool isOpen = true;
 
 class _DriverHomeScreenState extends State<DriverHomeScreen> {
   List<Dispatch> _selectedEvents;

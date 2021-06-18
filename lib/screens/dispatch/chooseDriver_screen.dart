@@ -45,7 +45,7 @@ class ChooseDriveScreen extends StatelessWidget {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (context) => DatetimeScreen()),
-                            (route) => route.isFirst);
+                            (route) => false);
                         // Navigator.push(
                         //   context,
                         //   MaterialPageRoute(

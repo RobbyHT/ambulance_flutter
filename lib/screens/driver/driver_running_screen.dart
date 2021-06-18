@@ -19,6 +19,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math' show cos, sqrt, asin;
 
 import 'driver_home_screen.dart';
+import 'driver_main_screen.dart';
 
 class DriverRunningScreen extends StatefulWidget {
   DriverRunningScreen({Key key, this.dispatch}) : super(key: key);
@@ -528,9 +529,9 @@ class _DriverRunningScreenState extends State<DriverRunningScreen> {
                             //     .popUntil((route) => route.isFirst);
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
-                                  builder: (context) => DriverHomeScreen(),
+                                  builder: (context) => DriverMainScreen(),
                                 ),
-                                (route) => route.isFirst);
+                                (route) => false);
                           },
                         ),
                       ],
