@@ -14,12 +14,12 @@ class ClientState extends State<ClientData> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color.fromARGB(160, 20, 39, 79),
+          backgroundColor: Color.fromRGBO(7, 13, 89, 205),
           appBar: AppBar(
             elevation: 0,
             title: Text('顧客管理', style: TextStyle(fontSize: 20)),
             centerTitle: true,
-            backgroundColor: Color.fromARGB(147, 57, 72, 103),
+            backgroundColor: Color.fromRGBO(50, 64, 125, 103),
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_rounded,
@@ -31,7 +31,7 @@ class ClientState extends State<ClientData> {
             actions: <Widget>[
               IconButton(
                 icon: Icon(
-                  Icons.search,
+                  Icons.search_rounded,
                   color: Colors.white,
                   size: 35.0,
                 ),
@@ -69,7 +69,7 @@ class ClientState extends State<ClientData> {
                       ),
                     ),
                     leading: Icon(
-                      Icons.person,
+                      Icons.person_rounded,
                       size: 50,
                       color: Colors.white,
                     ),
