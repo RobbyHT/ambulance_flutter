@@ -18,9 +18,9 @@ class _empPageState extends State<EmpPage> {
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
-          height: 150,
+          height: 140,
           margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)), color: Colors.white, boxShadow: [
+          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20.0)), color: Color.fromRGBO(155, 164, 180, 1), boxShadow: [
             BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
           ]),
           child: Padding(
@@ -31,12 +31,13 @@ class _empPageState extends State<EmpPage> {
                 Column(
                   children: <Widget>[
                     IconButton(
-                      icon:Icon(Icons.person_rounded),
+                      icon:Icon(Icons.person_rounded,color: Colors.white,),
                       iconSize: 60,
+                      
                     ),
                     Text(
                       post["position"],
-                      style: const TextStyle(fontSize: 18, color: Colors.black),
+                      style: const TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ],
                 ),
@@ -44,18 +45,18 @@ class _empPageState extends State<EmpPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: 20,
+                      height: 17,
                     ),
                     Text(
                       post["name"],
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "id:${post["id"]}",
-                      style: const TextStyle(fontSize: 18, color: Colors.black),
+                      "公司金鑰:${post["id"]}",
+                      style: const TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     // SizedBox(
                     //   height: 10,
@@ -66,8 +67,8 @@ class _empPageState extends State<EmpPage> {
                       width: 30,
                 ),
                 IconButton(
-                  icon:Icon(Icons.keyboard_arrow_right),
-                  iconSize: 60,
+                  icon:Icon(Icons.keyboard_arrow_right, color: Colors.white),
+                  iconSize: 50,
                   onPressed: () {},
                 )
               ],
@@ -103,20 +104,21 @@ class _empPageState extends State<EmpPage> {
         backgroundColor: Color.fromRGBO(20, 39, 78, 1),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Color.fromRGBO(249, 244, 241, 1),
-          leading: Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
+          backgroundColor: Color.fromRGBO(57, 72, 103, 1),
+          // leading: Icon(
+          //   Icons.keyboard_arrow_left,
+          //   color: Colors.white,
+          // ),
           actions: <Widget>[
+            
             IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
+              icon: Icon(Icons.search, color: Colors.white),
               onPressed: () {},
             ),
-            IconButton(
-              icon: Icon(Icons.settings, color: Colors.black),
-              onPressed: () {},
-            )
+            // IconButton(
+            //   icon: Icon(Icons.settings, color: Colors.black),
+            //   onPressed: () {},
+            // )
           ],
         ),
         body: Container(
