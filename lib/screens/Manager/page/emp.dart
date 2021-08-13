@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../components/empData.dart';
+import 'empReturn.dart';
 
 class EmpPage extends StatefulWidget {
 @override
@@ -69,7 +70,11 @@ class _empPageState extends State<EmpPage> {
                 IconButton(
                   icon:Icon(Icons.keyboard_arrow_right, color: Colors.white),
                   iconSize: 50,
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return EmpReturn();
+                          }));
+                          },
                 )
               ],
             ),
