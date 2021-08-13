@@ -297,8 +297,8 @@ class EmpReturn extends StatelessWidget {
                           child: Stack(
                             children: <Widget>[
                               Positioned( //確認
-                                bottom: -10,
-                                right: -10,
+                                bottom: -13,
+                                right: -15,
                                 child:IconButton(
                                   icon: Icon(Icons.check, color: Colors.black),
                                   onPressed: () {},
@@ -317,9 +317,9 @@ class EmpReturn extends StatelessWidget {
                         ),
                           child: Stack(
                             children: <Widget>[
-                              Positioned( //確認
-                                bottom: -11,
-                                right: -13,
+                              Positioned( //返回
+                                bottom: -15,
+                                right: -17,
                                 child:IconButton(
                                   icon: Icon(Icons.close, color: Colors.black),
                                   onPressed: () {},

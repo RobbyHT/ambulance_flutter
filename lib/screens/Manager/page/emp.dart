@@ -3,13 +3,11 @@ import '../components/empData.dart';
 import 'empReturn.dart';
 
 class EmpPage extends StatefulWidget {
-  
 @override
   _empPageState createState() => _empPageState();
 }
 
 class _empPageState extends State<EmpPage> {
-  
   ScrollController controller = ScrollController();
   bool closeTopContainer = false;
   double topContainer = 0;
@@ -35,11 +33,11 @@ class _empPageState extends State<EmpPage> {
                   children: <Widget>[
                     IconButton(
                       icon:Icon(Icons.person_rounded,color: Colors.white,),
-                      iconSize: 60,
+                      iconSize: 55,
                     ),
                     Text(
                       post["position"],
-                      style: const TextStyle(fontSize: 18, color: Colors.white),
+                      style: const TextStyle(fontSize: 17, color: Colors.white),
                     ),
                   ],
                 ),
@@ -47,18 +45,18 @@ class _empPageState extends State<EmpPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: 17,
+                      height: 15,
                     ),
                     Text(
                       post["name"],
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 12,
                     ),
                     Text(
                       "公司金鑰:${post["gkey"]}",
-                      style: const TextStyle(fontSize: 18, color: Colors.white),
+                      style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                     // SizedBox(
                     //   height: 10,
@@ -66,12 +64,11 @@ class _empPageState extends State<EmpPage> {
                   ],
                 ),
                 SizedBox(
-                      width: 30,
+                      width: 20,
                 ),
                 IconButton(
                   icon:Icon(Icons.keyboard_arrow_right, color: Colors.white),
-                  iconSize: 50,
-                
+                  iconSize: 40,
                   onPressed: () {
                     Navigator.push(
                     context,
@@ -87,12 +84,6 @@ class _empPageState extends State<EmpPage> {
                         gkey:post["gkey"]
                       )));
                   },
-                  // onPressed: () {
-                  //   Navigator.push(context,
-                  //       MaterialPageRoute(builder: (context) {
-                  //     return EmpReturn();
-                  //   }));
-                  // },
                 )
               ],
             ),
@@ -138,6 +129,10 @@ class _empPageState extends State<EmpPage> {
               icon: Icon(Icons.search, color: Colors.white),
               onPressed: () {},
             ),
+            // IconButton(
+            //   icon: Icon(Icons.settings, color: Colors.black),
+            //   onPressed: () {},
+            // )
           ],
         ),
         body: Container(
