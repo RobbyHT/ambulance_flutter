@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-class EmpReturn extends StatefulWidget {
-  // const EmpReturn({ Key? key }) : super(key: key);
+class EmpReturn extends StatelessWidget {
+  dynamic name=0;
+  dynamic id=0;
+  dynamic position=0;
+  dynamic birth=0;
+  dynamic exptime=0;
+  dynamic gender=0;
+  dynamic license=0;
+  dynamic gkey=0;
 
-  @override
-  _EmpReturnState createState() => _EmpReturnState();
-}
-
-class _EmpReturnState extends State<EmpReturn> {
+  EmpReturn({key, this.name=0, this.id=0, this.position=0, this.birth=0, this.exptime=0, this.gender=0, this.license=0, this.gkey=0}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Container(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(20, 39, 78, 1),
         appBar: AppBar(
@@ -95,7 +98,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     Positioned(
                       top: 0,
                       left: 6,
-                      child: Text('朱雅筠', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$name', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 20,
@@ -107,7 +110,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 35,
                       left: 0,
-                      child: Text('護理人員', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$position', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -119,7 +122,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 35,
                       left: 60,
-                      child: Text('女', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$gender', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -143,7 +146,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 36,
                       left: 173,
-                      child: Text('2000/05/28', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$birth', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -155,7 +158,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 87,
                       left: 93,
-                      child: Text('護理人員', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('證照', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -167,7 +170,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 87,
                       left: 173,
-                      child: Text('EMT-1', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$license', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -191,7 +194,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 138,
                       left: 173,
-                      child: Text('10936030', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$gkey', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -215,7 +218,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 61,
                       left: 173,
-                      child: Text('L12345678', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$id', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -239,7 +242,7 @@ class _EmpReturnState extends State<EmpReturn> {
                     ),Positioned(
                       top: 112,
                       left: 173,
-                      child: Text('2026/06/30', textAlign: TextAlign.left, style: TextStyle(
+                      child: Text('$exptime', textAlign: TextAlign.left, style: TextStyle(
                         color: Color.fromRGBO(20, 39, 79, 1),
                         fontFamily: 'Roboto',
                         fontSize: 12,
@@ -334,7 +337,7 @@ class _EmpReturnState extends State<EmpReturn> {
           )
         ),
       ),
+    
     );
   }
 }
-

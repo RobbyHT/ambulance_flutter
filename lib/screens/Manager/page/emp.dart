@@ -3,11 +3,13 @@ import '../components/empData.dart';
 import 'empReturn.dart';
 
 class EmpPage extends StatefulWidget {
+  
 @override
   _empPageState createState() => _empPageState();
 }
 
 class _empPageState extends State<EmpPage> {
+  
   ScrollController controller = ScrollController();
   bool closeTopContainer = false;
   double topContainer = 0;
@@ -34,7 +36,6 @@ class _empPageState extends State<EmpPage> {
                     IconButton(
                       icon:Icon(Icons.person_rounded,color: Colors.white,),
                       iconSize: 60,
-                      
                     ),
                     Text(
                       post["position"],
@@ -56,7 +57,7 @@ class _empPageState extends State<EmpPage> {
                       height: 10,
                     ),
                     Text(
-                      "公司金鑰:${post["id"]}",
+                      "公司金鑰:${post["gkey"]}",
                       style: const TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     // SizedBox(
@@ -70,11 +71,28 @@ class _empPageState extends State<EmpPage> {
                 IconButton(
                   icon:Icon(Icons.keyboard_arrow_right, color: Colors.white),
                   iconSize: 50,
-                  onPressed: () {Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return EmpReturn();
-                          }));
-                          },
+                
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EmpReturn(
+                        name:post["name"],
+                        id:post["id"],
+                        position:post["position"],
+                        birth:post["birth"],
+                        exptime:post["exptime"],
+                        gender:post["gender"],
+                        license:post["license"],
+                        gkey:post["gkey"]
+                      )));
+                  },
+                  // onPressed: () {
+                  //   Navigator.push(context,
+                  //       MaterialPageRoute(builder: (context) {
+                  //     return EmpReturn();
+                  //   }));
+                  // },
                 )
               ],
             ),
@@ -120,10 +138,6 @@ class _empPageState extends State<EmpPage> {
               icon: Icon(Icons.search, color: Colors.white),
               onPressed: () {},
             ),
-            // IconButton(
-            //   icon: Icon(Icons.settings, color: Colors.black),
-            //   onPressed: () {},
-            // )
           ],
         ),
         body: Container(
