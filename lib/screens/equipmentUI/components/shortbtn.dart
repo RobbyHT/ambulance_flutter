@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
-        
-        
-        class ShortWidget extends StatefulWidget {
-        @override
-        _ShortWidgetState createState() => _ShortWidgetState();
-        }
-        
-        class _ShortWidgetState extends State<ShortWidget> {
-        @override
+
+class ShortWidget extends StatefulWidget{
+  final String inputText;
+  final String number;
+  final String day;
+
+  const ShortWidget({Key key, this.inputText, this.number, this.day}) : super(key: key);
+
+
+
+
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return ShortWidgetState();
+  }
+} 
+class ShortWidgetState extends State<ShortWidget> {
+
+    @override
         Widget build(BuildContext context) {
-        // Figma Flutter Generator ShortWidget - COMPONENT
-        
-         return Container(
+     return Container(
       width: 250,
       height: 60,
       decoration: BoxDecoration(
@@ -25,7 +35,7 @@ import 'package:flutter/material.dart';
           children: <Widget>[
         Container(
           padding:EdgeInsets.only(left: 20,top:5),
-          child: Text("8號",textAlign: TextAlign.left , style: TextStyle(
+          child: Text(this.widget.inputText,textAlign: TextAlign.left , style: TextStyle(
         color: Color.fromRGBO(255, 255, 255, 1),
         fontSize: 16,),
           ),
@@ -40,7 +50,7 @@ import 'package:flutter/material.dart';
           ),
           Container(
           padding:EdgeInsets.only(left:20,bottom:0),
-          child:Text('2021/08/31',textAlign: TextAlign.left, style: TextStyle(
+          child:Text(this.widget.day,textAlign: TextAlign.left, style: TextStyle(
         color: Color.fromRGBO(255, 255, 255, 1),
         fontSize: 16,),) ,
           ),
@@ -48,11 +58,10 @@ import 'package:flutter/material.dart';
       ],
       ) , ),),
       Expanded(flex: 1,child:Container(width: 20,height: 30,
-        child:Text('1', textAlign: TextAlign.center, style: TextStyle(
+        child:Text(this.widget.number, textAlign: TextAlign.center, style: TextStyle(
         color: Color.fromRGBO(255, 255, 255, 1),
         fontSize: 25,)) ) ,)
       ],)      
       );
         }
-        }
-        
+  }
