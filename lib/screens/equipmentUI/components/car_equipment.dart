@@ -2,14 +2,16 @@ import 'package:ambulance_flutter/screens/equipmentUI/components/longbtn.dart';
 import 'package:ambulance_flutter/screens/equipmentUI/components/shortbtn.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+
         
         
-        class Iphone11procarWidget extends StatefulWidget {
+        class CarWidget extends StatefulWidget {
         @override
-        _Iphone11procarWidgetState createState() => _Iphone11procarWidgetState();
+        _CarWidgetState createState() => _CarWidgetState();
         }
         
-        class _Iphone11procarWidgetState extends State<Iphone11procarWidget> {
+        class _CarWidgetState extends State<CarWidget> {
           bool _showBackToTopButton = false;
           ScrollController _scrollController;
           //懸浮按鈕控制
@@ -42,7 +44,7 @@ import 'package:flutter/material.dart';
           Size size = MediaQuery.of(context).size;
         // Figma Flutter Generator Iphone11procarWidget - FRAME
         return Scaffold(
-          backgroundColor: (Color.fromRGBO(57,72,103,100)) ,
+          backgroundColor: (Color.fromRGBO(20,39,78,1)) ,
           //懸浮按鈕
           floatingActionButton: FloatingActionButton(
             backgroundColor: (Color.fromRGBO(155, 164, 180, 50)),
@@ -54,7 +56,7 @@ import 'package:flutter/material.dart';
              controller: _scrollController,
           child: Column(
             children:<Widget>[
-          SizedBox(width: 10,height: 50),
+          SizedBox(width: 10,height: 10),
           Center(
             child: Container(
               width: 300,
@@ -74,10 +76,10 @@ import 'package:flutter/material.dart';
             fontSize: 20),)
               ),
               ) ,
-              
               SizedBox(width: 10,height: 20),
-              LongWidget(),
-              SizedBox(width: 10,height: 10),
+              //附有腳架滑輪之擔架床	
+              LongWidget(inputText:'附有腳架滑輪之擔架床',day:'2021/08/31',number:'1'),
+              SizedBox(width: 10,height: 20),
               //氧氣組
              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,12 +99,13 @@ import 'package:flutter/material.dart';
                ),
                SizedBox(width: 10,height: 10),
               Column(children: <Widget>[
-              ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),
+              ShortWidget(inputText:'攜帶式' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'固定式' ,day: '2021/09/30',number: '1',),
               ],)
               
                 ] ,) ,
               SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'氧氣鼻管',day:'2021/08/31',number:'1'),
               SizedBox(width: 10,height: 10),
               //氧氣面罩
               Row(
@@ -125,8 +128,10 @@ import 'package:flutter/material.dart';
                ),
                SizedBox(width: 10,height: 10),
               Column(children: <Widget>[
-              ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),SizedBox(width: 10,height: 10),
-              ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),
+              ShortWidget(inputText:'簡單型-大人' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'簡單型-小孩' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'非再吸入型-大人' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'非再吸入型-小孩' ,day: '2021/09/30',number: '1',),
               ],)
               
                 ] ,) ,
@@ -152,23 +157,24 @@ import 'package:flutter/material.dart';
                ),
                SizedBox(width: 10,height: 10),
               Column(children: <Widget>[
-              ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),
+              ShortWidget(inputText:'8號' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'14號' ,day: '2021/09/30',number: '1',),
               ],)
                 ] ,) ,
                  SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'可攜帶式抽吸器',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'手持式血氧濃度分析儀',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'可摺疊式搬運椅/椅式擔架',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'長背板',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'含固定帶之配件',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'軀幹固定器',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'投頸部固定器',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -194,21 +200,23 @@ import 'package:flutter/material.dart';
                ),
                SizedBox(width: 10,height: 10),
               Column(children: <Widget>[
-              ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),SizedBox(width: 10,height: 10),ShortWidget(),
+              ShortWidget(inputText:'大' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'中' ,day: '2021/09/30',number: '1',),SizedBox(width: 10,height: 10),
+              ShortWidget(inputText:'小' ,day: '2021/09/30',number: '1',),
               ],)
                 ] ,) ,
               SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'固定四肢用護木',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'保護固定帶',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'一般急救箱',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'可丟棄式手套',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'毛毯被單',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 10),
-              LongWidget(),
+              LongWidget(inputText:'滅火器',day:'2021/08/31',number:'1'),
                SizedBox(width: 10,height: 30),
               ],),
             
