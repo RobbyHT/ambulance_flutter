@@ -1,41 +1,47 @@
-/*import 'dart:convert';
+import 'dart:convert';
 
-List<User> userFromJson(String str) => List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
+import 'dart:developer';
 
-String userToJson(List<User> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+// User userFromJson(String str) => User.fromJson(json.decode(str));
+// String userToJson(User data) => json.encode(data.toJson());
+List<User> userFromJson(String str) =>
+    List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
+
+String userToJson(List<User> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class User {
-    User({
-        this.id,
-        this.account,
-        this.name,
-        this.gender,
-        this.birther,
-        this.perid,
-        this.licenseVp,
-        this.cId,
-        this.permission,
-        this.loginAttempt,
-        this.deletedAt,
-        this.createdAt,
-        this.updatedAt,
-    });
+  User({
+    this.id,
+    this.account,
+    this.name,
+    this.gender,
+    this.birther,
+    this.perid,
+    this.licenseVp,
+    this.cId,
+    this.permission,
+    this.loginAttempt,
+    this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
 
-    int id;
-    String account;
-    String name;
-    String gender;
-    String birther;
-    String perid;
-    String licenseVp;
-    int cId;
-    String permission;
-    int loginAttempt;
-    String deletedAt;
-    String createdAt;
-    String updatedAt;
+  int id;
+  String account;
+  String name;
+  String gender;
+  String birther;
+  String perid;
+  String licenseVp;
+  int cId;
+  String permission;
+  int loginAttempt;
+  String deletedAt;
+  String createdAt;
+  String updatedAt;
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
         account: json["account"],
         name: json["name"],
@@ -49,9 +55,9 @@ class User {
         deletedAt: json["deleted_at"],
         createdAt: json["created_at"],
         updatedAt: json["updated_at"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "account": account,
         "name": name,
@@ -65,11 +71,10 @@ class User {
         "deleted_at": deletedAt,
         "created_at": createdAt,
         "updated_at": updatedAt,
-    };
-}*/
+      };
+}
 
-
-import 'dart:convert';
+/*import 'dart:convert';
 
 List<User> userFromJson(String str) => List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
 
@@ -97,4 +102,4 @@ class User {
         "id": id,
         "title": title,
     };
-}
+}*/

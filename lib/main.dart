@@ -1,20 +1,28 @@
 import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/bloc/theme/theme_bloc.dart';
-import 'package:ambulance_flutter/home.dart';
-import 'package:ambulance_flutter/screens/dispatch/dispatch_screen.dart';
+import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/screens/users_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart'; 
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'bloc/users/users_bloc.dart';
+import 'screens/driver/driver_main_screen.dart';
+import 'screens/manager/manager_main_screen.dart';
 import 'setttings/preferencess.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Preferences.init();
   runApp(
     MaterialApp(
+      initialRoute: '/manager_home',
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/manager_home': (context) => ManagerMainScreen(),
+        '/driver_home': (context) => DriverMainScreen(),
+        '/datetime': (context) => DatetimeScreen(),
+      },
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -25,23 +33,9 @@ void main() async{
         const Locale('en', 'US'),
       ],
       locale: Locale('zh'),
-      home: Dispatch(),
+      //home: ManagerMainScreen(),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomeScreen(title: 'Home Page'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
 }
 
 class User extends StatelessWidget {
@@ -77,17 +71,6 @@ class LoginApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: LoginScreen(),
-    );
-  }
-}
-
-class Dispatch extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Dispatch',
-      debugShowCheckedModeBanner: false,
-      home: DispatchScreen(),
     );
   }
 }
