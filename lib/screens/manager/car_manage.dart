@@ -20,7 +20,7 @@ class _CarManageScreenState extends State<CarManageScreen> {
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
-          height: 130,
+          height: 100,
           margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -39,8 +39,12 @@ class _CarManageScreenState extends State<CarManageScreen> {
                     Text(
                       post["name"],
                       style: const TextStyle(
-                          fontSize: 28, fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
+                    Padding(padding: EdgeInsets.only(right: 150)),
                     Text(
                       post["brand"],
                       style: const TextStyle(fontSize: 17, color: Colors.grey),
