@@ -29,13 +29,15 @@ class _CarManageScreenState extends State<CarManageScreen> {
                 BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
               ]),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Row(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Column(
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    // Padding(padding: EdgeInsets.only(right: 150)),
+                    Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
                     Text(
                       post["name"],
                       style: const TextStyle(
@@ -44,19 +46,18 @@ class _CarManageScreenState extends State<CarManageScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(right: 150)),
                     Text(
                       post["brand"],
-                      style: const TextStyle(fontSize: 17, color: Colors.grey),
+                      style: const TextStyle(fontSize: 10, color: Colors.grey),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Text(
-                      "\$ ${post["price"]}",
+                      " ${post["class"]}",
                       style: const TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
+                          fontSize: 14,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold),
                     )
                   ],
