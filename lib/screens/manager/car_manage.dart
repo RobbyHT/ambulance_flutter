@@ -16,7 +16,8 @@ class _CarManageScreenState extends State<CarManageScreen> {
   List<Widget> itemsData = [];
 
   void getPostsData() {
-    List<dynamic> responseList = FOOD_DATA;
+    //獲取數據函數
+    List<dynamic> responseList = FOOD_DATA; //從這邊獲取資料
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
@@ -34,10 +35,16 @@ class _CarManageScreenState extends State<CarManageScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Row(
+                  // mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     // Padding(padding: EdgeInsets.only(right: 150)),
                     Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
+
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                    ),
                     Text(
                       post["name"],
                       style: const TextStyle(
