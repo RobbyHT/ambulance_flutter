@@ -21,13 +21,13 @@ class _CarManageScreenState extends State<CarManageScreen> {
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
-          height: 100,
+          height: 100, //選項高度
           margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
               color: Color.fromARGB(255, 155, 164, 181),
               boxShadow: [
-                BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
+                // BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
               ]),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
@@ -39,20 +39,32 @@ class _CarManageScreenState extends State<CarManageScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     // Padding(padding: EdgeInsets.only(right: 150)),
-                    Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
-
+                    //Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
+                    Image.asset(
+                      'assets/images/car.png',
+                      width: 70.0,
+                      height: 70.0,
+                      fit: BoxFit.cover,
+                    ),
+                    Align(alignment: Alignment.center),
                     Icon(
                       Icons.arrow_forward_ios,
                       color: Colors.white,
                     ),
-                    Text(
-                      post["name"],
-                      style: const TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        child: Text(
+                          post["name"],
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
+
                     Text(
                       post["brand"],
                       style: const TextStyle(fontSize: 10, color: Colors.grey),
@@ -60,13 +72,6 @@ class _CarManageScreenState extends State<CarManageScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      " ${post["class"]}",
-                      style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    )
                   ],
                 ),
               ],
