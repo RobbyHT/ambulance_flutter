@@ -31,48 +31,46 @@ class _CarManageScreenState extends State<CarManageScreen> {
               ]),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    // Padding(padding: EdgeInsets.only(right: 150)),
-                    //Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
-                    Image.asset(
-                      'assets/images/car.png',
-                      width: 70.0,
-                      height: 70.0,
-                      fit: BoxFit.cover,
-                    ),
-                    Align(alignment: Alignment.center),
-                    Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        child: Text(
-                          post["name"],
-                          style: const TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
+                // Padding(padding: EdgeInsets.only(right: 150)),
+                //Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
+                Image.asset(
+                  'assets/images/car.png',
+                  width: 70.0,
+                  height: 70.0,
+                  fit: BoxFit.cover,
+                ),
+                Align(alignment: Alignment.center),
+                Align(alignment: Alignment.center),
+                Align(alignment: Alignment.center),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Text(
+                      post["name"],
+                      style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
+                  ),
+                ),
 
-                    Text(
-                      post["brand"],
-                      style: const TextStyle(fontSize: 10, color: Colors.grey),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
+                Text(
+                  post["brand"],
+                  style: const TextStyle(fontSize: 10, color: Colors.grey),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white,
                 ),
               ],
             ),
