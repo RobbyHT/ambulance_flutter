@@ -29,6 +29,7 @@ class _CarManageScreenState extends State<CarManageScreen> {
               boxShadow: [
                 // BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
               ]),
+          //child:new GestureDetector(),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
             child: Row(
@@ -37,7 +38,6 @@ class _CarManageScreenState extends State<CarManageScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 // Padding(padding: EdgeInsets.only(right: 150)),
-                //Icon(Icons.person_rounded, color: Colors.white, size: 68.0),
                 Image.asset(
                   'assets/images/car.png',
                   width: 70.0,

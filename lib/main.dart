@@ -24,6 +24,7 @@ void main() async {
         '/driver_home': (context) => DriverMainScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/car_manage': (context) => CarManageScreen(),
+        // '/car_detailed': (context) => CarDetailedScreen(),
       },
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
@@ -39,6 +40,9 @@ void main() async {
     ),
   );
 }
+
+/*class CarDetailedScreen {
+}*/
 
 class User extends StatelessWidget {
   @override
