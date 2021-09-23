@@ -2,6 +2,7 @@ import 'package:ambulance_flutter/api/user_services.dart';
 import 'package:ambulance_flutter/bloc/theme/theme_bloc.dart';
 import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
+import 'package:ambulance_flutter/screens/manager/car_detailed.dart';
 import 'package:ambulance_flutter/screens/users_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,14 +18,14 @@ void main() async {
   await Preferences.init();
   runApp(
     MaterialApp(
-      initialRoute: '/car_manage',
+      initialRoute: '/car_detailed',
       routes: {
         '/login': (context) => LoginScreen(),
         '/manager_home': (context) => ManagerMainScreen(),
         '/driver_home': (context) => DriverMainScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/car_manage': (context) => CarManageScreen(),
-        // '/car_detailed': (context) => CarDetailedScreen(),
+        '/car_detailed': (context) => CarDetailedScreen(),
       },
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
