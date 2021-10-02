@@ -36,12 +36,13 @@ class _CarManageScreenState extends State<CarManageScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               //mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
+
               children: <Widget>[
-                // Padding(padding: EdgeInsets.only(right: 150)),
+                Padding(padding: EdgeInsets.only(right: 10)),
                 Image.asset(
-                  'assets/images/car.png',
-                  width: 70.0,
-                  height: 70.0,
+                  'assets/images/car2.png',
+                  width: 50.0,
+                  height: 50.0,
                   fit: BoxFit.cover,
                 ),
                 Align(alignment: Alignment.center),
@@ -60,7 +61,6 @@ class _CarManageScreenState extends State<CarManageScreen> {
                     ),
                   ),
                 ),
-
                 Text(
                   post["brand"],
                   style: const TextStyle(fontSize: 10, color: Colors.grey),

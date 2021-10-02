@@ -38,6 +38,7 @@ class Iphone81Widget extends StatelessWidget {
               top: 164,
               left: 32,
               child: Container(
+                  child: Text('發大財'),
                   width: 348, //中間區塊
                   height: 275,
                   decoration: BoxDecoration(
@@ -65,14 +66,14 @@ class Iphone81Widget extends StatelessWidget {
                     color: Color.fromRGBO(155, 164, 181, 1),
                   ))),
           Positioned(
-              top: 149,
+              top: 143,
               left: 65,
               child: Container(
-                  width: 53,
-                  height: 31,
+                  width: 43,
+                  height: 41,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/car.png'),
+                        image: AssetImage('assets/images/car2.png'),
                         fit: BoxFit.fitWidth),
                   ))),
           Positioned(
