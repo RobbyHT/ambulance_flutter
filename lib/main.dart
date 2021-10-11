@@ -18,7 +18,7 @@ void main() async {
   await Preferences.init();
   runApp(
     MaterialApp(
-      initialRoute: '/car_manage',
+      initialRoute: '/car_detailed',
       routes: {
         '/login': (context) => LoginScreen(),
         '/manager_home': (context) => ManagerMainScreen(),

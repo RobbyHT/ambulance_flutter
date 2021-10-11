@@ -56,7 +56,7 @@ class _CarManageScreenState extends State<CarManageScreen> {
                     Text(
                       post["brand"],
                       style: const TextStyle(
-                        fontSize: 23,
+                        fontSize: 20,
                         color: Colors.white,
                         // fontWeight: FontWeight.bold,
                       ),

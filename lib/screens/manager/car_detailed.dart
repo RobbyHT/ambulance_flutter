@@ -38,18 +38,34 @@ class Iphone81Widget extends StatelessWidget {
               top: 164,
               left: 32,
               child: Container(
-                  child: Text('發大財'),
+                  child: Text(''),
                   width: 348, //中間區塊
                   height: 275,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25),
-                      bottomLeft: Radius.circular(25),
-                      bottomRight: Radius.circular(25),
-                    ),
-                    color: Color.fromRGBO(206, 221, 240, 1),
-                  ))),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25),
+                        bottomLeft: Radius.circular(25),
+                        bottomRight: Radius.circular(25),
+                      ),
+                      color: Color.fromRGBO(206, 221, 240, 1)))),
+          Positioned(
+              top: 239,
+              left: 74,
+              child: Text(
+                "到期年限 : 2028\n\n"
+                '清潔紀錄 : 2021/10/11\n\n'
+                '維修紀錄 : 2021/09/08\n\n',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    color: Color.fromRGBO(68, 62, 102, 1),
+                    fontFamily: 'Noto Sans Javanese',
+                    fontSize: 24,
+                    letterSpacing:
+                        0 /*percentages not used in flutter. defaulting to zero*/,
+                    fontWeight: FontWeight.normal,
+                    height: 1),
+              )),
           Positioned(
               top: 138,
               left: 48,
@@ -80,7 +96,7 @@ class Iphone81Widget extends StatelessWidget {
               top: 154, //ABC123位置置中
               left: 125,
               child: Text(
-                'ABC123',
+                '7768-AU',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Color.fromRGBO(255, 255, 255, 1),
