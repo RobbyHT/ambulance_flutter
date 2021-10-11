@@ -16,57 +16,55 @@ class _CarManageScreenState extends State<CarManageScreen> {
   List<Widget> itemsData = [];
 
   void getPostsData() {
-    //獲取數據函數
-    List<dynamic> responseList = FOOD_DATA; //從這邊獲取資料
+    List<dynamic> responseList = FOOD_DATA;
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
-          height: 100, //選項高度
-          margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+          height: 110,
+          margin: const EdgeInsets.symmetric(
+              horizontal: 50, vertical: 10), //vertical: 10選項間距
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
               color: Color.fromARGB(255, 155, 164, 181),
               boxShadow: [
-                // BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
+                BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
               ]),
-          //child:new GestureDetector(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
-
               children: <Widget>[
-                Padding(padding: EdgeInsets.only(right: 10)),
                 Image.asset(
                   'assets/images/car2.png',
                   width: 50.0,
                   height: 50.0,
                   fit: BoxFit.cover,
                 ),
-                Align(alignment: Alignment.center),
-                Align(alignment: Alignment.center),
-                Align(alignment: Alignment.center),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    child: Text(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
                       post["name"],
                       style: const TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                        // fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                  ),
-                ),
-                Text(
-                  post["brand"],
-                  style: const TextStyle(fontSize: 10, color: Colors.grey),
-                ),
-                SizedBox(
-                  height: 10,
+                    Text(
+                      post["brand"],
+                      style: const TextStyle(
+                        fontSize: 23,
+                        color: Colors.white,
+                        // fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                  ],
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
