@@ -16,7 +16,7 @@ class equipmentUI extends StatelessWidget {
       debugShowCheckedModeBanner: false,//移除debug的標籤
       home:DefaultTabController(length: myTabs.length,
       child: Scaffold(appBar: AppBar(
-          backgroundColor: (Color.fromRGBO(57, 72, 103, 1)) ,
+          backgroundColor: (Color.fromRGBO(31, 60, 136,40)) ,
           centerTitle: true,
           title: Text("設備管理"),
           bottom: TabBar(tabs:myTabs,indicatorColor: Color.fromRGBO(155,164,180, 5)),

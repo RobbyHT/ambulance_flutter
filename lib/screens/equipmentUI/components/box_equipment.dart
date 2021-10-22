@@ -40,7 +40,7 @@ class BoxWidget extends StatefulWidget {
           Size size = MediaQuery.of(context).size;
         // Figma Flutter Generator Iphone11procarWidget - FRAME
         return Scaffold(
-          backgroundColor: (Color.fromRGBO(20,39,78,1))  ,
+          backgroundColor: (Color.fromRGBO(57,72,103,10))  ,
           //懸浮按鈕
           floatingActionButton: FloatingActionButton(
             backgroundColor: (Color.fromRGBO(155, 164, 180, 50)),
