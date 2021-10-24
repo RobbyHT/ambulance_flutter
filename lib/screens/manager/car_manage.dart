@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
 
 class CarManageScreen extends StatefulWidget {
@@ -35,11 +36,10 @@ class _CarManageScreenState extends State<CarManageScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  'assets/images/car2.png',
-                  width: 50.0,
-                  height: 50.0,
-                  fit: BoxFit.cover,
+                Icon(
+                  FontAwesomeIcons.ambulance,
+                  color: Colors.white,
+                  size: 35,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

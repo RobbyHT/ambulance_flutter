@@ -82,11 +82,11 @@ class Iphone81Widget extends StatelessWidget {
                     color: Color.fromRGBO(155, 164, 181, 1),
                   ))),
           Positioned(
-              top: 143,
-              left: 65,
+              top: 120,
+              left: 45,
               child: Container(
-                  width: 43,
-                  height: 41,
+                  width: 100,
+                  height: 100,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/car2.png'),
