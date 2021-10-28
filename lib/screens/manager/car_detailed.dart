@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CarDetailedScreen extends StatefulWidget {
   @override
@@ -82,16 +83,17 @@ class Iphone81Widget extends StatelessWidget {
                     color: Color.fromRGBO(155, 164, 181, 1),
                   ))),
           Positioned(
-              top: 120,
+              top: 115,
               left: 45,
               child: Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/car2.png'),
-                        fit: BoxFit.fitWidth),
-                  ))),
+                width: 100,
+                height: 100,
+                child: Icon(
+                  FontAwesomeIcons.ambulance,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              )),
           Positioned(
               top: 154, //ABC123位置置中
               left: 125,
@@ -138,6 +140,16 @@ class Iphone81Widget extends StatelessWidget {
                   child: Stack(children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.search, color: Colors.white),
+                  onPressed: () {},
+                ),
+              ]))),
+          Positioned(
+              top: 3,
+              left: 1,
+              child: Container(
+                  child: Stack(children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                   onPressed: () {},
                 ),
               ]))),
