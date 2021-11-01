@@ -62,7 +62,12 @@ class _CarManageScreenState extends State<CarManageScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CarDetailedScreen(),
+                  builder: (context) => Iphone81Widget(
+                    name: post["name"],
+                    maturity: post["maturity"],
+                    cleaners: post["cleaners"],
+                    maintain: post["maintain"],
+                  ),
                 ),
               );
             },
@@ -94,12 +99,12 @@ class _CarManageScreenState extends State<CarManageScreen> {
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height * 0; //最上正方格
     return Scaffold(
-      backgroundColor: Color.fromRGBO(57, 72, 103, 10),
+      backgroundColor: Color.fromRGBO(31, 60, 136, 40),
       appBar: AppBar(
         title: Text('車輛管理'),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color.fromRGBO(31, 60, 136, 40),
+        backgroundColor: Color.fromRGBO(57, 72, 103, 10),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.search, color: Colors.white),

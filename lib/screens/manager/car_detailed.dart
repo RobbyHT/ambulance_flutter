@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-String name;
-String strVal;
-
 class CarDetailedScreen extends StatefulWidget {
   @override
   _CarDetailedScreenState createState() => _CarDetailedScreenState();
@@ -14,12 +11,12 @@ class _CarDetailedScreenState extends State<CarDetailedScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(57, 72, 103, 10),
+      backgroundColor: Color.fromRGBO(31, 60, 136, 40),
       appBar: AppBar(
         elevation: 0,
         title: Text('車輛管理', style: TextStyle(fontSize: 20)),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(31, 60, 136, 40),
+        backgroundColor: Color.fromRGBO(57, 72, 103, 10),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios_rounded,
@@ -53,6 +50,11 @@ class _CarDetailedScreenState extends State<CarDetailedScreen> {
 }
 
 class Iphone81Widget extends StatelessWidget {
+  String name;
+  String maturity;
+  String cleaners;
+  String maintain;
+  Iphone81Widget({this.name, this.maturity, this.cleaners, this.maintain});
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator Iphone81Widget - FRAME
@@ -85,9 +87,39 @@ class Iphone81Widget extends StatelessWidget {
           top: 239,
           left: 74,
           child: Text(
-            "到期年限 : 2028\n\n"
-            '清潔紀錄 : 2021/10/11\n\n'
-            '維修紀錄 : 2021/09/08\n\n',
+            this.maturity,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+                color: Color.fromRGBO(68, 62, 102, 1),
+                fontFamily: 'Noto Sans Javanese',
+                fontSize: 24,
+                letterSpacing:
+                    0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.normal,
+                height: 1),
+          ),
+        ),
+        Positioned(
+          top: 285,
+          left: 74,
+          child: Text(
+            this.cleaners,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+                color: Color.fromRGBO(68, 62, 102, 1),
+                fontFamily: 'Noto Sans Javanese',
+                fontSize: 24,
+                letterSpacing:
+                    0 /*percentages not used in flutter. defaulting to zero*/,
+                fontWeight: FontWeight.normal,
+                height: 1),
+          ),
+        ),
+        Positioned(
+          top: 333,
+          left: 74,
+          child: Text(
+            this.maintain,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Color.fromRGBO(68, 62, 102, 1),
@@ -133,7 +165,7 @@ class Iphone81Widget extends StatelessWidget {
           top: 154, //ABC123位置置中
           left: 100,
           child: Text(
-            '7768-AU',
+            this.name,
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
