@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
+import 'car_data.dart';
+import 'car_detailed.dart';
 
 class CarManageScreen extends StatefulWidget {
   @override
@@ -17,10 +18,11 @@ class _CarManageScreenState extends State<CarManageScreen> {
   List<Widget> itemsData = [];
 
   void getPostsData() {
-    List<dynamic> responseList = FOOD_DATA;
+    List<dynamic> responseList = CAR_DATA;
     List<Widget> listItems = [];
     responseList.forEach((post) {
-      listItems.add(Container(
+      listItems.add(
+        Container(
           height: 110,
           margin: const EdgeInsets.symmetric(
               horizontal: 50, vertical: 10), //vertical: 10選項間距
@@ -30,49 +32,43 @@ class _CarManageScreenState extends State<CarManageScreen> {
               boxShadow: [
                 BoxShadow(color: Colors.black.withAlpha(100), blurRadius: 10.0),
               ]),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  FontAwesomeIcons.ambulance,
-                  color: Colors.white,
-                  size: 35,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      post["name"],
-                      style: const TextStyle(
-                        fontSize: 26,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      post["brand"],
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        // fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.white,
-                ),
-              ],
+          child: ListTile(
+            title: Text(
+              post["name"],
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
             ),
-          )));
+            subtitle: Text(
+              post["maturity"],
+              style: const TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+                height: 2.0,
+              ),
+            ),
+            leading: Icon(
+              FontAwesomeIcons.ambulance,
+              color: Colors.white,
+              size: 35,
+            ),
+            trailing: Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 30,
+              color: Colors.white,
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CarDetailedScreen(),
+                ),
+              );
+            },
+          ),
+        ),
+      );
     });
     setState(() {
       itemsData = listItems;
@@ -97,64 +93,62 @@ class _CarManageScreenState extends State<CarManageScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height * 0; //最上正方格
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 20, 39, 79),
-        appBar: AppBar(
-          title: Text('車輛管理'),
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Color.fromARGB(255, 57, 72, 103),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search, color: Colors.white),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: Container(
-          height: size.height,
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              AnimatedOpacity(
-                duration: const Duration(milliseconds: 200),
-                opacity: closeTopContainer ? 0 : 1,
-                child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    width: size.width,
-                    alignment: Alignment.topCenter,
-                    height: closeTopContainer ? 0 : categoryHeight,
-                    child: categoriesScroller),
-              ),
-              Expanded(
-                  child: ListView.builder(
-                      controller: controller,
-                      itemCount: itemsData.length,
-                      physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        double scale = 1.0;
-
-                        return Opacity(
-                          opacity: scale,
-                          child: Transform(
-                            transform: Matrix4.identity()..scale(scale, scale),
-                            alignment: Alignment.bottomCenter,
-                            child: Align(
-                                // heightFactor: 0.7, 控制堆疊
-                                // alignment: Alignment.topCenter,
-                                child: itemsData[index]),
-                          ),
-                        );
-                      })),
-            ],
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(57, 72, 103, 10),
+      appBar: AppBar(
+        title: Text('車輛管理'),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color.fromRGBO(31, 60, 136, 40),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.white),
+            onPressed: () {},
           ),
+        ],
+      ),
+      body: Container(
+        height: size.height,
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            AnimatedOpacity(
+              duration: const Duration(milliseconds: 200),
+              opacity: closeTopContainer ? 0 : 1,
+              child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  width: size.width,
+                  alignment: Alignment.topCenter,
+                  height: closeTopContainer ? 0 : categoryHeight,
+                  child: categoriesScroller),
+            ),
+            Expanded(
+                child: ListView.builder(
+                    controller: controller,
+                    itemCount: itemsData.length,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      double scale = 1.0;
+
+                      return Opacity(
+                        opacity: scale,
+                        child: Transform(
+                          transform: Matrix4.identity()..scale(scale, scale),
+                          alignment: Alignment.bottomCenter,
+                          child: Align(
+                              // heightFactor: 0.7, 控制堆疊
+                              // alignment: Alignment.topCenter,
+                              child: itemsData[index]),
+                        ),
+                      );
+                    })),
+          ],
         ),
       ),
     );
