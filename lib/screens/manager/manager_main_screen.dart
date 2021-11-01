@@ -63,6 +63,7 @@ class _ManagerMainScreenState extends State<ManagerMainScreen> {
           _buildOffstageNavigator("統計"),
           _buildOffstageNavigator("設定"),
         ]),
+        primary: true,
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           notchMargin: 10,

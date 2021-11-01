@@ -18,7 +18,7 @@ class DriverHomeScreen extends StatefulWidget {
   _DriverHomeScreenState createState() => _DriverHomeScreenState();
 }
 
-bool isOpen = true;
+bool isOpen = false;
 
 class _DriverHomeScreenState extends State<DriverHomeScreen> {
   List<Dispatch> _selectedEvents;
@@ -196,7 +196,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(50.0)),
                           onPressed: () => {
-                            isOpen = false,
+                            isOpen = true,
                             if (dispatch.state == 1)
                               {
                                 Navigator.push(

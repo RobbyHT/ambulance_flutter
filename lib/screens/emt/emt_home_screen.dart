@@ -189,7 +189,7 @@ class _EmtHomeScreenState extends State<EmtHomeScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(50.0)),
                           onPressed: () => {
-                            isOpen = false,
+                            isOpen = true,
                             Navigator.push(
                               context,
                               MaterialPageRoute(

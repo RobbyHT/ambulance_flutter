@@ -31,7 +31,7 @@ class _FormScreenState extends State<FormScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('補充資訊'),
-        backgroundColor: Color.fromRGBO(31, 60, 136, 1),
+        backgroundColor: Color.fromRGBO(31, 60, 136, 40),
       ),
       body: Container(
         child: Column(

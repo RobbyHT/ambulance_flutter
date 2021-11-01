@@ -1,4 +1,4 @@
 class Secrets {
   // Add your Google Maps API Key here
-  static const API_KEY = 'AIzaSyApaLt06f2zRmZDqQ8gwJ_J7bXMbDTD2sw';
+  static const API_KEY = 'AIzaSyDnEqEb2Df67ru5qvMmAgFMg5rW87s4qsw';
 }

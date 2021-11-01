@@ -1,5 +1,10 @@
+import 'package:ambulance_flutter/screens/clientdata/ClientData.dart';
+import 'package:ambulance_flutter/screens/emp/emp.dart';
 import 'package:ambulance_flutter/screens/manager/components/category_card.dart';
 import 'package:flutter/material.dart';
+
+import 'car/car_manage.dart';
+import 'manager_equipment_screen.dart';
 
 class ManagerControlScreen extends StatelessWidget {
   @override
@@ -53,40 +58,40 @@ class ManagerControlScreen extends StatelessWidget {
                         title: "員工管理",
                         iconSrc: Icons.group,
                         press: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return EmpPage();
-                          // }));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return EmpPage();
+                          }));
+                        },
+                      ),
+                      CategoryCard(
+                        title: "客戶管理",
+                        iconSrc: Icons.perm_contact_calendar,
+                        press: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ClientData();
+                          }));
                         },
                       ),
                       CategoryCard(
                         title: "車輛管理",
                         iconSrc: Icons.directions_bus_rounded,
                         press: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return CarPage();
-                          // }));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return CarManageScreen();
+                          }));
                         },
                       ),
                       CategoryCard(
-                        title: "庫存管理",
+                        title: "設備管理",
                         iconSrc: Icons.medical_services,
                         press: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return StockPage();
-                          // }));
-                        },
-                      ),
-                      CategoryCard(
-                        title: "公告管理",
-                        iconSrc: Icons.create,
-                        press: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) {
-                          //   return AnnoPage();
-                          // }));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ManagerEquipmentScreen();
+                          }));
                         },
                       ),
                     ],

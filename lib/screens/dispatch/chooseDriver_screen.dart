@@ -22,7 +22,7 @@ class ChooseDriveScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('選擇司機'),
-        backgroundColor: Color.fromRGBO(31, 60, 136, 1),
+        backgroundColor: Color.fromRGBO(31, 60, 136, 40),
       ),
       body: FlutterEasyLoading(
         child: FutureBuilder<List<User>>(

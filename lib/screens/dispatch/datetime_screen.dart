@@ -81,7 +81,7 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
       appBar: AppBar(
           centerTitle: true,
           title: Text('派車登錄'),
-          backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
+          backgroundColor: Color.fromRGBO(31, 60, 136, 40)),
       body: Container(
         width: _width,
         height: _height,

@@ -35,7 +35,7 @@ class _EmtFormScreenState extends State<EmtFormScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('耗材填寫'),
-        backgroundColor: Color.fromRGBO(31, 60, 136, 1),
+        backgroundColor: Color.fromARGB(180, 255, 127, 36),
       ),
       body: Container(
         child: Column(
