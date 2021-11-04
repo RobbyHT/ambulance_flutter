@@ -19,14 +19,14 @@ void main() async {
   runApp(
     MaterialApp(
       initialRoute: '/car_manage',
-      routes: {
+      /* routes: {
         '/login': (context) => LoginScreen(),
         '/manager_home': (context) => ManagerMainScreen(),
         '/driver_home': (context) => DriverMainScreen(),
         '/datetime': (context) => DatetimeScreen(),
         '/car_manage': (context) => CarManageScreen(),
         '/car_detailed': (context) => CarDetailedScreen(),
-      },
+      },*/
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -37,7 +37,7 @@ void main() async {
         const Locale('en', 'US'),
       ],
       locale: Locale('zh'),
-      //home: ManagerMainScreen(),
+      home: CarManageScreen(),
     ),
   );
 }
