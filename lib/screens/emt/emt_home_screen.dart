@@ -230,7 +230,7 @@ class _EmtHomeScreenState extends State<EmtHomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '救護員',
+          '醫護人員',
           style: TextStyle(fontSize: 24, color: Colors.white),
         ),
         actions: [

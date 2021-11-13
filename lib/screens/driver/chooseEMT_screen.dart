@@ -30,7 +30,8 @@ class _ChooseEMTScreenState extends State<ChooseEMTScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('選擇救護員'),
+        title: Text('選擇醫護人員'),
+        backgroundColor: Color.fromARGB(180, 255, 127, 36),
       ),
       body: Column(
         children: [
@@ -76,6 +77,8 @@ class _ChooseEMTScreenState extends State<ChooseEMTScreen> {
                               children: [
                                 CircleAvatar(
                                   radius: 35.0,
+                                  backgroundColor:
+                                      Color.fromARGB(180, 255, 127, 36),
                                 ),
                                 SizedBox(
                                   width: 20.0,
@@ -99,7 +102,7 @@ class _ChooseEMTScreenState extends State<ChooseEMTScreen> {
           ),
           Btn(
             text: '送出',
-            color: Colors.blue[500],
+            color: Color.fromARGB(180, 255, 127, 36),
             onPress: () {
               dispatchEMT.dispatchId = widget.dispatch.id;
               dispatchEMT.userId = addId;

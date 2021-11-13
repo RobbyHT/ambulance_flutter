@@ -28,7 +28,7 @@ class EmpReturn extends StatelessWidget {
         backgroundColor: Color.fromRGBO(57, 72, 103, 10),
         appBar: AppBar(
           elevation: 0,
-          title: Text('人員資料', style: TextStyle(fontSize: 20)),
+          title: Text('員工資料', style: TextStyle(fontSize: 20)),
           centerTitle: true,
           backgroundColor: Color.fromRGBO(31, 60, 136, 40),
         ),

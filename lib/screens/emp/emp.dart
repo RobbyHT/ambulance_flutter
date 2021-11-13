@@ -124,7 +124,7 @@ class _empPageState extends State<EmpPage> {
       backgroundColor: Color.fromRGBO(57, 72, 103, 10),
       appBar: AppBar(
         elevation: 0,
-        title: Text('人員管理', style: TextStyle(fontSize: 20)),
+        title: Text('員工管理', style: TextStyle(fontSize: 20)),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(31, 60, 136, 40),
         actions: <Widget>[
