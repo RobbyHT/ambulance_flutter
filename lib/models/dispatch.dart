@@ -26,6 +26,9 @@ class Dispatch {
     this.driverId,
     this.state,
     this.userId,
+    this.distance,
+    this.duration,
+    this.totalPay,
     this.createdAt,
     this.updatedAt,
   });
@@ -48,6 +51,9 @@ class Dispatch {
   int driverId;
   int state;
   int userId;
+  double distance;
+  int duration;
+  int totalPay;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -75,6 +81,9 @@ class Dispatch {
         remark: json["remark"],
         userId: json["user_id"],
         state: json["state"],
+        distance: json["distance"],
+        duration: json["duration"],
+        totalPay: json["totalPay"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -97,5 +106,8 @@ class Dispatch {
         "driver_id": driverId,
         "state": state,
         "user_id": userId,
+        "distance": distance,
+        "duration": duration,
+        "totalPay": totalPay,
       };
 }

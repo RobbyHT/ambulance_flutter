@@ -649,6 +649,11 @@ class _MapViewState extends State<MapView> {
                                             _destinationPosition.latitude;
                                         widget.dispatch.endLng =
                                             _destinationPosition.longitude;
+                                        widget.dispatch.distance = double.parse(
+                                            _distance.split(" ").first);
+                                        widget.dispatch.duration = int.parse(
+                                            _duration.split(" ").first);
+                                        widget.dispatch.totalPay = _totalPay;
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
