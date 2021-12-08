@@ -1,13 +1,9 @@
-import 'package:ambulance_flutter/api/user_services.dart';
-import 'package:ambulance_flutter/bloc/theme/theme_bloc.dart';
 import 'package:ambulance_flutter/home.dart';
 import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:ambulance_flutter/screens/manager/manager_equipment_screen.dart';
-import 'package:ambulance_flutter/screens/users_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'bloc/users/users_bloc.dart';
+import 'screens/analysis.dart';
 import 'screens/clientdata/ClientData.dart';
 import 'screens/dispatch/map2_screen.dart';
 import 'screens/driver/driver_main_screen.dart';
@@ -35,6 +31,7 @@ void main() async {
         '/equipmentUI': (context) => ManagerEquipmentScreen(),
         '/ClientData': (context) => ClientData(),
         '/EmpPage': (context) => EmpPage(),
+        '/Analysis': (context) => Analysis(),
       },
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
@@ -49,55 +46,4 @@ void main() async {
       //home: ManagerMainScreen(),
     ),
   );
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomeScreen(title: 'Home Page'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class User extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
-      child: BlocBuilder<ThemeBloc, ThemeState>(
-        builder: (BuildContext context, ThemeState state) {
-          return MaterialApp(
-            title: 'Flutter Bloc Demo',
-            debugShowCheckedModeBanner: false,
-            theme: state.themeData,
-            home: BlocProvider(
-              create: (context) => UsersBloc(usersRepo: UserServices()),
-              child: UsersScreen(),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class LoginApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Login',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginScreen(),
-    );
-  }
 }

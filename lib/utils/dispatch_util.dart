@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:ambulance_flutter/api/dispatch_services.dart';
+import 'package:ambulance_flutter/models/count_data.dart';
 import 'package:ambulance_flutter/models/models.dart';
 import 'package:ambulance_flutter/screens/auth.dart';
 
@@ -44,4 +45,10 @@ Future<Map<DateTime, List<Dispatch>>> getTask(type) async {
 Future<List<Dispatch>> checkTask() async {
   List<Dispatch> dispatch = await DispatchServices().checkDispatchTask();
   return dispatch;
+}
+
+Future<List<CountData>> getDispatchCount() async {
+  List<CountData> countData =
+      await DispatchServices().dispatchCount(Auth.user.cId.toString());
+  return countData;
 }

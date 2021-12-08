@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:ambulance_flutter/models/count_data.dart';
 import 'package:ambulance_flutter/models/dispatch_emt.dart';
 import 'package:ambulance_flutter/models/models.dart';
+import 'package:ambulance_flutter/screens/auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -107,5 +109,18 @@ class DispatchServices implements DispatchRepo {
     Response response = await http.post(uri,
         headers: headersMap, body: jsonEncode({"arr": arr, "dispatchId": id}));
     return response;
+  }
+
+  Future<List<CountData>> dispatchCount(cId) async {
+    Uri uri = new Uri.http(_baseUrl, '/api/dispatchCount');
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+
+    Response response = await http.post(uri,
+        headers: headersMap,
+        body: jsonEncode(
+            {"start_date": "", "end_date": "", "item": "user", "c_id": cId}));
+    List<CountData> countDatas = countDataFromJson(response.body);
+    return countDatas;
   }
 }

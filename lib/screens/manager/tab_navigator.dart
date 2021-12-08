@@ -1,5 +1,6 @@
 import 'package:ambulance_flutter/screens/dispatch/datetime_screen.dart';
 import 'package:flutter/material.dart';
+import '../analysis.dart';
 import 'manager_control_screen.dart';
 import 'manager_home_screen.dart';
 
@@ -17,6 +18,8 @@ class TabNavigator extends StatelessWidget {
       child = DatetimeScreen();
     else if (tabItem == "管理")
       child = ManagerControlScreen();
+    else if (tabItem == "統計")
+      child = Analysis();
     else
       child = ManagerHomeScreen();
 
