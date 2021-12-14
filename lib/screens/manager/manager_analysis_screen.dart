@@ -3,14 +3,12 @@ import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'login/login_screen.dart';
-
-class Analysis extends StatefulWidget {
+class ManagerAnalysisScreen extends StatefulWidget {
   @override
-  _AnalysisState createState() => _AnalysisState();
+  _ManagerAnalysisScreenState createState() => _ManagerAnalysisScreenState();
 }
 
-class _AnalysisState extends State<Analysis> {
+class _ManagerAnalysisScreenState extends State<ManagerAnalysisScreen> {
   List<CountData> _chartData;
   TooltipBehavior _tooltipBehavior;
 
@@ -28,9 +26,7 @@ class _AnalysisState extends State<Analysis> {
           centerTitle: true,
           title: Text(
             '車趟統計',
-            style: TextStyle(fontSize: 24, color: Colors.white),
           ),
-          toolbarHeight: 60.0,
           backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
       body: SafeArea(
         child: Scaffold(

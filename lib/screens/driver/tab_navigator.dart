@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'driver_analysis_screen.dart';
 import 'driver_home_screen.dart';
 
 class TabNavigator extends StatelessWidget {
@@ -12,7 +13,7 @@ class TabNavigator extends StatelessWidget {
     if (tabItem == "主頁")
       child = DriverHomeScreen();
     else if (tabItem == "統計")
-      child = DriverHomeScreen();
+      child = DriverAnalysisScreen();
     else if (tabItem == "設定")
       child = DriverHomeScreen();
     else

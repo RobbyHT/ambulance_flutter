@@ -25,7 +25,8 @@ class DBHelper {
   }
 
   Future _createDB(Database db, int version) async {
-    await db.execute('''
+    await db.execute(
+        '''
       CREATE TABLE userList(
             id INTEGER PRIMARY KEY, 
             account TEXT, 
@@ -35,7 +36,9 @@ class DBHelper {
             perid TEXT, 
             license_VP TEXT, 
             c_id INTEGER, 
-            permission TEXT, 
+            permission TEXT,
+            email TEXT,
+            telphone TEXT,
             login_attempt INTEGER, 
             deleted_at TEXT, 
             created_at TEXT, 

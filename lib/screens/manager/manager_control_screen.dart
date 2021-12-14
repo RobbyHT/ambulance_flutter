@@ -22,23 +22,23 @@ class ManagerControlScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 //右上方選項按鈕----------------------
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 52,
-                    width: 52,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(7, 13, 89, 1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                        icon: Icon(Icons.reorder),
-                        iconSize: 30.0,
-                        color: Colors.white,
-                        onPressed: () {}),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.topRight,
+                //   child: Container(
+                //     alignment: Alignment.center,
+                //     height: 52,
+                //     width: 52,
+                //     decoration: BoxDecoration(
+                //       color: Color.fromRGBO(7, 13, 89, 1),
+                //       shape: BoxShape.circle,
+                //     ),
+                //     child: IconButton(
+                //         icon: Icon(Icons.reorder),
+                //         iconSize: 30.0,
+                //         color: Colors.white,
+                //         onPressed: () {}),
+                //   ),
+                // ),
                 //title-------------------------------
                 Text("管理者介面",
                     style: Theme.of(context).textTheme.display1.copyWith(

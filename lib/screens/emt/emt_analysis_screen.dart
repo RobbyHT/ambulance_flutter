@@ -3,14 +3,12 @@ import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import 'login/login_screen.dart';
-
-class Analysis extends StatefulWidget {
+class EmtAnalysisScreen extends StatefulWidget {
   @override
-  _AnalysisState createState() => _AnalysisState();
+  _EmtAnalysisScreenState createState() => _EmtAnalysisScreenState();
 }
 
-class _AnalysisState extends State<Analysis> {
+class _EmtAnalysisScreenState extends State<EmtAnalysisScreen> {
   List<CountData> _chartData;
   TooltipBehavior _tooltipBehavior;
 
@@ -25,13 +23,14 @@ class _AnalysisState extends State<Analysis> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            '車趟統計',
-            style: TextStyle(fontSize: 24, color: Colors.white),
-          ),
-          toolbarHeight: 60.0,
-          backgroundColor: Color.fromRGBO(31, 60, 136, 1)),
+        centerTitle: true,
+        title: Text(
+          '車趟統計',
+          style: TextStyle(fontSize: 24, color: Colors.white),
+        ),
+        toolbarHeight: 60.0,
+        backgroundColor: Color.fromARGB(180, 255, 127, 36),
+      ),
       body: SafeArea(
         child: Scaffold(
           body: SfCircularChart(
@@ -64,9 +63,10 @@ class _AnalysisState extends State<Analysis> {
 
   void getChartData() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      getDispatchCount().then((val) => setState(() {
+      getSimgleDispatchCount().then((val) => setState(() {
             _chartData = val;
           }));
     });
+    print(_chartData);
   }
 }

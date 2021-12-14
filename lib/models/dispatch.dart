@@ -51,7 +51,7 @@ class Dispatch {
   int driverId;
   int state;
   int userId;
-  double distance;
+  String distance;
   int duration;
   int totalPay;
   DateTime createdAt;

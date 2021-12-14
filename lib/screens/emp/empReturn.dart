@@ -1,26 +1,13 @@
+import 'package:ambulance_flutter/models/user.dart';
 import 'package:flutter/material.dart';
 
 class EmpReturn extends StatelessWidget {
-  dynamic name = 0;
-  dynamic id = 0;
-  dynamic position = 0;
-  dynamic birth = 0;
-  dynamic exptime = 0;
-  dynamic gender = 0;
-  dynamic license = 0;
-  dynamic gkey = 0;
+  User user;
 
-  EmpReturn(
-      {key,
-      this.name = 0,
-      this.id = 0,
-      this.position = 0,
-      this.birth = 0,
-      this.exptime = 0,
-      this.gender = 0,
-      this.license = 0,
-      this.gkey = 0})
-      : super(key: key);
+  EmpReturn({
+    key,
+    this.user,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,7 +33,7 @@ class EmpReturn extends StatelessWidget {
                   child: Container(
                       //大方塊長寬
                       width: 323,
-                      height: 176,
+                      height: 250,
                       child: Stack(children: <Widget>[
                         Positioned(
                             top: 19,
@@ -54,7 +41,7 @@ class EmpReturn extends StatelessWidget {
                             child: Container(
                                 //白框
                                 width: 323,
-                                height: 157,
+                                height: 190,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(22),
@@ -70,7 +57,7 @@ class EmpReturn extends StatelessWidget {
                             child: Container(
                                 //內框
                                 width: 312,
-                                height: 149,
+                                height: 180,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(17),
@@ -101,14 +88,14 @@ class EmpReturn extends StatelessWidget {
                   top: 112,
                   left: 63,
                   child: Container(
-                      width: 260,
-                      height: 155,
+                      width: 280,
+                      height: 190,
                       child: Stack(children: <Widget>[
                         Positioned(
-                            top: 0,
-                            left: 6,
+                            top: 2,
+                            left: 18,
                             child: Text(
-                              '$name',
+                              user.name,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
@@ -116,260 +103,219 @@ class EmpReturn extends StatelessWidget {
                                   fontSize: 20,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.bold,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 35,
-                            left: 0,
+                            top: 25,
+                            left: 210,
                             child: Text(
-                              '$position',
+                              user.permission,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
+                                  letterSpacing:
+                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1),
+                            )),
+                        // Positioned(
+                        //     top: 35,
+                        //     left: 60,
+                        //     child: Text(
+                        //       user.gender,
+                        //       textAlign: TextAlign.left,
+                        //       style: TextStyle(
+                        //           color: Color.fromRGBO(20, 39, 79, 1),
+                        //           fontFamily: 'Roboto',
+                        //           fontSize: 17,
+                        //           letterSpacing:
+                        //               0 /*percentages not used in flutter. defaulting to zero*/,
+                        //           fontWeight: FontWeight.normal,
+                        //           height: 1),
+                        //     )),
+                        Positioned(
+                            top: 40,
+                            left: 52,
+                            child: Text(
+                              '性別',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(20, 39, 79, 1),
+                                  fontFamily: 'Roboto',
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 35,
-                            left: 60,
+                            top: 40,
+                            left: 100,
                             child: Text(
-                              '$gender',
+                              user.gender,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 36,
-                            left: 93,
+                            top: 70,
+                            left: 52,
                             child: Text(
                               '生日',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 36,
-                            left: 173,
+                            top: 70,
+                            left: 100,
                             child: Text(
-                              '$birth',
+                              user.birther,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 87,
-                            left: 93,
-                            child: Text(
-                              '證照',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(20, 39, 79, 1),
-                                  fontFamily: 'Roboto',
-                                  fontSize: 12,
-                                  letterSpacing:
-                                      0 /*percentages not used in flutter. defaulting to zero*/,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1),
-                            )),
-                        Positioned(
-                            top: 87,
-                            left: 173,
-                            child: Text(
-                              '$license',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(20, 39, 79, 1),
-                                  fontFamily: 'Roboto',
-                                  fontSize: 12,
-                                  letterSpacing:
-                                      0 /*percentages not used in flutter. defaulting to zero*/,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1),
-                            )),
-                        Positioned(
-                            top: 138,
-                            left: 93,
-                            child: Text(
-                              '公司金鑰',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(20, 39, 79, 1),
-                                  fontFamily: 'Roboto',
-                                  fontSize: 12,
-                                  letterSpacing:
-                                      0 /*percentages not used in flutter. defaulting to zero*/,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1),
-                            )),
-                        Positioned(
-                            top: 138,
-                            left: 173,
-                            child: Text(
-                              '$gkey',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(20, 39, 79, 1),
-                                  fontFamily: 'Roboto',
-                                  fontSize: 12,
-                                  letterSpacing:
-                                      0 /*percentages not used in flutter. defaulting to zero*/,
-                                  fontWeight: FontWeight.normal,
-                                  height: 1),
-                            )),
-                        Positioned(
-                            top: 61,
-                            left: 93,
+                            top: 100,
+                            left: 0,
                             child: Text(
                               '身分證字號',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 61,
-                            left: 173,
+                            top: 100,
+                            left: 100,
                             child: Text(
-                              '$id',
+                              user.perid,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
+                        // Positioned(
+                        //     top: 87,
+                        //     left: 93,
+                        //     child: Text(
+                        //       '信箱',
+                        //       textAlign: TextAlign.left,
+                        //       style: TextStyle(
+                        //           color: Color.fromRGBO(20, 39, 79, 1),
+                        //           fontFamily: 'Roboto',
+                        //           fontSize: 17,
+                        //           letterSpacing:
+                        //               0 /*percentages not used in flutter. defaulting to zero*/,
+                        //           fontWeight: FontWeight.normal,
+                        //           height: 1),
+                        //     )),
+                        // Positioned(
+                        //     top: 87,
+                        //     left: 173,
+                        //     child: Text(
+                        //       user.email,
+                        //       textAlign: TextAlign.left,
+                        //       style: TextStyle(
+                        //           color: Color.fromRGBO(20, 39, 79, 1),
+                        //           fontFamily: 'Roboto',
+                        //           fontSize: 17,
+                        //           letterSpacing:
+                        //               0 /*percentages not used in flutter. defaulting to zero*/,
+                        //           fontWeight: FontWeight.normal,
+                        //           height: 1),
+                        //     )),
                         Positioned(
-                            top: 112,
-                            left: 93,
+                            top: 130,
+                            left: 52,
                             child: Text(
-                              '證照到期日',
+                              '電話',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
                         Positioned(
-                            top: 112,
-                            left: 173,
+                            top: 130,
+                            left: 100,
                             child: Text(
-                              '$exptime',
+                              user.telphone,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color.fromRGBO(20, 39, 79, 1),
                                   fontFamily: 'Roboto',
-                                  fontSize: 12,
+                                  fontSize: 17,
                                   letterSpacing:
                                       0 /*percentages not used in flutter. defaulting to zero*/,
                                   fontWeight: FontWeight.normal,
                                   height: 1),
                             )),
-                      ]))),
-              Positioned(
-                  //下方確認列
-                  top: 323,
-                  left: 123,
-                  child: Container(
-                      width: 133,
-                      height: 42,
-                      child: Stack(children: <Widget>[
                         Positioned(
-                            top: 0,
-                            left: 0,
-                            child: Container(
-                                width: 43,
-                                height: 41,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.elliptical(43, 41)),
-                                ))),
+                            top: 160,
+                            left: 19,
+                            child: Text(
+                              '建立日期',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(20, 39, 79, 1),
+                                  fontFamily: 'Roboto',
+                                  fontSize: 17,
+                                  letterSpacing:
+                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.normal,
+                                  height: 1),
+                            )),
                         Positioned(
-                            top: 1,
-                            left: 90,
-                            child: Container(
-                                width: 43,
-                                height: 41,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.elliptical(43, 41)),
-                                ))),
-                        Positioned(
-                            top: 8,
-                            left: 98,
-                            child: Container(
-                                width: 24,
-                                height: 24,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                ),
-                                child: Stack(children: <Widget>[
-                                  Positioned(
-                                    //確認
-                                    bottom: -13,
-                                    right: -15,
-                                    child: IconButton(
-                                      icon: Icon(Icons.check,
-                                          color: Colors.black),
-                                      onPressed: () {},
-                                    ),
-                                  ),
-                                ]))),
-                        Positioned(
-                            top: 6,
-                            left: 4,
-                            child: Container(
-                                width: 24,
-                                height: 24,
-                                decoration: BoxDecoration(),
-                                child: Stack(children: <Widget>[
-                                  Positioned(
-                                    //返回
-                                    bottom: -15,
-                                    right: -17,
-                                    child: IconButton(
-                                      icon: Icon(Icons.close,
-                                          color: Colors.black),
-                                      onPressed: () {},
-                                    ),
-                                  ),
-                                ]))),
+                            top: 160,
+                            left: 100,
+                            child: Text(
+                              user.createdAt,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(20, 39, 79, 1),
+                                  fontFamily: 'Roboto',
+                                  fontSize: 17,
+                                  letterSpacing:
+                                      0 /*percentages not used in flutter. defaulting to zero*/,
+                                  fontWeight: FontWeight.normal,
+                                  height: 1),
+                            )),
                       ]))),
             ])),
       ),

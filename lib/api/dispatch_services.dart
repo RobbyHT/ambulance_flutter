@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:ambulance_flutter/models/count_data.dart';
 import 'package:ambulance_flutter/models/dispatch_emt.dart';
 import 'package:ambulance_flutter/models/models.dart';
+import 'package:ambulance_flutter/models/news_data.dart';
 import 'package:ambulance_flutter/screens/auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
@@ -91,6 +92,13 @@ class DispatchServices implements DispatchRepo {
     return response;
   }
 
+  Future<Response> delDispatch(id) async {
+    Uri uri = new Uri.http(_baseUrl, _DISPATCHS + "/" + id.toString());
+    Response response = await http.delete(uri);
+
+    return response;
+  }
+
   Future<Response> insDispatchEMT(DispatchEMT dispatchEMT) async {
     Uri uri = new Uri.http(_baseUrl, '/api/dispatchEMT');
     Map<String, String> headersMap = new Map();
@@ -122,5 +130,31 @@ class DispatchServices implements DispatchRepo {
             {"start_date": "", "end_date": "", "item": "user", "c_id": cId}));
     List<CountData> countDatas = countDataFromJson(response.body);
     return countDatas;
+  }
+
+  Future<List<CountData>> simgleDispatchCount(id) async {
+    Uri uri = new Uri.http(_baseUrl, '/api/simgleDispatchCount');
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+
+    Response response = await http.post(uri,
+        headers: headersMap,
+        body: jsonEncode({
+          "start_date": "",
+          "end_date": "",
+          "item": "month",
+          "user_id": id
+        }));
+    List<CountData> countDatas = countDataFromJson(response.body);
+    return countDatas;
+  }
+
+  Future<List<NewsData>> newsData() async {
+    Uri uri = new Uri.http(_baseUrl, '/api/news');
+    Map<String, String> headersMap = new Map();
+    headersMap["content-type"] = ContentType.json.toString();
+    Response response = await http.get(uri, headers: headersMap);
+    List<NewsData> news = newsDataFromJson(response.body);
+    return news;
   }
 }

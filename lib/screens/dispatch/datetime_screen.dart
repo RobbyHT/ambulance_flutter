@@ -78,11 +78,13 @@ class _DatetimeScreenState extends State<DatetimeScreen> {
     _width = MediaQuery.of(context).size.width;
     dateTime = DateFormat.yMd().format(DateTime.now());
     return Scaffold(
+      backgroundColor: Color.fromRGBO(57, 72, 103, 10),
       appBar: AppBar(
           centerTitle: true,
           title: Text('派車登錄'),
           backgroundColor: Color.fromRGBO(31, 60, 136, 40)),
       body: Container(
+        decoration: new BoxDecoration(color: Colors.white),
         width: _width,
         height: _height,
         child: Column(

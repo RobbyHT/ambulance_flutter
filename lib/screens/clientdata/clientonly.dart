@@ -1,12 +1,13 @@
+import 'package:ambulance_flutter/models/customer.dart';
 import 'package:ambulance_flutter/screens/clientdata/ClientData.dart';
 import 'package:ambulance_flutter/screens/clientdata/client_data.dart';
 import 'package:flutter/material.dart';
 
 class ClientOnlyScreen extends StatelessWidget {
-  final Clientdata client;
+  final Customer customer;
   final myController = TextEditingController();
 
-  ClientOnlyScreen(this.client);
+  ClientOnlyScreen(this.customer);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class ClientOnlyScreen extends StatelessWidget {
                   height: 35,
                   width: 110,
                   child: Text(
-                    client.name,
+                    customer.name ?? "無",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 21,
@@ -67,7 +68,7 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 130,
-                left: 80,
+                left: 50,
                 child: Text(
                   '電話',
                   style: TextStyle(
@@ -78,9 +79,9 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 130,
-                left: 150,
+                left: 120,
                 child: Text(
-                  client.phone,
+                  customer.telphone ?? "無",
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -91,7 +92,7 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 100,
-                left: 80,
+                left: 50,
                 child: Text(
                   '地址',
                   style: TextStyle(
@@ -102,9 +103,9 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 100,
-                left: 150,
+                left: 120,
                 child: Text(
-                  client.address,
+                  customer.address ?? "無",
                   maxLines: 2,
                   style: TextStyle(
                       fontSize: 16,
@@ -116,9 +117,9 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 70,
-                left: 80,
+                left: 50,
                 child: Text(
-                  '優惠價',
+                  '優惠',
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -127,9 +128,9 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 70,
-                left: 150,
+                left: 120,
                 child: Text(
-                  client.discount,
+                  customer.preferential ?? "無",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -140,7 +141,7 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 40,
-                left: 80,
+                left: 50,
                 child: Text(
                   '備註',
                   style: TextStyle(
@@ -151,42 +152,15 @@ class ClientOnlyScreen extends StatelessWidget {
               ),
               Positioned(
                 bottom: 40,
-                left: 150,
+                left: 120,
                 child: Text(
-                  client.other,
+                  customer.remark ?? "無",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79),
                       decoration: TextDecoration.underline,
                       decorationColor: Color.fromARGB(230, 20, 39, 79)),
-                ),
-              ),
-              Positioned(
-                top: 220,
-                left: 80,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.cancel_rounded,
-                    color: Colors.white,
-                    size: 60,
-                  ),
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ClientData()));
-                  },
-                ),
-              ),
-              Positioned(
-                top: 220,
-                left: 180,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.check_circle_rounded,
-                    color: Colors.white,
-                    size: 60,
-                  ),
-                  onPressed: () {},
                 ),
               ),
             ],

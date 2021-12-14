@@ -4,6 +4,7 @@
 import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/models/count_data.dart';
 import 'package:ambulance_flutter/models/models.dart';
+import 'package:ambulance_flutter/models/news_data.dart';
 import 'package:ambulance_flutter/screens/auth.dart';
 
 Future<Map<DateTime, List<Dispatch>>> getTask(type) async {
@@ -50,5 +51,16 @@ Future<List<Dispatch>> checkTask() async {
 Future<List<CountData>> getDispatchCount() async {
   List<CountData> countData =
       await DispatchServices().dispatchCount(Auth.user.cId.toString());
+  return countData;
+}
+
+Future<List<CountData>> getSimgleDispatchCount() async {
+  List<CountData> countData =
+      await DispatchServices().simgleDispatchCount(Auth.user.id.toString());
+  return countData;
+}
+
+Future<List<NewsData>> getNewsData() async {
+  List<NewsData> countData = await DispatchServices().newsData();
   return countData;
 }

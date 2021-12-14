@@ -4,9 +4,11 @@ import 'package:ambulance_flutter/api/dispatch_services.dart';
 import 'package:ambulance_flutter/components/state_text.dart';
 import 'package:ambulance_flutter/db/user_lite.dart';
 import 'package:ambulance_flutter/models/dispatch.dart';
+import 'package:ambulance_flutter/models/news_data.dart';
 import 'package:ambulance_flutter/screens/login/login_screen.dart';
 import 'package:ambulance_flutter/utils/dispatch_util.dart';
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'chooseEMT_screen.dart';
@@ -28,6 +30,8 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
   //AnimationController _animationController;
   Timer timer;
   int s = 0;
+  List<NewsData> _newsData;
+  String newsText = "最新消息---";
 
   @override
   void initState() {
@@ -39,6 +43,13 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getTask('driver').then((val) => setState(() {
             _events = val;
+          }));
+      getNewsData().then((val) => setState(() {
+            newsText = "";
+            val.forEach((element) {
+              newsText +=
+                  element.created_at + '【' + element.title + '】' + '     ';
+            });
           }));
       //print( ' ${_events.toString()} ');
     });
@@ -72,6 +83,12 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
   }
 
   Widget _buildEventsMarker(DateTime date, List<Dispatch> events) {
+    if (date.year == _calendarController.focusedDay.year &&
+        date.month == _calendarController.focusedDay.month &&
+        date.day == _calendarController.focusedDay.day) {
+      _selectedEvents = events;
+    }
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       decoration: BoxDecoration(
@@ -139,7 +156,7 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
                                       text: "取消",
                                       color: Colors.grey,
                                     ),
-                  onTap: () => event.state != 3 ? _showMyDialog(event) : null,
+                  onTap: () => event.state < 3 ? _showMyDialog(event) : null,
                 ),
               ))
           .toList(),
@@ -286,6 +303,20 @@ class _DriverHomeScreenState extends State<DriverHomeScreen> {
       ),
       body: Stack(
         children: <Widget>[
+          Marquee(
+            text: newsText,
+            style: TextStyle(fontWeight: FontWeight.bold),
+            scrollAxis: Axis.horizontal,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            blankSpace: 20.0,
+            velocity: 20.0,
+            pauseAfterRound: Duration(seconds: 1),
+            startPadding: 10.0,
+            accelerationDuration: Duration(seconds: 1),
+            accelerationCurve: Curves.linear,
+            decelerationDuration: Duration(milliseconds: 500),
+            decelerationCurve: Curves.easeOut,
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),

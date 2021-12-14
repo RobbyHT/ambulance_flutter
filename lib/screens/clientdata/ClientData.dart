@@ -1,4 +1,6 @@
+import 'package:ambulance_flutter/models/customer.dart';
 import 'package:ambulance_flutter/screens/clientdata/clientonly.dart';
+import 'package:ambulance_flutter/utils/user_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -10,6 +12,18 @@ class ClientData extends StatefulWidget {
 }
 
 class ClientState extends State<ClientData> {
+  List<Customer> responseList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getCustomerList().then((val) => setState(() {
+            responseList = val;
+          }));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,23 +43,23 @@ class ClientState extends State<ClientData> {
             Navigator.pop(context);
           },
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.search_rounded,
-              color: Colors.white,
-              size: 35.0,
-            ),
-            onPressed: () {
-              //
-            },
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     icon: Icon(
+        //       Icons.search_rounded,
+        //       color: Colors.white,
+        //       size: 35.0,
+        //     ),
+        //     onPressed: () {
+        //       //
+        //     },
+        //   ),
+        // ],
       ),
       body: ListView.builder(
-        itemCount: CLIENT_DATA.length,
+        itemCount: responseList.length,
         itemBuilder: (context, index) {
-          Clientdata client = CLIENT_DATA[index];
+          Customer customer = responseList[index];
           return Container(
             height: 90,
             width: double.infinity,
@@ -57,14 +71,14 @@ class ClientState extends State<ClientData> {
             ),
             child: ListTile(
               title: Text(
-                client.name,
+                customer.name,
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                 ),
               ),
               subtitle: Text(
-                '電話  ' + client.phone,
+                '電話  ' + customer.telphone,
                 style: const TextStyle(
                   fontSize: 15,
                   color: Colors.white,
@@ -85,7 +99,7 @@ class ClientState extends State<ClientData> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ClientOnlyScreen(client)));
+                        builder: (context) => ClientOnlyScreen(customer)));
               },
             ),
           );

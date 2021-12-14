@@ -21,6 +21,8 @@ class User {
     this.licenseVp,
     this.cId,
     this.permission,
+    this.email,
+    this.telphone,
     this.loginAttempt,
     this.deletedAt,
     this.createdAt,
@@ -36,6 +38,8 @@ class User {
   String licenseVp;
   int cId;
   String permission;
+  String email;
+  String telphone;
   int loginAttempt;
   String deletedAt;
   String createdAt;
@@ -51,6 +55,8 @@ class User {
         licenseVp: json["license_VP"],
         cId: json["c_id"],
         permission: json["permission"],
+        email: json["email"],
+        telphone: json["telphone"],
         loginAttempt: json["login_attempt"],
         deletedAt: json["deleted_at"],
         createdAt: json["created_at"],
@@ -67,6 +73,8 @@ class User {
         "license_VP": licenseVp,
         "c_id": cId,
         "permission": permission,
+        "email": email,
+        "telphone": telphone,
         "login_attempt": loginAttempt,
         "deleted_at": deletedAt,
         "created_at": createdAt,

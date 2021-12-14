@@ -1,3 +1,5 @@
+import 'package:ambulance_flutter/models/models.dart';
+import 'package:ambulance_flutter/utils/user_util.dart';
 import 'package:flutter/material.dart';
 import 'empData.dart';
 import 'empReturn.dart';
@@ -13,9 +15,9 @@ class _empPageState extends State<EmpPage> {
   double topContainer = 0;
 
   List<Widget> itemsData = [];
+  List<User> responseList = [];
 
   void getPostsData() {
-    List<dynamic> responseList = USER_DATA;
     List<Widget> listItems = [];
     responseList.forEach((post) {
       listItems.add(Container(
@@ -42,7 +44,7 @@ class _empPageState extends State<EmpPage> {
                       iconSize: 55,
                     ),
                     Text(
-                      post["position"],
+                      post.permission,
                       style: const TextStyle(fontSize: 17, color: Colors.white),
                     ),
                   ],
@@ -54,7 +56,7 @@ class _empPageState extends State<EmpPage> {
                       height: 15,
                     ),
                     Text(
-                      post["name"],
+                      post.name,
                       style: const TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -64,7 +66,7 @@ class _empPageState extends State<EmpPage> {
                       height: 12,
                     ),
                     Text(
-                      "公司金鑰:${post["gkey"]}",
+                      "電話：${post.telphone}",
                       style: const TextStyle(fontSize: 15, color: Colors.white),
                     ),
                     // SizedBox(
@@ -82,15 +84,7 @@ class _empPageState extends State<EmpPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EmpReturn(
-                                name: post["name"],
-                                id: post["id"],
-                                position: post["position"],
-                                birth: post["birth"],
-                                exptime: post["exptime"],
-                                gender: post["gender"],
-                                license: post["license"],
-                                gkey: post["gkey"])));
+                            builder: (context) => EmpReturn(user: post)));
                   },
                 )
               ],
@@ -106,6 +100,12 @@ class _empPageState extends State<EmpPage> {
   void initState() {
     super.initState();
     getPostsData();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getUserList().then((val) => setState(() {
+            responseList = val;
+          }));
+    });
+
     controller.addListener(() {
       double value = controller.offset / 119;
 
@@ -141,7 +141,7 @@ class _empPageState extends State<EmpPage> {
             Expanded(
                 child: ListView.builder(
                     controller: controller,
-                    itemCount: itemsData.length,
+                    itemCount: responseList.length,
                     physics: BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       double scale = 1.0;
@@ -161,7 +161,91 @@ class _empPageState extends State<EmpPage> {
                           child: Align(
                               heightFactor: 0.7,
                               alignment: Alignment.topCenter,
-                              child: itemsData[index]),
+                              child: Container(
+                                  height: 140,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                      color: Color.fromRGBO(155, 164, 180, 1),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black.withAlpha(100),
+                                            blurRadius: 10.0),
+                                      ]),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20.0, vertical: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        Column(
+                                          children: <Widget>[
+                                            IconButton(
+                                              icon: Icon(
+                                                Icons.person_rounded,
+                                                color: Colors.white,
+                                              ),
+                                              iconSize: 55,
+                                            ),
+                                            Text(
+                                              responseList[index].permission,
+                                              style: const TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            Text(
+                                              responseList[index].name,
+                                              style: const TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                            SizedBox(
+                                              height: 12,
+                                            ),
+                                            Text(
+                                              "電話：${responseList[index].telphone}",
+                                              style: const TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.white),
+                                            ),
+                                            // SizedBox(
+                                            //   height: 10,
+                                            // ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        IconButton(
+                                          icon: Icon(Icons.keyboard_arrow_right,
+                                              color: Colors.white),
+                                          iconSize: 40,
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        EmpReturn(
+                                                            user: responseList[
+                                                                index])));
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ))),
                         ),
                       );
                     })),
