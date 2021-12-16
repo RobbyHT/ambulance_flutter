@@ -29,14 +29,14 @@ class _CarManageScreenState extends State<CarManageScreen> {
               onPressed: () {},
             ),
             actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.search_rounded,
-                  color: Colors.white,
-                  size: 35.0,
-                ),
-                onPressed: () {},
-              ),
+              // IconButton(
+              //   icon: Icon(
+              //     Icons.search_rounded,
+              //     color: Colors.white,
+              //     size: 35.0,
+              //   ),
+              //   onPressed: () {},
+              // ),
             ],
           ),
           body: ListView.builder(
@@ -60,7 +60,7 @@ class _CarManageScreenState extends State<CarManageScreen> {
                         color: Colors.white,
                       ),
                     ),
-                    minLeadingWidth: 70, //將文字置中
+                    minLeadingWidth: 60, //將文字置中
                     subtitle: Text(
                       '到期年限：' + car.maturity,
                       style: const TextStyle(
@@ -69,14 +69,12 @@ class _CarManageScreenState extends State<CarManageScreen> {
                         height: 2.0,
                       ),
                     ),
-
                     contentPadding: EdgeInsets.only(left: 33.0), //icon距離左方33.0
                     leading: Icon(
                       FontAwesomeIcons.ambulance,
                       size: 35,
                       color: Colors.white,
                     ),
-
                     trailing: Icon(
                       Icons.arrow_forward_ios_rounded,
                       size: 30,

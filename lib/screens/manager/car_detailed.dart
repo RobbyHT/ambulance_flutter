@@ -84,7 +84,7 @@ class CarDetailedScreen extends StatelessWidget {
                 child: Text(
                   '到期年限：',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       //fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79)),
                 ),
@@ -95,7 +95,7 @@ class CarDetailedScreen extends StatelessWidget {
                 child: Text(
                   car.maturity,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       // fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79),
                       //decoration: TextDecoration.underline,
@@ -108,7 +108,7 @@ class CarDetailedScreen extends StatelessWidget {
                 child: Text(
                   '清潔紀錄：',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       // fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79)),
                 ),
@@ -120,7 +120,7 @@ class CarDetailedScreen extends StatelessWidget {
                   car.cleaners,
                   maxLines: 2,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       // fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79),
                       // decoration: TextDecoration.underline,
@@ -133,7 +133,7 @@ class CarDetailedScreen extends StatelessWidget {
                 child: Text(
                   '維修紀錄：',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       // fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79)),
                 ),
@@ -144,7 +144,7 @@ class CarDetailedScreen extends StatelessWidget {
                 child: Text(
                   car.maintain,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       //fontWeight: FontWeight.bold,
                       color: Color.fromARGB(220, 20, 39, 79),
                       //decoration: TextDecoration.underline,
