@@ -3,6 +3,7 @@ import 'package:ambulance_flutter/screens/manager/manager_analysis_screen.dart';
 import 'package:flutter/material.dart';
 import 'manager_control_screen.dart';
 import 'manager_home_screen.dart';
+import 'manager_setting_screen.dart';
 
 class TabNavigator extends StatelessWidget {
   TabNavigator({this.navigatorKey, this.tabItem});
@@ -21,7 +22,7 @@ class TabNavigator extends StatelessWidget {
     else if (tabItem == "統計")
       child = ManagerAnalysisScreen();
     else
-      child = ManagerHomeScreen();
+      child = ManagerSettingScreen();
 
     return Navigator(
       key: navigatorKey,

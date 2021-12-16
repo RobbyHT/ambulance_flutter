@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'emt_analysis_screen.dart';
 import 'emt_home_screen.dart';
+import 'emt_setting_screen.dart';
 
 class TabNavigator extends StatelessWidget {
   TabNavigator({this.navigatorKey, this.tabItem});
@@ -16,7 +17,7 @@ class TabNavigator extends StatelessWidget {
     else if (tabItem == "統計")
       child = EmtAnalysisScreen();
     else if (tabItem == "設定")
-      child = EmtHomeScreen();
+      child = EmtSettingScreen();
     else
       child = EmtHomeScreen();
 
